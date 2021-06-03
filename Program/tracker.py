@@ -310,7 +310,6 @@ class Ui_MainWindow(object):
 
     def addFunctions(self):
         self.create.clicked.connect(self.add_string)
-<<<<<<< HEAD
         self.remove_kebab.clicked.connect(self.del_string)
         self.tableView.clicked.connect(self.get_row)
 
@@ -327,12 +326,6 @@ class Ui_MainWindow(object):
     def get_row(self):
         self.row1 = self.tableView.currentIndex().row()
 
-
-=======
-
-    def add_string(self):
-        print("create")
->>>>>>> develop
 
 if __name__ == "__main__":
     import sys

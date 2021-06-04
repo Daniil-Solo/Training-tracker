@@ -33,3 +33,6 @@
 
 <a id="markdown-Авторы" name="Авторы"></a>
 ## Авторы
+Бизнес-аналитик, user-expirience, tester - Бурлакова Алиса,  
+Developer, архитектор - Пилепенко Дарья, 
+Program meneger, realise menager - Даниил Соловьев.

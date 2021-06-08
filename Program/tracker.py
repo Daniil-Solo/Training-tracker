@@ -9,7 +9,9 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets, QtSql
-import sys
+import sys, os
+
+from My_profile import Profile
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -268,7 +270,10 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
-        self.addFunctions()
+
+        self.my_profile = Profile()
+        self.initial_fill()
+
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -326,9 +331,80 @@ class Ui_MainWindow(object):
     def get_row(self):
         self.row1 = self.tableView.currentIndex().row()
 
+    def initial_fill(self):
+        # photo
+        if os.path.exists('my_photo.jpg'):
+            pixmap = QtGui.QPixmap('my_photo.jpg')
+        else:
+            pixmap = QtGui.QPixmap('default_photo.jpg')
+        self.label.setPixmap(pixmap)
+
+        # data
+        data = self.my_profile.load_data()
+        if data['name'] is None:
+            self.username.setPlainText("")
+        else:
+            self.username.setPlainText(data['name'])
+        if data['gender'] is None:
+            self.comboBox.setCurrentIndex(0)
+        else:
+            self.comboBox.setCurrentIndex(int(data['gender']))
+        if data['height'] is None:
+            self.height.setPlainText("")
+        else:
+            self.height.setPlainText(data['height'])
+        if data['weight'] is None:
+            self.weight.setPlainText("")
+        else:
+            self.weight.setPlainText(data['weight'])
+        if data['birthday'] is None:
+            self.dateEdit.setDateTime(QtCore.QDateTime.currentDateTime())
+        else:
+            self.dateEdit.setDateTime(QtCore.QDateTime.fromString(data['birthday']))
+        # records
+        if data['record_100'] is None:
+            self.m100.setText("")
+        else:
+            self.m100.setText(data['record_100'])
+        if data['record_200'] is None:
+            self.m200.setText("")
+        else:
+            self.m200.setText(data['record_200'])
+        if data['record_400'] is None:
+            self.m400.setText("")
+        else:
+            self.m400.setText(data['record_400'])
+        if data['record_800'] is None:
+            self.m800.setText("")
+        else:
+            self.m800.setText(data['record_800'])
+        if data['record_1_000'] is None:
+            self.m1000.setText("")
+        else:
+            self.m1000.setText(data['record_1_000'])
+
+        if data['record_3_000'] is None:
+            self.m100_2.setText("")
+        else:
+            self.m100_2.setText(data['record_3_000'])
+        if data['record_5_000'] is None:
+            self.m200_2.setText("")
+        else:
+            self.m200_2.setText(data['record_5_000'])
+        if data['record_10_000'] is None:
+            self.m400_2.setText("")
+        else:
+            self.m400_2.setText(data['record_10_000'])
+        if data['record_21_000'] is None:
+            self.m800_2.setText("")
+        else:
+            self.m800_2.setText(data['record_21_000'])
+        if data['record_42_000'] is None:
+            self.m1000_2.setText("")
+        else:
+            self.m1000_2.setText(data['record_42_000'])
 
 if __name__ == "__main__":
-    import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()

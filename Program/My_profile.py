@@ -1,5 +1,6 @@
 import json
 import os
+from PIL import Image
 
 
 class Profile:
@@ -8,7 +9,7 @@ class Profile:
 
         self.data_dict = {
             'name': None,
-            'gender': None,
+            'gender': 0,
             'height': None,
             'weight': None,
             'birthday': None,
@@ -41,12 +42,19 @@ class Profile:
         self.data_dict[key] = value
 
     def photo_change(self, photo_adress):
+        image = Image.open(photo_adress)
+        size = (251, 261)
+        out = image.resize(size)
+        new_photo_adress = 'temp_my_photo.jpg'
+        out.save(new_photo_adress, "JPEG")
         self.need_saving = True
-        self.new_photo_adress = photo_adress
+        self.new_photo_adress = new_photo_adress
+        return new_photo_adress
 
     def save_changes(self):
         if self.new_photo_adress is not None:
-            os.popen(f'copy {self.new_photo_adress} "my_photo.jpg"')
+            image = Image.open(self.new_photo_adress)
+            image.save("my_photo.jpg", "JPEG")
         with open('my_profile.json', "w") as write_file:
             json.dump(self.data_dict, write_file)
         self.need_saving = False

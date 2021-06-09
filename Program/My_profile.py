@@ -43,10 +43,21 @@ class Profile:
 
     def photo_change(self, photo_adress):
         image = Image.open(photo_adress)
-        size = (251, 261)
-        out = image.resize(size)
+        old_width, old_height = image.size
+        new_size = (251, 261)
+        if old_width > old_height:
+            new_width = int((old_height / new_size[1]) * new_size[0])
+            new_height = old_height
+        else:
+            new_height = int((old_width / new_size[0]) * new_size[1])
+            new_width = old_width
+
+        out_image = image.crop(((old_width-new_width)//2, (old_height-new_height)//2,
+                               (old_width+new_width)//2, (old_height+new_height)//2))
+
+        out_image = out_image.resize(new_size)
         new_photo_adress = 'temp_my_photo.jpg'
-        out.save(new_photo_adress, "JPEG")
+        out_image.save(new_photo_adress, "JPEG")
         self.need_saving = True
         self.new_photo_adress = new_photo_adress
         return new_photo_adress

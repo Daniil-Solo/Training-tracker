@@ -1,11 +1,13 @@
 import os
 import sys
 
-from PyQt5.QtWidgets import QMainWindow,QWidget
+from PyQt5.QtWidgets import QMainWindow, QWidget
 from PyQt5 import QtCore, QtGui, QtWidgets, QtSql
 from PyQt5.QtWidgets import QFileDialog
 from PyQt5.QtGui import QImage
 from My_profile import Profile
+from PyQt5.QtWidgets import QMainWindow, QTextEdit, QAction, QApplication
+from PyQt5.QtGui import QIcon
 
 
 class ExampleWindow(QMainWindow):
@@ -17,6 +19,20 @@ class ExampleWindow(QMainWindow):
 
         self.central_widget = QWidget(self)
         self.central_widget.setObjectName("centralwidget")
+
+        theme1 = QAction("Тема 1", self)
+        theme1.triggered.connect(self.set_theme1)
+        theme2 = QAction("Тема 2", self)
+        theme2.triggered.connect(self.set_theme2)
+        theme3 = QAction("Тема 3", self)
+        theme3.triggered.connect(self.set_theme3)
+
+        menubar = self.menuBar()
+        themes = menubar.addMenu('&Темы')
+        themes.addAction(theme1)
+        themes.addAction(theme2)
+        themes.addAction(theme3)
+
         self.tabWidget = QtWidgets.QTabWidget(self.central_widget)
         self.tabWidget.setGeometry(QtCore.QRect(0, 10, 801, 601))
         self.tabWidget.setObjectName("tabWidget")
@@ -285,6 +301,14 @@ class ExampleWindow(QMainWindow):
                 self.my_profile.save_changes()
         event.accept()
 
+    def closeEvent(self, event):
+        if self.my_profile.need_saving:
+            close = QtWidgets.QMessageBox.warning(self, "Выход",
+                                                  "Имеются несохраненные данные. Желаете их сохранить?",
+                                                  QtWidgets.QMessageBox.Ok | QtWidgets.QMessageBox.Cancel)
+            if close == QtWidgets.QMessageBox.Ok:
+                self.my_profile.save_changes()
+
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
         self.setWindowTitle(_translate("MainWindow", "Дневник тренировок"))
@@ -430,6 +454,16 @@ class ExampleWindow(QMainWindow):
             new_filename = self.my_profile.photo_change(filename)
             pixmap = QtGui.QPixmap(new_filename)
             self.label.setPixmap(pixmap)
+
+    def set_theme1(self):
+        print('1')
+
+    def set_theme2(self):
+        print('2')
+
+    def set_theme3(self):
+        print('3')
+
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)

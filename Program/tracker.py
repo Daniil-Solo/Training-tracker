@@ -1,16 +1,39 @@
-from PyQt5 import QtCore, QtGui, QtWidgets, QtSql, Qt
-import sys
 import os
+import sys
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
+from PyQt5.QtWidgets import QMainWindow, QWidget
+from PyQt5 import QtCore, QtGui, QtWidgets, QtSql
+from PyQt5.QtWidgets import QFileDialog
+from PyQt5.QtGui import QImage
+from My_profile import Profile
+from PyQt5.QtWidgets import QMainWindow, QTextEdit, QAction, QApplication
+from PyQt5.QtGui import QIcon
 
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(802, 618)
-        MainWindow.setStyleSheet("background-color: rgb(255, 238, 221);")
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.tabWidget = QtWidgets.QTabWidget(self.centralwidget)
+
+class ExampleWindow(QMainWindow):
+    def __init__(self):
+        super().__init__()
+
+        self.setFixedSize(802, 618)
+        self.setWindowTitle('Example')
+
+        self.central_widget = QWidget(self)
+        self.central_widget.setObjectName("centralwidget")
+
+        theme1 = QAction("Тема 1", self)
+        theme1.triggered.connect(self.set_theme1)
+        theme2 = QAction("Тема 2", self)
+        theme2.triggered.connect(self.set_theme2)
+        theme3 = QAction("Тема 3", self)
+        theme3.triggered.connect(self.set_theme3)
+
+        menubar = self.menuBar()
+        themes = menubar.addMenu('&Темы')
+        themes.addAction(theme1)
+        themes.addAction(theme2)
+        themes.addAction(theme3)
+
+        self.tabWidget = QtWidgets.QTabWidget(self.central_widget)
         self.tabWidget.setGeometry(QtCore.QRect(0, 10, 801, 601))
         self.tabWidget.setObjectName("tabWidget")
         self.tab = QtWidgets.QWidget()
@@ -18,8 +41,8 @@ class Ui_MainWindow(object):
         self.tableView = QtWidgets.QTableView(self.tab)
         self.tableView.setGeometry(QtCore.QRect(0, 40, 801, 521))
         self.tableView.setObjectName("tableView")
-        #self.tableView.setColumnCount(0)
-        #self.tableView.setRowCount(0)
+        # self.tableView.setColumnCount(0)
+        # self.tableView.setRowCount(0)
         self.redact = QtWidgets.QPushButton(self.tab)
         self.redact.setGeometry(QtCore.QRect(140, 10, 121, 25))
         self.redact.setObjectName("redact")
@@ -35,6 +58,7 @@ class Ui_MainWindow(object):
                                       "color: rgb(248, 247, 255);")
         self.show_graph = QtWidgets.QPushButton(self.tab)
         self.show_graph.setGeometry(QtCore.QRect(280, 10, 151, 25))
+        self.show_graph.setStyleSheet("background-color: rgb(0, 0, 127);")
         self.show_graph.setObjectName("show_graph")
         self.show_graph.setStyleSheet("background-color: rgb(147, 129, 255);\n"
                                       "color: rgb(248, 247, 255);")
@@ -181,6 +205,7 @@ class Ui_MainWindow(object):
         self.changePhoto.setStyleSheet("background-color: rgb(147, 129, 255);\n"
                                       "color: rgb(248, 247, 255);")
         self.changePhoto.setObjectName("changePhoto")
+        self.changePhoto.clicked.connect(self.change_photo)
         self.splitter = QtWidgets.QSplitter(self.tab_2)
         self.splitter.setGeometry(QtCore.QRect(300, 50, 297, 31))
         self.splitter.setOrientation(QtCore.Qt.Horizontal)
@@ -269,19 +294,11 @@ class Ui_MainWindow(object):
         self.label_19.setFont(font)
         self.label_19.setObjectName("label_19")
         self.tabWidget.addTab(self.tab_3, "")
-        MainWindow.setCentralWidget(self.centralwidget)
 
-        self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(0)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
-
-        # работа с базой данных
-        conn = QtSql.QSqlDatabase.addDatabase('QSQLITE')
-        conn.setDatabaseName("./workout.db")
-        if conn.open():
-            print("база данных окрыта")
-        else:
-            print("не открылась, жалко")
+        self.setCentralWidget(self.central_widget)
+        self.retranslateUi()
+        self.tabWidget.setCurrentIndex(1)
+        QtCore.QMetaObject.connectSlotsByName(self)
 
         global createTableQuery
         createTableQuery = QtSql.QSqlQuery()
@@ -298,17 +315,6 @@ class Ui_MainWindow(object):
             )
             """
         )
-
-        self.model = QtSql.QSqlTableModel()
-        self.model.setTable("workout")
-        self.model.select()
-        self.model.setHeaderData(1, QtCore.Qt.Horizontal, "Дата")  #устанавливаем названия
-        self.model.setHeaderData(2, QtCore.Qt.Horizontal, "Продолжит-сть")
-        self.model.setHeaderData(3, QtCore.Qt.Horizontal, "Расстояние")
-        self.model.setHeaderData(4, QtCore.Qt.Horizontal, "Темп")
-        self.model.setHeaderData(5, QtCore.Qt.Horizontal, "ЧСС")
-        self.model.setHeaderData(6, QtCore.Qt.Horizontal, "Описание")
-
         self.tableView.setModel(self.model)
         self.tableView.setColumnHidden(0,1)  #убираем колонку с id
         self.tableView.setColumnWidth(1,80)  #устанавливаем ширину колонок
@@ -320,10 +326,46 @@ class Ui_MainWindow(object):
         self.tableView.setColumnWidth(6, 330)
         self.row1 = -6 #для индекса удаления
 
+        self.my_profile = Profile()
+        self.initial_fill()
+        self.username.textChanged.connect(self.change_username)
+        self.comboBox.currentIndexChanged.connect(self.change_gender)
+        self.height.textChanged.connect(self.change_height)
+        self.weight.textChanged.connect(self.change_weight)
+        self.dateEdit.dateChanged.connect(self.change_birthday)
+        self.m100.textChanged.connect(self.change_records)
+        self.m200.textChanged.connect(self.change_records)
+        self.m400.textChanged.connect(self.change_records)
+        self.m800.textChanged.connect(self.change_records)
+        self.m1000.textChanged.connect(self.change_records)
+        self.m100_2.textChanged.connect(self.change_records)
+        self.m200_2.textChanged.connect(self.change_records)
+        self.m400_2.textChanged.connect(self.change_records)
+        self.m800_2.textChanged.connect(self.change_records)
+        self.m1000_2.textChanged.connect(self.change_records)
+        
+        self.create.clicked.connect(self.openDialog) # Открыть новую форму
+        self.remove_kebab.clicked.connect(self.del_string)
+        self.tableView.clicked.connect(self.get_row)
+        self.redact.clicked.connect(self.redact_f)
 
-    def retranslateUi(self, MainWindow):
+    def keyPressEvent(self, event):
+        if int(event.modifiers()) == QtCore.Qt.ControlModifier:
+            if event.key() == QtCore.Qt.Key_S:
+                self.my_profile.save_changes()
+        event.accept()
+
+    def closeEvent(self, event):
+        if self.my_profile.need_saving:
+            close = QtWidgets.QMessageBox.warning(self, "Выход",
+                                                  "Имеются несохраненные данные. Желаете их сохранить?",
+                                                  QtWidgets.QMessageBox.Ok | QtWidgets.QMessageBox.Cancel)
+            if close == QtWidgets.QMessageBox.Ok:
+                self.my_profile.save_changes()
+
+    def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "Дневник тренировок"))
+        self.setWindowTitle(_translate("MainWindow", "Дневник тренировок"))
         self.redact.setText(_translate("MainWindow", "Редактировать"))
         self.remove_kebab.setText(_translate("MainWindow", "Удалить"))
         self.create.setText(_translate("MainWindow", "Создать"))
@@ -353,13 +395,176 @@ class Ui_MainWindow(object):
         self.weight.setPlainText(_translate("MainWindow", "75"))
         self.label_7.setText(_translate("MainWindow", "Дата рождения"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "Мой профиль"))
-        self.label_19.setText(_translate("MainWindow", "Не следует никому давать советы и пользоваться чужими советами, \n"
-"кроме общего совета – правила каждому – следовать велениям души и действовать смело.\n"
-"\n"
-"©Никколо Макиавелли"))
+        self.label_19.setText(
+            _translate("MainWindow", "Не следует никому давать советы и пользоваться чужими советами, \n"
+                                     "кроме общего совета – правила каждому – следовать велениям души и действовать смело.\n"
+                                     "\n"
+                                     "©Никколо Макиавелли"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), _translate("MainWindow", "О нас"))
+    
+    def redact_f(self):
+        self.ui.model = QtSql.QSqlTableModel()
+        self.ui.model.setTable("workout")
+        self.ui.tableView.setModel(self.ui.model)
+        self.ui.model.select()
+        self.ui.model.setHeaderData(1, QtCore.Qt.Horizontal, "Дата")  # устанавливаем названия
+        self.ui.model.setHeaderData(2, QtCore.Qt.Horizontal, "Продолжит-сть")
+        self.ui.model.setHeaderData(3, QtCore.Qt.Horizontal, "Расстояние")
+        self.ui.model.setHeaderData(4, QtCore.Qt.Horizontal, "Темп")
+        self.ui.model.setHeaderData(5, QtCore.Qt.Horizontal, "ЧСС")
+        self.ui.model.setHeaderData(6, QtCore.Qt.Horizontal, "Описание")
+
+    def openDialog(self):
+#       pass
+        self.ui.model.insertRow(self.ui.model.rowCount())
+        print("create")
+        dialog = ClssDialog(self)
+        dialog.exec_()
+        self.ui.model = QtSql.QSqlTableModel()
+        self.ui.model.setTable("workout")
+        self.ui.tableView.setModel(self.ui.model)
+        self.ui.model.select()
+        self.ui.model.setHeaderData(1, QtCore.Qt.Horizontal, "Дата")  # устанавливаем названия
+        self.ui.model.setHeaderData(2, QtCore.Qt.Horizontal, "Продолжит-сть")
+        self.ui.model.setHeaderData(3, QtCore.Qt.Horizontal, "Расстояние")
+        self.ui.model.setHeaderData(4, QtCore.Qt.Horizontal, "Темп")
+        self.ui.model.setHeaderData(5, QtCore.Qt.Horizontal, "ЧСС")
+        self.ui.model.setHeaderData(6, QtCore.Qt.Horizontal, "Описание")
+
+    def del_string(self):
+        self.ui.model.removeRow(self.row1)
+        print(self.ui.row1)
+        print("delete")
+
+    def get_row(self):
+        self.row1 = self.ui.tableView.currentIndex().row()
+        
+    def initial_fill(self):
+        # photo
+        if os.path.exists('my_photo.jpg'):
+            pixmap = QtGui.QPixmap('my_photo.jpg')
+        else:
+            pixmap = QtGui.QPixmap('default_photo.jpg')
+        self.label.setPixmap(pixmap)
+
+        # data
+        data = self.my_profile.load_data()
+        if data['name'] is None:
+            self.username.setPlainText("")
+        else:
+            self.username.setPlainText(data['name'])
+        if data['gender'] is None:
+            self.comboBox.setCurrentIndex(0)
+        else:
+            self.comboBox.setCurrentIndex(int(data['gender']))
+        if data['height'] is None:
+            self.height.setPlainText("")
+        else:
+            self.height.setPlainText(data['height'])
+        if data['weight'] is None:
+            self.weight.setPlainText("")
+        else:
+            self.weight.setPlainText(data['weight'])
+        if data['birthday'] is None:
+            self.dateEdit.setDateTime(QtCore.QDateTime.currentDateTime())
+        else:
+            self.dateEdit.setDateTime(QtCore.QDateTime.fromString(data['birthday']))
+        # records
+        if data['record_100'] is None:
+            self.m100.setText("")
+        else:
+            self.m100.setText(data['record_100'])
+        if data['record_200'] is None:
+            self.m200.setText("")
+        else:
+            self.m200.setText(data['record_200'])
+        if data['record_400'] is None:
+            self.m400.setText("")
+        else:
+            self.m400.setText(data['record_400'])
+        if data['record_800'] is None:
+            self.m800.setText("")
+        else:
+            self.m800.setText(data['record_800'])
+        if data['record_1_000'] is None:
+            self.m1000.setText("")
+        else:
+            self.m1000.setText(data['record_1_000'])
+
+        if data['record_3_000'] is None:
+            self.m100_2.setText("")
+        else:
+            self.m100_2.setText(data['record_3_000'])
+        if data['record_5_000'] is None:
+            self.m200_2.setText("")
+        else:
+            self.m200_2.setText(data['record_5_000'])
+        if data['record_10_000'] is None:
+            self.m400_2.setText("")
+        else:
+            self.m400_2.setText(data['record_10_000'])
+        if data['record_21_000'] is None:
+            self.m800_2.setText("")
+        else:
+            self.m800_2.setText(data['record_21_000'])
+        if data['record_42_000'] is None:
+            self.m1000_2.setText("")
+        else:
+            self.m1000_2.setText(data['record_42_000'])
+
+    def change_username(self):
+        self.my_profile.data_change('name', self.username.toPlainText())
+
+    def change_gender(self):
+        self.my_profile.data_change('gender', self.comboBox.currentIndex())
+
+    def change_height(self):
+        self.my_profile.data_change('height', self.height.toPlainText())
+
+    def change_weight(self):
+        self.my_profile.data_change('weight', self.weight.toPlainText())
+
+    def change_birthday(self):
+        self.my_profile.data_change('birthday', self.dateEdit.dateTime().toString())
+
+    def change_records(self):
+        self.my_profile.data_change('record_100', self.m100.text())
+        self.my_profile.data_change('record_200', self.m200.text())
+        self.my_profile.data_change('record_400', self.m400.text())
+        self.my_profile.data_change('record_800', self.m800.text())
+        self.my_profile.data_change('record_1_000', self.m1000.text())
+        self.my_profile.data_change('record_3_000', self.m100_2.text())
+        self.my_profile.data_change('record_5_000', self.m200_2.text())
+        self.my_profile.data_change('record_10_000', self.m400_2.text())
+        self.my_profile.data_change('record_21_000', self.m800_2.text())
+        self.my_profile.data_change('record_42_000', self.m1000_2.text())
+
+    def change_photo(self):
+        filename = QFileDialog.getOpenFileName(filter="Image (*.jpg)")[0]
+        if os.path.exists(filename):
+            new_filename = self.my_profile.photo_change(filename)
+            pixmap = QtGui.QPixmap(new_filename)
+            self.label.setPixmap(pixmap)
+
+    def set_theme1(self):
+        print('1')
+
+    def set_theme2(self):
+        print('2')
+
+    def set_theme3(self):
+        print('3')
 
 
+if __name__ == "__main__":
+    app = QtWidgets.QApplication(sys.argv)
+    
+    #window = MyWin()
+    #window.show()
+    
+    main_window = ExampleWindow()
+    main_window.show()
+    sys.exit(app.exec_())
 
 class ClssDialog(QtWidgets.QDialog):
     def __init__(self, parent=None):
@@ -463,7 +668,7 @@ class ClssDialog(QtWidgets.QDialog):
         self.close()
 
 
-
+        
 class MyWin(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
@@ -512,11 +717,4 @@ class MyWin(QtWidgets.QMainWindow):
 
     def get_row(self):
         self.row1 = self.ui.tableView.currentIndex().row()
-
-
-
-if __name__ == "__main__":
-    app = QtWidgets.QApplication(sys.argv)
-    window = MyWin()
-    window.show()
-    sys.exit(app.exec_())
+ 

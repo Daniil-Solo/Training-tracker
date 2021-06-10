@@ -36,7 +36,7 @@ class MainWindow(QMainWindow):
         self.tab = QtWidgets.QWidget()
         self.tab.setObjectName("tab")
         self.tableView = QtWidgets.QTableView(self.tab)
-        self.tableView.setGeometry(QtCore.QRect(0, 40, 801, 521))
+        self.tableView.setGeometry(QtCore.QRect(0, 40, 791, 521))
         self.tableView.setObjectName("tableView")
 
         self.redact = QtWidgets.QPushButton(self.tab)
@@ -94,28 +94,33 @@ class MainWindow(QMainWindow):
         self.label_9.setFont(font)
         self.label_9.setObjectName("label_9")
         self.verticalLayout.addWidget(self.label_9)
+        self.label_9.setAlignment(QtCore.Qt.AlignCenter)
         self.label_10 = QtWidgets.QLabel(self.layoutWidget)
         font = QtGui.QFont()
         font.setPointSize(12)
         self.label_10.setFont(font)
+        self.label_10.setAlignment(QtCore.Qt.AlignCenter)
         self.label_10.setObjectName("label_10")
         self.verticalLayout.addWidget(self.label_10)
         self.label_11 = QtWidgets.QLabel(self.layoutWidget)
         font = QtGui.QFont()
         font.setPointSize(12)
         self.label_11.setFont(font)
+        self.label_11.setAlignment(QtCore.Qt.AlignCenter)
         self.label_11.setObjectName("label_11")
         self.verticalLayout.addWidget(self.label_11)
         self.label_12 = QtWidgets.QLabel(self.layoutWidget)
         font = QtGui.QFont()
         font.setPointSize(12)
         self.label_12.setFont(font)
+        self.label_12.setAlignment(QtCore.Qt.AlignCenter)
         self.label_12.setObjectName("label_12")
         self.verticalLayout.addWidget(self.label_12)
         self.label_13 = QtWidgets.QLabel(self.layoutWidget)
         font = QtGui.QFont()
         font.setPointSize(12)
         self.label_13.setFont(font)
+        self.label_13.setAlignment(QtCore.Qt.AlignCenter)
         self.label_13.setObjectName("label_13")
         self.verticalLayout.addWidget(self.label_13)
         self.splitter_6 = QtWidgets.QSplitter(self.groupBox)
@@ -151,30 +156,35 @@ class MainWindow(QMainWindow):
         font = QtGui.QFont()
         font.setPointSize(12)
         self.label_14.setFont(font)
+        self.label_14.setAlignment(QtCore.Qt.AlignCenter)
         self.label_14.setObjectName("label_14")
         self.verticalLayout_2.addWidget(self.label_14)
         self.label_15 = QtWidgets.QLabel(self.layoutWidget1)
         font = QtGui.QFont()
         font.setPointSize(12)
         self.label_15.setFont(font)
+        self.label_15.setAlignment(QtCore.Qt.AlignCenter)
         self.label_15.setObjectName("label_15")
         self.verticalLayout_2.addWidget(self.label_15)
         self.label_16 = QtWidgets.QLabel(self.layoutWidget1)
         font = QtGui.QFont()
         font.setPointSize(12)
         self.label_16.setFont(font)
+        self.label_16.setAlignment(QtCore.Qt.AlignCenter)
         self.label_16.setObjectName("label_16")
         self.verticalLayout_2.addWidget(self.label_16)
         self.label_17 = QtWidgets.QLabel(self.layoutWidget1)
         font = QtGui.QFont()
         font.setPointSize(12)
         self.label_17.setFont(font)
+        self.label_17.setAlignment(QtCore.Qt.AlignCenter)
         self.label_17.setObjectName("label_17")
         self.verticalLayout_2.addWidget(self.label_17)
         self.label_18 = QtWidgets.QLabel(self.layoutWidget1)
         font = QtGui.QFont()
         font.setPointSize(12)
         self.label_18.setFont(font)
+        self.label_18.setAlignment(QtCore.Qt.AlignCenter)
         self.label_18.setObjectName("label_18")
         self.verticalLayout_2.addWidget(self.label_18)
         self.splitter_7 = QtWidgets.QSplitter(self.groupBox_2)
@@ -211,7 +221,7 @@ class MainWindow(QMainWindow):
         font.setPointSize(12)
         self.label_4.setFont(font)
         self.label_4.setObjectName("label_4")
-        self.username = QtWidgets.QPlainTextEdit(self.splitter)
+        self.username = QtWidgets.QLineEdit(self.splitter)
         font = QtGui.QFont()
         font.setPointSize(11)
         self.username.setFont(font)
@@ -243,7 +253,7 @@ class MainWindow(QMainWindow):
         font.setPointSize(12)
         self.label_5.setFont(font)
         self.label_5.setObjectName("label_5")
-        self.height = QtWidgets.QPlainTextEdit(self.splitter_3)
+        self.height = QtWidgets.QLineEdit(self.splitter_3)
         font = QtGui.QFont()
         font.setPointSize(10)
         self.height.setFont(font)
@@ -258,7 +268,7 @@ class MainWindow(QMainWindow):
         font.setPointSize(12)
         self.label_6.setFont(font)
         self.label_6.setObjectName("label_6")
-        self.weight = QtWidgets.QPlainTextEdit(self.splitter_4)
+        self.weight = QtWidgets.QLineEdit(self.splitter_4)
         font = QtGui.QFont()
         font.setPointSize(10)
         self.weight.setFont(font)
@@ -298,7 +308,7 @@ class MainWindow(QMainWindow):
 
         # работа с базой данных
         conn = QtSql.QSqlDatabase.addDatabase('QSQLITE')
-        conn.setDatabaseName("./workout.db")
+        conn.setDatabaseName("source/workout.db")
         if conn.open():
             print("база данных окрыта")
         else:
@@ -367,7 +377,7 @@ class MainWindow(QMainWindow):
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
         self.setWindowTitle(_translate("MainWindow", "Дневник тренировок"))
-        self.redact.setText(_translate("MainWindow", "Редактировать"))
+        self.redact.setText(_translate("MainWindow", "Обновить"))
         self.remove_kebab.setText(_translate("MainWindow", "Удалить"))
         self.create.setText(_translate("MainWindow", "Создать"))
         self.show_graph.setText(_translate("MainWindow", "Показать график"))
@@ -386,14 +396,11 @@ class MainWindow(QMainWindow):
         self.label_18.setText(_translate("MainWindow", "42,2км"))
         self.changePhoto.setText(_translate("MainWindow", "Сменить фото"))
         self.label_4.setText(_translate("MainWindow", "Имя"))
-        self.username.setPlainText(_translate("MainWindow", "Дроздовский"))
         self.label_3.setText(_translate("MainWindow", "Пол"))
         self.comboBox.setItemText(0, _translate("MainWindow", "Мужчина"))
         self.comboBox.setItemText(1, _translate("MainWindow", "Женщина"))
         self.label_5.setText(_translate("MainWindow", "Рост"))
-        self.height.setPlainText(_translate("MainWindow", "180"))
         self.label_6.setText(_translate("MainWindow", "Вес"))
-        self.weight.setPlainText(_translate("MainWindow", "75"))
         self.label_7.setText(_translate("MainWindow", "Дата рождения"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), _translate("MainWindow", "Мой профиль"))
         self.label_19.setText(
@@ -437,21 +444,21 @@ class MainWindow(QMainWindow):
         # data
         data = self.my_profile.load_data()
         if data['name'] is None:
-            self.username.setPlainText("")
+            self.username.setText("")
         else:
-            self.username.setPlainText(data['name'])
+            self.username.setText(data['name'])
         if data['gender'] is None:
             self.comboBox.setCurrentIndex(0)
         else:
             self.comboBox.setCurrentIndex(int(data['gender']))
         if data['height'] is None:
-            self.height.setPlainText("")
+            self.height.setText("")
         else:
-            self.height.setPlainText(data['height'])
+            self.height.setText(data['height'])
         if data['weight'] is None:
-            self.weight.setPlainText("")
+            self.weight.setText("")
         else:
-            self.weight.setPlainText(data['weight'])
+            self.weight.setText(data['weight'])
         if data['birthday'] is None:
             self.dateEdit.setDateTime(QtCore.QDateTime.currentDateTime())
         else:
@@ -500,16 +507,16 @@ class MainWindow(QMainWindow):
             self.m1000_2.setText(data['record_42_000'])
 
     def change_username(self):
-        self.my_profile.data_change('name', self.username.toPlainText())
+        self.my_profile.data_change('name', self.username.text())
 
     def change_gender(self):
         self.my_profile.data_change('gender', self.comboBox.currentIndex())
 
     def change_height(self):
-        self.my_profile.data_change('height', self.height.toPlainText())
+        self.my_profile.data_change('height', self.height.text())
 
     def change_weight(self):
-        self.my_profile.data_change('weight', self.weight.toPlainText())
+        self.my_profile.data_change('weight', self.weight.text())
 
     def change_birthday(self):
         self.my_profile.data_change('birthday', self.dateEdit.dateTime().toString())

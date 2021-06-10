@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QMainWindow, QWidget
 from PyQt5 import QtCore, QtGui, QtWidgets, QtSql
 
+
 class TrainWindow(QMainWindow):
     def __init__(self, parent=None):
         super(TrainWindow, self).__init__(parent)
@@ -73,6 +74,7 @@ class TrainWindow(QMainWindow):
         self.pushButton_2.setStyleSheet("color: rgb(248, 247, 255);\n"
                                         "background-color: rgb(184, 184, 255);")
         self.pushButton_2.setObjectName("pushButton_2")
+        self.createTableQuery = QtSql.QSqlQuery()
 
     def cr_new(self):
         print("it work")

@@ -4,8 +4,8 @@ from PyQt5.QtSql import QSqlTableModel
 from PyQt5.QtWidgets import QMainWindow, QWidget, QAction, QFileDialog
 from PyQt5 import QtCore, QtGui, QtWidgets, QtSql
 
-from Program.My_profile import Profile
-from Program.Train_Window import TrainWindow
+from My_profile import Profile
+from Train_Window import TrainWindow
 
 
 class MainWindow(QMainWindow):
@@ -295,8 +295,18 @@ class MainWindow(QMainWindow):
 
         self.tabWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(self)
-        self.createTableQuery = QtSql.QSqlQuery()
-        self.createTableQuery.exec(
+
+        # работа с базой данных
+        conn = QtSql.QSqlDatabase.addDatabase('QSQLITE')
+        conn.setDatabaseName("./workout.db")
+        if conn.open():
+            print("база данных окрыта")
+        else:
+            print("не открылась, жалко")
+
+        global createTableQuery
+        createTableQuery = QtSql.QSqlQuery()
+        createTableQuery.exec(
             """
             CREATE TABLE workout(
                 id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,
@@ -310,7 +320,16 @@ class MainWindow(QMainWindow):
             """
         )
 
-        self.model = QSqlTableModel(self)
+        self.model = QtSql.QSqlTableModel()
+        self.model.setTable("workout")
+        self.model.select()
+        self.model.setHeaderData(1, QtCore.Qt.Horizontal, "Дата")  # устанавливаем названия
+        self.model.setHeaderData(2, QtCore.Qt.Horizontal, "Продолжит-сть")
+        self.model.setHeaderData(3, QtCore.Qt.Horizontal, "Расстояние")
+        self.model.setHeaderData(4, QtCore.Qt.Horizontal, "Темп")
+        self.model.setHeaderData(5, QtCore.Qt.Horizontal, "ЧСС")
+        self.model.setHeaderData(6, QtCore.Qt.Horizontal, "Описание")
+
         self.tableView.setModel(self.model)
         self.tableView.setColumnHidden(0, 1)  # убираем колонку с id
         self.tableView.setColumnWidth(1, 80)  # устанавливаем ширину колонок
@@ -516,9 +535,10 @@ class MainWindow(QMainWindow):
 
     def openDialog(self):
         print("create")
+        #self.model.insertRow(self.model.rowCount())
         self.dialog = TrainWindow()
-        self.dialog.createTableQuery = self.createTableQuery
         self.dialog.show()
+
         self.model = QtSql.QSqlTableModel()
         self.model.setTable("workout")
         self.tableView.setModel(self.model)
@@ -530,8 +550,9 @@ class MainWindow(QMainWindow):
         self.model.setHeaderData(5, QtCore.Qt.Horizontal, "ЧСС")
         self.model.setHeaderData(6, QtCore.Qt.Horizontal, "Описание")
 
+
     def redact_f(self):
-        print(str(self.createTableQuery))
+        #print(str(createTableQuery))
         self.model = QtSql.QSqlTableModel()
         self.model.setTable("workout")
         self.tableView.setModel(self.model)

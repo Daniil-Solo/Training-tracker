@@ -18,11 +18,11 @@ class MainWindow(QMainWindow):
         self.central_widget.setObjectName("centralwidget")
 
         theme1 = QAction("Тема 1", self)
-        theme1.triggered.connect(self.set_theme1)
+        theme1.triggered.connect(lambda x: self.set_theme(1))
         theme2 = QAction("Тема 2", self)
-        theme2.triggered.connect(self.set_theme2)
+        theme2.triggered.connect(lambda x: self.set_theme(2))
         theme3 = QAction("Тема 3", self)
-        theme3.triggered.connect(self.set_theme3)
+        theme3.triggered.connect(lambda x: self.set_theme(3))
 
         menubar = self.menuBar()
         themes = menubar.addMenu('&Темы')
@@ -42,22 +42,19 @@ class MainWindow(QMainWindow):
         self.redact = QtWidgets.QPushButton(self.tab)
         self.redact.setGeometry(QtCore.QRect(140, 10, 121, 25))
         self.redact.setObjectName("redact")
-        self.redact.setStyleSheet("background-color: rgb(147, 129, 255);\n"
-                                  "color: rgb(248, 247, 255);")
+
         self.remove_kebab = QtWidgets.QPushButton(self.tab)
         self.remove_kebab.setGeometry(QtCore.QRect(660, 10, 121, 25))
         self.remove_kebab.setObjectName("remove_kebab")
         self.create = QtWidgets.QPushButton(self.tab)
         self.create.setGeometry(QtCore.QRect(10, 10, 121, 25))
         self.create.setObjectName("create")
-        self.create.setStyleSheet("background-color: rgb(147, 129, 255);\n"
-                                  "color: rgb(248, 247, 255);")
+
         self.show_graph = QtWidgets.QPushButton(self.tab)
         self.show_graph.setGeometry(QtCore.QRect(280, 10, 151, 25))
         self.show_graph.setStyleSheet("background-color: rgb(0, 0, 127);")
         self.show_graph.setObjectName("show_graph")
-        self.show_graph.setStyleSheet("background-color: rgb(147, 129, 255);\n"
-                                      "color: rgb(248, 247, 255);")
+
         self.tabWidget.addTab(self.tab, "")
         self.tab_2 = QtWidgets.QWidget()
         self.tab_2.setObjectName("tab_2")
@@ -79,7 +76,7 @@ class MainWindow(QMainWindow):
         self.label_8.setFont(font)
         self.label_8.setObjectName("label_8")
         self.groupBox = QtWidgets.QGroupBox(self.tab_2)
-        self.groupBox.setGeometry(QtCore.QRect(110, 350, 241, 211))
+        self.groupBox.setGeometry(QtCore.QRect(100, 350, 241, 211))
         self.groupBox.setTitle("")
         self.groupBox.setObjectName("groupBox")
         self.layoutWidget = QtWidgets.QWidget(self.groupBox)
@@ -424,14 +421,90 @@ class MainWindow(QMainWindow):
             if close == QtWidgets.QMessageBox.Ok:
                 self.my_profile.save_changes()
 
+    def set_theme(self, theme_number):
+        self.my_profile.data_change('theme', theme_number)
+        if theme_number == 1:
+            self.set_theme1()
+        elif theme_number == 2:
+            self.set_theme2()
+        else:
+            self.set_theme3()
+
     def set_theme1(self):
-        print('1')
+        self.tabWidget.setStyleSheet("background-color: rgb(173, 238, 227);")
+        self.redact.setStyleSheet("background-color: rgb(99, 185, 149);")
+        self.remove_kebab.setStyleSheet("background-color: rgb(80, 114, 60);\n"
+                                        "background-color: rgb(95, 134, 70);")
+        self.create.setStyleSheet("background-color: rgb(80, 114, 60);\n"
+                                  "background-color: rgb(95, 134, 70);")
+        self.show_graph.setStyleSheet("background-color: rgb(137, 222, 183);")
+        self.m100.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.m200.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.m400.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.m800.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.m1000.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.m100_2.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.m200_2.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.m400_2.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.m800_2.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.m1000_2.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.changePhoto.setStyleSheet("background-color: rgb(137, 222, 183);")
+        self.username.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.comboBox.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.height.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.weight.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.dateEdit.setStyleSheet("background-color: rgb(255, 255, 255);")
 
     def set_theme2(self):
-        print('2')
+        self.tabWidget.setStyleSheet("background-color: rgb(240, 182, 127);")
+        self.redact.setStyleSheet("background-color: rgb(194, 232, 202);")
+        self.remove_kebab.setStyleSheet("background-color: rgb(255, 123, 90);")
+        self.create.setStyleSheet("background-color: rgb(255, 123, 90);")
+        self.show_graph.setStyleSheet("background-color: rgb(238, 245, 219);")
+        self.m100.setStyleSheet("background-color: rgb(238, 245, 219);")
+        self.m200.setStyleSheet("background-color: rgb(238, 245, 219);")
+        self.m400.setStyleSheet("background-color: rgb(238, 245, 219);")
+        self.m800.setStyleSheet("background-color: rgb(238, 245, 219);")
+        self.m1000.setStyleSheet("background-color: rgb(238, 245, 219);")
+        self.m100_2.setStyleSheet("background-color: rgb(238, 245, 219);")
+        self.m200_2.setStyleSheet("background-color: rgb(238, 245, 219);")
+        self.m400_2.setStyleSheet("background-color: rgb(238, 245, 219);")
+        self.m800_2.setStyleSheet("background-color: rgb(238, 245, 219);")
+        self.m1000_2.setStyleSheet("background-color: rgb(238, 245, 219);")
+        self.changePhoto.setStyleSheet("background-color: rgb(238, 245, 219);")
+        self.username.setStyleSheet("background-color: rgb(238, 245, 219);")
+        self.comboBox.setStyleSheet("background-color: rgb(238, 245, 219);")
+        self.height.setStyleSheet("background-color: rgb(238, 245, 219);")
+        self.weight.setStyleSheet("background-color: rgb(238, 245, 219);")
+        self.dateEdit.setStyleSheet("background-color: rgb(238, 245, 219);")
 
     def set_theme3(self):
-        print('3')
+        self.tabWidget.setStyleSheet("background-color: rgb(144, 221, 240);")
+        self.redact.setStyleSheet("background-color: rgb(80, 187, 201);\n"
+                                  "color: rgb(7, 57, 60);")
+        self.remove_kebab.setStyleSheet("background-color: rgb(19, 165, 173);")
+        self.create.setStyleSheet("background-color: rgb(19, 165, 173);\n"
+                                  "color: rgb(7, 57, 60);")
+        self.show_graph.setStyleSheet("background-color: rgb(240, 237, 238);\n"
+                                      "background-color: rgb(94, 220, 236);\n"
+                                      "color: rgb(7, 57, 60);")
+        self.changePhoto.setStyleSheet("background-color: rgb(80, 187, 201);\n"
+                                       "color: rgb(7, 57, 60);")
+        self.m100.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.m200.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.m400.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.m800.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.m1000.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.m100_2.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.m200_2.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.m400_2.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.m800_2.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.m1000_2.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.username.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.comboBox.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.height.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.weight.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.dateEdit.setStyleSheet("background-color: rgb(255, 255, 255);")
 
     def initial_fill(self):
         # photo
@@ -505,6 +578,12 @@ class MainWindow(QMainWindow):
             self.m1000_2.setText("")
         else:
             self.m1000_2.setText(data['record_42_000'])
+        if data['theme'] == 1:
+            self.set_theme1()
+        elif data['theme'] == 2:
+            self.set_theme2()
+        else:
+            self.set_theme3()
 
     def change_username(self):
         self.my_profile.data_change('name', self.username.text())

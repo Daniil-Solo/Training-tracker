@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>802</width>
-    <height>618</height>
+    <width>795</width>
+    <height>598</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -24,7 +24,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -35,7 +35,7 @@
        <rect>
         <x>0</x>
         <y>40</y>
-        <width>801</width>
+        <width>791</width>
         <height>521</height>
        </rect>
       </property>
@@ -184,6 +184,9 @@
           <property name="text">
            <string>100м</string>
           </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
          </widget>
         </item>
         <item>
@@ -195,6 +198,9 @@
           </property>
           <property name="text">
            <string>200м</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>
@@ -208,6 +214,9 @@
           <property name="text">
            <string>400м</string>
           </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
          </widget>
         </item>
         <item>
@@ -220,6 +229,9 @@
           <property name="text">
            <string>800м</string>
           </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
          </widget>
         </item>
         <item>
@@ -231,6 +243,9 @@
           </property>
           <property name="text">
            <string>1000м</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>
@@ -287,6 +302,9 @@
           <property name="text">
            <string>3км</string>
           </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
          </widget>
         </item>
         <item>
@@ -298,6 +316,9 @@
           </property>
           <property name="text">
            <string>5км</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>
@@ -311,6 +332,9 @@
           <property name="text">
            <string>10км</string>
           </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
          </widget>
         </item>
         <item>
@@ -323,6 +347,9 @@
           <property name="text">
            <string>21,1км</string>
           </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
          </widget>
         </item>
         <item>
@@ -334,6 +361,9 @@
           </property>
           <property name="text">
            <string>42,2км</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>
@@ -393,16 +423,7 @@
         <string>Имя</string>
        </property>
       </widget>
-      <widget class="QPlainTextEdit" name="username">
-       <property name="font">
-        <font>
-         <pointsize>11</pointsize>
-        </font>
-       </property>
-       <property name="plainText">
-        <string>Дроздовский</string>
-       </property>
-      </widget>
+      <widget class="QLineEdit" name="username"/>
      </widget>
      <widget class="QSplitter" name="splitter_2">
       <property name="geometry">
@@ -466,16 +487,7 @@
         <string>Рост</string>
        </property>
       </widget>
-      <widget class="QPlainTextEdit" name="height">
-       <property name="font">
-        <font>
-         <pointsize>10</pointsize>
-        </font>
-       </property>
-       <property name="plainText">
-        <string>180</string>
-       </property>
-      </widget>
+      <widget class="QLineEdit" name="height"/>
      </widget>
      <widget class="QSplitter" name="splitter_4">
       <property name="geometry">
@@ -499,16 +511,7 @@
         <string>Вес</string>
        </property>
       </widget>
-      <widget class="QPlainTextEdit" name="weight">
-       <property name="font">
-        <font>
-         <pointsize>10</pointsize>
-        </font>
-       </property>
-       <property name="plainText">
-        <string>75</string>
-       </property>
-      </widget>
+      <widget class="QLineEdit" name="weight"/>
      </widget>
      <widget class="QSplitter" name="splitter_5">
       <property name="geometry">

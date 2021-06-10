@@ -24,6 +24,8 @@ class Profile:
             'record_10_000': None,
             'record_21_000': None,
             'record_42_000': None,
+
+            'theme': 1
         }
         self.new_photo_adress = None
         self.need_saving = False

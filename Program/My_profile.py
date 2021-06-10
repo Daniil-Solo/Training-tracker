@@ -29,11 +29,11 @@ class Profile:
         self.need_saving = False
 
     def load_data(self):
-        if os.path.exists('my_profile.json'):
-            with open("my_profile.json", "r") as read_file:
+        if os.path.exists('source/my_profile.json'):
+            with open("source/my_profile.json", "r") as read_file:
                 self.data_dict = json.load(read_file)
         else:
-            with open('my_profile.json', "w") as write_file:
+            with open('source/my_profile.json', "w") as write_file:
                 json.dump(self.data_dict, write_file)
         return self.data_dict
 
@@ -56,7 +56,7 @@ class Profile:
                                (old_width+new_width)//2, (old_height+new_height)//2))
 
         out_image = out_image.resize(new_size)
-        new_photo_adress = 'temp_my_photo.jpg'
+        new_photo_adress = 'source/temp_my_photo.jpg'
         out_image.save(new_photo_adress, "JPEG")
         self.need_saving = True
         self.new_photo_adress = new_photo_adress
@@ -65,7 +65,7 @@ class Profile:
     def save_changes(self):
         if self.new_photo_adress is not None:
             image = Image.open(self.new_photo_adress)
-            image.save("my_photo.jpg", "JPEG")
-        with open('my_profile.json', "w") as write_file:
+            image.save("source/my_photo.jpg", "JPEG")
+        with open('source/my_profile.json', "w") as write_file:
             json.dump(self.data_dict, write_file)
         self.need_saving = False

@@ -1,20 +1,16 @@
 import os
-import sys
 
 from PyQt5.QtSql import QSqlTableModel
-from PyQt5.QtWidgets import QMainWindow, QWidget
+from PyQt5.QtWidgets import QMainWindow, QWidget, QAction, QFileDialog
 from PyQt5 import QtCore, QtGui, QtWidgets, QtSql
-from PyQt5.QtWidgets import QFileDialog
-from PyQt5.QtGui import QImage
+
 from My_profile import Profile
-from PyQt5.QtWidgets import QMainWindow, QTextEdit, QAction, QApplication
-from PyQt5.QtGui import QIcon
+from Train_Window import TrainWindow
 
 
-class ExampleWindow(QMainWindow):
+class MainWindow(QMainWindow):
     def __init__(self):
-        super().__init__()
-
+        super(MainWindow, self).__init__()
         self.setFixedSize(802, 618)
         self.setWindowTitle('Example')
 
@@ -42,13 +38,12 @@ class ExampleWindow(QMainWindow):
         self.tableView = QtWidgets.QTableView(self.tab)
         self.tableView.setGeometry(QtCore.QRect(0, 40, 801, 521))
         self.tableView.setObjectName("tableView")
-        # self.tableView.setColumnCount(0)
-        # self.tableView.setRowCount(0)
+
         self.redact = QtWidgets.QPushButton(self.tab)
         self.redact.setGeometry(QtCore.QRect(140, 10, 121, 25))
         self.redact.setObjectName("redact")
         self.redact.setStyleSheet("background-color: rgb(147, 129, 255);\n"
-                                      "color: rgb(248, 247, 255);")
+                                  "color: rgb(248, 247, 255);")
         self.remove_kebab = QtWidgets.QPushButton(self.tab)
         self.remove_kebab.setGeometry(QtCore.QRect(660, 10, 121, 25))
         self.remove_kebab.setObjectName("remove_kebab")
@@ -56,7 +51,7 @@ class ExampleWindow(QMainWindow):
         self.create.setGeometry(QtCore.QRect(10, 10, 121, 25))
         self.create.setObjectName("create")
         self.create.setStyleSheet("background-color: rgb(147, 129, 255);\n"
-                                      "color: rgb(248, 247, 255);")
+                                  "color: rgb(248, 247, 255);")
         self.show_graph = QtWidgets.QPushButton(self.tab)
         self.show_graph.setGeometry(QtCore.QRect(280, 10, 151, 25))
         self.show_graph.setStyleSheet("background-color: rgb(0, 0, 127);")
@@ -69,7 +64,7 @@ class ExampleWindow(QMainWindow):
         self.label = QtWidgets.QLabel(self.tab_2)
         self.label.setGeometry(QtCore.QRect(10, 10, 251, 261))
         self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap("../Изображения/qt-designer-icon.png"))
+
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(self.tab_2)
         self.label_2.setGeometry(QtCore.QRect(300, 0, 151, 31))
@@ -204,7 +199,7 @@ class ExampleWindow(QMainWindow):
         self.changePhoto = QtWidgets.QPushButton(self.tab_2)
         self.changePhoto.setGeometry(QtCore.QRect(50, 300, 151, 31))
         self.changePhoto.setStyleSheet("background-color: rgb(147, 129, 255);\n"
-                                      "color: rgb(248, 247, 255);")
+                                       "color: rgb(248, 247, 255);")
         self.changePhoto.setObjectName("changePhoto")
         self.changePhoto.clicked.connect(self.change_photo)
         self.splitter = QtWidgets.QSplitter(self.tab_2)
@@ -282,7 +277,6 @@ class ExampleWindow(QMainWindow):
         font = QtGui.QFont()
         font.setPointSize(9)
         self.dateEdit.setFont(font)
-        self.dateEdit.setDateTime(QtCore.QDateTime(QtCore.QDate(1891, 10, 7), QtCore.QTime(0, 0, 0)))
         self.dateEdit.setObjectName("dateEdit")
         self.dateEdit.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.tabWidget.addTab(self.tab_2, "")
@@ -298,8 +292,17 @@ class ExampleWindow(QMainWindow):
 
         self.setCentralWidget(self.central_widget)
         self.retranslateUi()
+
         self.tabWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(self)
+
+        # работа с базой данных
+        conn = QtSql.QSqlDatabase.addDatabase('QSQLITE')
+        conn.setDatabaseName("./workout.db")
+        if conn.open():
+            print("база данных окрыта")
+        else:
+            print("не открылась, жалко")
 
         global createTableQuery
         createTableQuery = QtSql.QSqlQuery()
@@ -316,23 +319,27 @@ class ExampleWindow(QMainWindow):
             )
             """
         )
-        self.tableWidget = QtWidgets.QTableWidget(self.centralwidget)
-        self.tableWidget.setGeometry(QtCore.QRect(5, 261, 411, 191))
-        self.tableWidget.setObjectName("tableWidget")
-        self.tableWidget.setColumnCount(4)
-        self.tableWidget.setRowCount(3)
 
-        self.model = QSqlTableModel(self)
+        self.model = QtSql.QSqlTableModel()
+        self.model.setTable("workout")
+        self.model.select()
+        self.model.setHeaderData(1, QtCore.Qt.Horizontal, "Дата")  # устанавливаем названия
+        self.model.setHeaderData(2, QtCore.Qt.Horizontal, "Продолжит-сть")
+        self.model.setHeaderData(3, QtCore.Qt.Horizontal, "Расстояние")
+        self.model.setHeaderData(4, QtCore.Qt.Horizontal, "Темп")
+        self.model.setHeaderData(5, QtCore.Qt.Horizontal, "ЧСС")
+        self.model.setHeaderData(6, QtCore.Qt.Horizontal, "Описание")
+
         self.tableView.setModel(self.model)
-        self.tableView.setColumnHidden(0, 1)  #убираем колонку с id
-        self.tableView.setColumnWidth(1, 80)  #устанавливаем ширину колонок
+        self.tableView.setColumnHidden(0, 1)  # убираем колонку с id
+        self.tableView.setColumnWidth(1, 80)  # устанавливаем ширину колонок
         self.tableView.setColumnWidth(2, 120)
         self.tableView.setColumnWidth(3, 100)
         self.tableView.setColumnWidth(4, 80)
         self.tableView.setColumnWidth(5, 80)
-        #self.tableView.resizeColumnToContents(6) #выравниваение колонки по содержанию
+        # self.tableView.resizeColumnToContents(6) #выравниваение колонки по содержанию
         self.tableView.setColumnWidth(6, 330)
-        self.row1 = -6 #для индекса удаления
+        self.row1 = -6  # для индекса удаления
 
         self.my_profile = Profile()
         self.initial_fill()
@@ -351,25 +358,11 @@ class ExampleWindow(QMainWindow):
         self.m400_2.textChanged.connect(self.change_records)
         self.m800_2.textChanged.connect(self.change_records)
         self.m1000_2.textChanged.connect(self.change_records)
-        
+
         self.create.clicked.connect(self.openDialog)
         self.remove_kebab.clicked.connect(self.del_string)
         self.tableView.clicked.connect(self.get_row)
         self.redact.clicked.connect(self.redact_f)
-
-    def keyPressEvent(self, event):
-        if int(event.modifiers()) == QtCore.Qt.ControlModifier:
-            if event.key() == QtCore.Qt.Key_S:
-                self.my_profile.save_changes()
-        event.accept()
-
-    def closeEvent(self, event):
-        if self.my_profile.need_saving:
-            close = QtWidgets.QMessageBox.warning(self, "Выход",
-                                                  "Имеются несохраненные данные. Желаете их сохранить?",
-                                                  QtWidgets.QMessageBox.Ok | QtWidgets.QMessageBox.Cancel)
-            if close == QtWidgets.QMessageBox.Ok:
-                self.my_profile.save_changes()
 
     def retranslateUi(self):
         _translate = QtCore.QCoreApplication.translate
@@ -409,50 +402,30 @@ class ExampleWindow(QMainWindow):
                                      "\n"
                                      "©Никколо Макиавелли"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_3), _translate("MainWindow", "О нас"))
-    
-    def redact_f(self):
-        self.model = QtSql.QSqlTableModel()
-        self.model.setTable("workout")
-        self.tableView.setModel(self.model)
-        self.model.select()
-        self.model.setHeaderData(1, QtCore.Qt.Horizontal, "Дата")  # устанавливаем названия
-        self.model.setHeaderData(2, QtCore.Qt.Horizontal, "Продолжит-сть")
-        self.model.setHeaderData(3, QtCore.Qt.Horizontal, "Расстояние")
-        self.model.setHeaderData(4, QtCore.Qt.Horizontal, "Темп")
-        self.model.setHeaderData(5, QtCore.Qt.Horizontal, "ЧСС")
-        self.model.setHeaderData(6, QtCore.Qt.Horizontal, "Описание")
 
-    def openDialog(self):
-        print("create")
-        self.dialog = ClssDialog()
-        self.dialog.show()
-        print("finish create")
+    def keyPressEvent(self, event):
+        if int(event.modifiers()) == QtCore.Qt.ControlModifier:
+            if event.key() == QtCore.Qt.Key_S:
+                self.my_profile.save_changes()
+        event.accept()
 
-    def ada(self):
-        self.model.insertRow(self.model.rowCount())
-        print("create")
-        self.dialog = ClssDialog()
-        self.dialog.show()
-        print("finish create")
-        self.model = QtSql.QSqlTableModel()
-        self.model.setTable("workout")
-        self.tableView.setModel(self.model)
-        self.model.select()
-        self.model.setHeaderData(1, QtCore.Qt.Horizontal, "Дата")  # устанавливаем названия
-        self.model.setHeaderData(2, QtCore.Qt.Horizontal, "Продолжит-сть")
-        self.model.setHeaderData(3, QtCore.Qt.Horizontal, "Расстояние")
-        self.model.setHeaderData(4, QtCore.Qt.Horizontal, "Темп")
-        self.model.setHeaderData(5, QtCore.Qt.Horizontal, "ЧСС")
-        self.model.setHeaderData(6, QtCore.Qt.Horizontal, "Описание")
+    def closeEvent(self, event):
+        if self.my_profile.need_saving:
+            close = QtWidgets.QMessageBox.warning(self, "Выход",
+                                                  "Имеются несохраненные данные. Желаете их сохранить?",
+                                                  QtWidgets.QMessageBox.Ok | QtWidgets.QMessageBox.Cancel)
+            if close == QtWidgets.QMessageBox.Ok:
+                self.my_profile.save_changes()
 
-    def del_string(self):
-        self.model.removeRow(self.row1)
-        print(self.row1)
-        print("delete")
+    def set_theme1(self):
+        print('1')
 
-    def get_row(self):
-        self.row1 = self.tableView.currentIndex().row()
-        
+    def set_theme2(self):
+        print('2')
+
+    def set_theme3(self):
+        print('3')
+
     def initial_fill(self):
         # photo
         if os.path.exists('source/my_photo.jpg'):
@@ -560,174 +533,41 @@ class ExampleWindow(QMainWindow):
             pixmap = QtGui.QPixmap(new_filename)
             self.label.setPixmap(pixmap)
 
-    def set_theme1(self):
-        print('1')
+    def openDialog(self):
+        print("create")
+        #self.model.insertRow(self.model.rowCount())
+        self.dialog = TrainWindow()
+        self.dialog.show()
 
-    def set_theme2(self):
-        print('2')
+        self.model = QtSql.QSqlTableModel()
+        self.model.setTable("workout")
+        self.tableView.setModel(self.model)
+        self.model.select()
+        self.model.setHeaderData(1, QtCore.Qt.Horizontal, "Дата")  # устанавливаем названия
+        self.model.setHeaderData(2, QtCore.Qt.Horizontal, "Продолжит-сть")
+        self.model.setHeaderData(3, QtCore.Qt.Horizontal, "Расстояние")
+        self.model.setHeaderData(4, QtCore.Qt.Horizontal, "Темп")
+        self.model.setHeaderData(5, QtCore.Qt.Horizontal, "ЧСС")
+        self.model.setHeaderData(6, QtCore.Qt.Horizontal, "Описание")
 
-    def set_theme3(self):
-        print('3')
 
+    def redact_f(self):
+        #print(str(createTableQuery))
+        self.model = QtSql.QSqlTableModel()
+        self.model.setTable("workout")
+        self.tableView.setModel(self.model)
+        self.model.select()
+        self.model.setHeaderData(1, QtCore.Qt.Horizontal, "Дата")  # устанавливаем названия
+        self.model.setHeaderData(2, QtCore.Qt.Horizontal, "Продолжит-сть")
+        self.model.setHeaderData(3, QtCore.Qt.Horizontal, "Расстояние")
+        self.model.setHeaderData(4, QtCore.Qt.Horizontal, "Темп")
+        self.model.setHeaderData(5, QtCore.Qt.Horizontal, "ЧСС")
+        self.model.setHeaderData(6, QtCore.Qt.Horizontal, "Описание")
 
-if __name__ == "__main__":
-    app = QtWidgets.QApplication(sys.argv)
-    
-    #window = MyWin()
-    #window.show()
-    
-    main_window = ExampleWindow()
-    main_window.show()
-    sys.exit(app.exec_())
+    def del_string(self):
+        self.model.removeRow(self.row1)
+        print(self.row1)
+        print("delete")
 
-class ClssDialog1(QMainWindow):
-    def __init__(self, parent=None):
-        super(ClssDialog, self).__init__(parent)
-        print('clss')
-        self.label = QtWidgets.QLabel(self)
-        self.label.setGeometry(QtCore.QRect(30, 20, 91, 31))
-        font = QtGui.QFont()
-        font.setPointSize(12)
-        self.label.setFont(font)
-        self.label.setObjectName("label")
-        self.label_2 = QtWidgets.QLabel(self)
-        self.label_2.setGeometry(QtCore.QRect(30, 70, 221, 31))
-        font = QtGui.QFont()
-        font.setPointSize(12)
-        self.label_2.setFont(font)
-        self.label_2.setObjectName("label_2")
-        self.label_3 = QtWidgets.QLabel(self)
-        self.label_3.setGeometry(QtCore.QRect(30, 120, 131, 31))
-        font = QtGui.QFont()
-        font.setPointSize(12)
-        self.label_3.setFont(font)
-        self.label_3.setObjectName("label_3")
-        self.label_4 = QtWidgets.QLabel(self)
-        self.label_4.setGeometry(QtCore.QRect(30, 170, 91, 31))
-        font = QtGui.QFont()
-        font.setPointSize(12)
-        self.label_4.setFont(font)
-        self.label_4.setObjectName("label_4")
-        self.label_5 = QtWidgets.QLabel(self)
-        self.label_5.setGeometry(QtCore.QRect(30, 220, 121, 31))
-        font = QtGui.QFont()
-        font.setPointSize(12)
-        self.label_5.setFont(font)
-        self.label_5.setObjectName("label_5")
-        self.dateEdit = QtWidgets.QDateEdit(self)
-        self.dateEdit.setGeometry(QtCore.QRect(260, 22, 121, 31))
-        self.dateEdit.setStyleSheet("background-color: rgb(255, 255, 255);")
-        self.dateEdit.setObjectName("dateEdit")
-        self.lineEdit = QtWidgets.QLineEdit(self)
-        self.lineEdit.setGeometry(QtCore.QRect(260, 70, 121, 31))
-        self.lineEdit.setStyleSheet("background-color: rgb(255, 255, 255);")
-        self.lineEdit.setObjectName("lineEdit")
-        self.doubleSpinBox = QtWidgets.QDoubleSpinBox(self)
-        self.doubleSpinBox.setGeometry(QtCore.QRect(260, 120, 121, 31))
-        self.doubleSpinBox.setStyleSheet("background-color: rgb(255, 255, 255);")
-        self.doubleSpinBox.setObjectName("doubleSpinBox")
-        self.spinBox = QtWidgets.QSpinBox(self)
-        self.spinBox.setGeometry(QtCore.QRect(260, 170, 121, 31))
-        self.spinBox.setStyleSheet("background-color: rgb(255, 255, 255);")
-        self.spinBox.setObjectName("spinBox")
-        self.spinBox.setMaximum(300)
-        self.textEdit = QtWidgets.QTextEdit(self)
-        self.textEdit.setGeometry(QtCore.QRect(260, 230, 551, 181))
-        self.textEdit.setStyleSheet("background-color: rgb(255, 255, 255);")
-        self.textEdit.setObjectName("textEdit")
-        self.pushButton = QtWidgets.QPushButton(self)
-        self.pushButton.setGeometry(QtCore.QRect(350, 440, 151, 41))
-        font = QtGui.QFont()
-        font.setPointSize(12)
-        self.pushButton.setFont(font)
-        self.pushButton.setStyleSheet("background-color: rgb(147, 129, 255);\n"
-                                      "color: rgb(248, 247, 255);")
-        self.pushButton.setObjectName("pushButton")
-        self.pushButton.clicked.connect(self.cr_new)
-        self.pushButton_2 = QtWidgets.QPushButton(self)
-        self.pushButton_2.setGeometry(QtCore.QRect(30, 450, 101, 31))
-        self.pushButton_2.setStyleSheet("color: rgb(248, 247, 255);\n"
-                                        "background-color: rgb(184, 184, 255);")
-        self.pushButton_2.setObjectName("pushButton_2")
-
-    def cr_new(self):
-        print("it work")
-        w_date1 = "today"
-        w_time1 = self.lineEdit.text()
-        w_distance1 = self.doubleSpinBox.text()
-        w_temp1 = 'в разработке'
-        w_heart1 = self.spinBox.text()
-        w_description1 = self.textEdit.toPlainText()
-        createTableQuery.prepare(
-            """
-            INSERT INTO workout (
-                w_date,
-                w_time,
-                w_distance,
-                w_temp,
-                w_heart,
-                w_description
-            )
-            VALUES (?, ?, ?, ?, ?, ?)
-            """
-        )
-        createTableQuery.addBindValue(w_date1)
-        createTableQuery.addBindValue(w_time1)
-        createTableQuery.addBindValue(w_distance1)
-        createTableQuery.addBindValue(w_temp1)
-        createTableQuery.addBindValue(w_heart1)
-        createTableQuery.addBindValue(w_description1)
-        createTableQuery.exec()
-
-        self.close()
-
-    '''
-class MyWin(QtWidgets.QMainWindow):
- def __init__(self):
-     super().__init__()
-
-     self.ui = Ui_MainWindow() # Экземпляр класса Ui_MainWindow, в нем конструктор всего GUI.
-     self.ui.setupUi(self)     # Инициализация GUI
-
-     self.ui.create.clicked.connect(self.openDialog) # Открыть новую форму
-     self.ui.remove_kebab.clicked.connect(self.del_string)
-     self.ui.tableView.clicked.connect(self.get_row)
-     self.ui.redact.clicked.connect(self.redact_f)
-
- def redact_f(self):
-     self.ui.model = QtSql.QSqlTableModel()
-     self.ui.model.setTable("workout")
-     self.ui.tableView.setModel(self.ui.model)
-     self.ui.model.select()
-     self.ui.model.setHeaderData(1, QtCore.Qt.Horizontal, "Дата")  # устанавливаем названия
-     self.ui.model.setHeaderData(2, QtCore.Qt.Horizontal, "Продолжит-сть")
-     self.ui.model.setHeaderData(3, QtCore.Qt.Horizontal, "Расстояние")
-     self.ui.model.setHeaderData(4, QtCore.Qt.Horizontal, "Темп")
-     self.ui.model.setHeaderData(5, QtCore.Qt.Horizontal, "ЧСС")
-     self.ui.model.setHeaderData(6, QtCore.Qt.Horizontal, "Описание")
-
- def openDialog(self):
-#       pass
-     self.ui.model.insertRow(self.ui.model.rowCount())
-     print("create")
-     dialog = ClssDialog(self)
-     dialog.exec_()
-     self.ui.model = QtSql.QSqlTableModel()
-     self.ui.model.setTable("workout")
-     self.ui.tableView.setModel(self.ui.model)
-     self.ui.model.select()
-     self.ui.model.setHeaderData(1, QtCore.Qt.Horizontal, "Дата")  # устанавливаем названия
-     self.ui.model.setHeaderData(2, QtCore.Qt.Horizontal, "Продолжит-сть")
-     self.ui.model.setHeaderData(3, QtCore.Qt.Horizontal, "Расстояние")
-     self.ui.model.setHeaderData(4, QtCore.Qt.Horizontal, "Темп")
-     self.ui.model.setHeaderData(5, QtCore.Qt.Horizontal, "ЧСС")
-     self.ui.model.setHeaderData(6, QtCore.Qt.Horizontal, "Описание")
-
- def del_string(self):
-     self.ui.model.removeRow(self.row1)
-     print(self.ui.row1)
-     print("delete")
-
- def get_row(self):
-     self.row1 = self.ui.tableView.currentIndex().row()
-'''
+    def get_row(self):
+        self.row1 = self.tableView.currentIndex().row()

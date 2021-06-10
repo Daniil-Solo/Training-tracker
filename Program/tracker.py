@@ -320,6 +320,7 @@ class Ui_MainWindow(object):
         self.tableView.setColumnWidth(6, 330)
         self.row1 = -6 #для индекса удаления
 
+
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Дневник тренировок"))
@@ -410,6 +411,7 @@ class ClssDialog(QtWidgets.QDialog):
         self.spinBox.setGeometry(QtCore.QRect(260, 170, 121, 31))
         self.spinBox.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.spinBox.setObjectName("spinBox")
+        self.spinBox.setMaximum(300)
         self.textEdit = QtWidgets.QTextEdit(self)
         self.textEdit.setGeometry(QtCore.QRect(260, 230, 551, 181))
         self.textEdit.setStyleSheet("background-color: rgb(255, 255, 255);")
@@ -472,14 +474,36 @@ class MyWin(QtWidgets.QMainWindow):
         self.ui.create.clicked.connect(self.openDialog) # Открыть новую форму
         self.ui.remove_kebab.clicked.connect(self.del_string)
         self.ui.tableView.clicked.connect(self.get_row)
+        self.ui.redact.clicked.connect(self.redact_f)
+
+    def redact_f(self):
+        self.ui.model = QtSql.QSqlTableModel()
+        self.ui.model.setTable("workout")
+        self.ui.tableView.setModel(self.ui.model)
+        self.ui.model.select()
+        self.ui.model.setHeaderData(1, QtCore.Qt.Horizontal, "Дата")  # устанавливаем названия
+        self.ui.model.setHeaderData(2, QtCore.Qt.Horizontal, "Продолжит-сть")
+        self.ui.model.setHeaderData(3, QtCore.Qt.Horizontal, "Расстояние")
+        self.ui.model.setHeaderData(4, QtCore.Qt.Horizontal, "Темп")
+        self.ui.model.setHeaderData(5, QtCore.Qt.Horizontal, "ЧСС")
+        self.ui.model.setHeaderData(6, QtCore.Qt.Horizontal, "Описание")
 
     def openDialog(self):
 #       pass
         self.ui.model.insertRow(self.ui.model.rowCount())
         print("create")
-        #self.close()
         dialog = ClssDialog(self)
         dialog.exec_()
+        self.ui.model = QtSql.QSqlTableModel()
+        self.ui.model.setTable("workout")
+        self.ui.tableView.setModel(self.ui.model)
+        self.ui.model.select()
+        self.ui.model.setHeaderData(1, QtCore.Qt.Horizontal, "Дата")  # устанавливаем названия
+        self.ui.model.setHeaderData(2, QtCore.Qt.Horizontal, "Продолжит-сть")
+        self.ui.model.setHeaderData(3, QtCore.Qt.Horizontal, "Расстояние")
+        self.ui.model.setHeaderData(4, QtCore.Qt.Horizontal, "Темп")
+        self.ui.model.setHeaderData(5, QtCore.Qt.Horizontal, "ЧСС")
+        self.ui.model.setHeaderData(6, QtCore.Qt.Horizontal, "Описание")
 
     def del_string(self):
         self.ui.model.removeRow(self.row1)

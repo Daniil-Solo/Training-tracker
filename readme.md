@@ -39,8 +39,6 @@
 <a id="markdown-Авторы" name="Авторы"></a>
 ## Авторы
 
-Над проектом работали студенты 2 курса университета ПГНИУ
-
 **Бурлакова Алиса** - Project Manager + Release Manager
 
 **Пилепенко Дарья** - Architect + Developer

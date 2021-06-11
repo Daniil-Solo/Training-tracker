@@ -23,8 +23,12 @@
       <height>601</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(144, 221, 240);
+border-top-color: rgb(7, 57, 60);</string>
+    </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -39,6 +43,9 @@
         <height>521</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(240, 237, 238);</string>
+      </property>
      </widget>
      <widget class="QPushButton" name="redact">
       <property name="geometry">
@@ -48,6 +55,10 @@
         <width>121</width>
         <height>25</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(80, 187, 201);
+color: rgb(7, 57, 60);</string>
       </property>
       <property name="text">
        <string>Редактировать</string>
@@ -62,6 +73,9 @@
         <height>25</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(19, 165, 173);</string>
+      </property>
       <property name="text">
        <string>Удалить</string>
       </property>
@@ -75,6 +89,10 @@
         <height>25</height>
        </rect>
       </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(19, 165, 173);
+color: rgb(7, 57, 60);</string>
+      </property>
       <property name="text">
        <string>Создать</string>
       </property>
@@ -82,14 +100,16 @@
      <widget class="QPushButton" name="show_graph">
       <property name="geometry">
        <rect>
-        <x>280</x>
+        <x>270</x>
         <y>10</y>
-        <width>151</width>
+        <width>141</width>
         <height>25</height>
        </rect>
       </property>
       <property name="styleSheet">
-       <string notr="true">background-color: rgb(0, 0, 127);</string>
+       <string notr="true">background-color: rgb(240, 237, 238);
+background-color: rgb(94, 220, 236);
+color: rgb(7, 57, 60);</string>
       </property>
       <property name="text">
        <string>Показать график</string>
@@ -248,11 +268,31 @@
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
-       <widget class="QLineEdit" name="m100"/>
-       <widget class="QLineEdit" name="m200"/>
-       <widget class="QLineEdit" name="m400"/>
-       <widget class="QLineEdit" name="m800"/>
-       <widget class="QLineEdit" name="m1000"/>
+       <widget class="QLineEdit" name="m100">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="m200">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="m400">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="m800">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="m1000">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);</string>
+        </property>
+       </widget>
       </widget>
      </widget>
      <widget class="QGroupBox" name="groupBox_2">
@@ -351,11 +391,31 @@
        <property name="orientation">
         <enum>Qt::Vertical</enum>
        </property>
-       <widget class="QLineEdit" name="m100_2"/>
-       <widget class="QLineEdit" name="m200_2"/>
-       <widget class="QLineEdit" name="m400_2"/>
-       <widget class="QLineEdit" name="m800_2"/>
-       <widget class="QLineEdit" name="m1000_2"/>
+       <widget class="QLineEdit" name="m100_2">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="m200_2">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="m400_2">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="m800_2">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="m1000_2">
+        <property name="styleSheet">
+         <string notr="true">background-color: rgb(255, 255, 255);</string>
+        </property>
+       </widget>
       </widget>
      </widget>
      <widget class="QPushButton" name="changePhoto">
@@ -366,6 +426,10 @@
         <width>151</width>
         <height>31</height>
        </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">background-color: rgb(80, 187, 201);
+color: rgb(7, 57, 60);</string>
       </property>
       <property name="text">
        <string>Сменить фото</string>
@@ -399,6 +463,9 @@
          <pointsize>11</pointsize>
         </font>
        </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
        <property name="plainText">
         <string>Дроздовский</string>
        </property>
@@ -431,6 +498,9 @@
         <font>
          <pointsize>10</pointsize>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
        </property>
        <item>
         <property name="text">
@@ -472,6 +542,9 @@
          <pointsize>10</pointsize>
         </font>
        </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
        <property name="plainText">
         <string>180</string>
        </property>
@@ -505,6 +578,9 @@
          <pointsize>10</pointsize>
         </font>
        </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
        <property name="plainText">
         <string>75</string>
        </property>
@@ -537,6 +613,9 @@
         <font>
          <pointsize>9</pointsize>
         </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
        </property>
        <property name="dateTime">
         <datetime>

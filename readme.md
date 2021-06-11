@@ -1,5 +1,4 @@
 # TrainTracker / Трекер тренировок
-==========
 
 Оглавление
 ==========
@@ -39,8 +38,10 @@
 <a id="markdown-Авторы" name="Авторы"></a>
 ## Авторы
 
-**Бурлакова Алиса** - Project Manager + Release Manager
+**Бурлакова Алиса** - Business analyst + Tester
 
 **Пилепенко Дарья** - Architect + Developer
 
 **Соловьев Даниил** - Project Manager + Release Manager
+
+**Trello** - https://trello.com/b/XSIofgmo/trainingtracker

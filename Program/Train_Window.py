@@ -105,4 +105,19 @@ class TrainWindow(QMainWindow):
         self.createTableQuery.addBindValue(w_description1)
         self.createTableQuery.exec()
 
+        # check is this a record
+        #self.createTableQuery.exec("select min(w_heart) as min from workout where w_distance=9.00")
+        #self.createTableQuery.next()
+        #rec = self.createTableQuery.value(0)
+        #print(rec)
+        self.createTableQuery.prepare('select w_time,w_temp,w_heart from workout where w_heart=:wh')
+        self.createTableQuery.bindValue(':wh', w_heart1)
+        if not self.createTableQuery.exec_():
+            self.createTableQuery.lastError()
+        else:
+            while self.createTableQuery.next():
+                id4 = self.createTableQuery.value(0)
+                name = self.createTableQuery.value(1)
+                age = self.createTableQuery.value(2)
+                print(id4, name, age)
         self.close()

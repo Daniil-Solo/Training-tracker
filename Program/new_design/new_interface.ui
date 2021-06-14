@@ -117,7 +117,7 @@ QPushButton::pressed{
            <number>0</number>
           </property>
           <item>
-           <widget class="QPushButton" name="pushButton_6">
+           <widget class="QPushButton" name="my_profile">
             <property name="text">
              <string/>
             </property>
@@ -165,7 +165,7 @@ QPushButton::pressed{
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_7">
+           <widget class="QPushButton" name="workouts">
             <property name="text">
              <string/>
             </property>
@@ -204,7 +204,7 @@ QPushButton::pressed{
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_8">
+           <widget class="QPushButton" name="my_records">
             <property name="text">
              <string/>
             </property>
@@ -243,7 +243,7 @@ QPushButton::pressed{
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_9">
+           <widget class="QPushButton" name="connect_developers">
             <property name="text">
              <string/>
             </property>
@@ -282,7 +282,7 @@ QPushButton::pressed{
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_10">
+           <widget class="QPushButton" name="settings">
             <property name="text">
              <string/>
             </property>
@@ -321,7 +321,7 @@ QPushButton::pressed{
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="pushButton_11">
+           <widget class="QPushButton" name="give_mark">
             <property name="text">
              <string/>
             </property>
@@ -365,7 +365,7 @@ QPushButton::pressed{
            <number>0</number>
           </property>
           <item>
-           <widget class="QPushButton" name="pushButton_12">
+           <widget class="QPushButton" name="maximize_bottom">
             <property name="text">
              <string/>
             </property>
@@ -524,7 +524,7 @@ QPushButton::pressed{
                 <enum>QFrame::Plain</enum>
                </property>
                <property name="currentIndex">
-                <number>5</number>
+                <number>1</number>
                </property>
                <property name="tabSpacing">
                 <number>12</number>
@@ -534,8 +534,8 @@ QPushButton::pressed{
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>189</width>
-                  <height>335</height>
+                  <width>188</width>
+                  <height>353</height>
                  </rect>
                 </property>
                 <attribute name="icon">
@@ -598,7 +598,7 @@ QPushButton::pressed{
                      <number>0</number>
                     </property>
                     <item>
-                     <widget class="QPushButton" name="pushButton_13">
+                     <widget class="QPushButton" name="reduct_profile">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                         <horstretch>0</horstretch>
@@ -635,7 +635,7 @@ QPushButton::pressed{
                      </widget>
                     </item>
                     <item>
-                     <widget class="QPushButton" name="pushButton_14">
+                     <widget class="QPushButton" name="set_goal">
                       <property name="minimumSize">
                        <size>
                         <width>0</width>
@@ -654,7 +654,7 @@ QPushButton::pressed{
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLabel" name="label_3">
+                     <widget class="QLabel" name="choose_theme">
                       <property name="minimumSize">
                        <size>
                         <width>0</width>
@@ -673,49 +673,49 @@ QPushButton::pressed{
                      </widget>
                     </item>
                     <item>
-                     <widget class="QRadioButton" name="radioButton">
+                     <widget class="QRadioButton" name="dark_red">
                       <property name="text">
                        <string>dark_red</string>
                       </property>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QRadioButton" name="radioButton_2">
+                     <widget class="QRadioButton" name="darc_teal">
                       <property name="text">
                        <string>dark_teal</string>
                       </property>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QRadioButton" name="radioButton_3">
+                     <widget class="QRadioButton" name="dacr_lightgreen">
                       <property name="text">
                        <string>dark_lightgreen</string>
                       </property>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QRadioButton" name="radioButton_4">
+                     <widget class="QRadioButton" name="darc_cyan">
                       <property name="text">
                        <string>dark_cyan</string>
                       </property>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QRadioButton" name="radioButton_5">
+                     <widget class="QRadioButton" name="light_red">
                       <property name="text">
                        <string>light_red</string>
                       </property>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QRadioButton" name="radioButton_6">
+                     <widget class="QRadioButton" name="light_purpure">
                       <property name="text">
                        <string>light_purple</string>
                       </property>
                      </widget>
                     </item>
                     <item>
-                     <widget class="QRadioButton" name="radioButton_7">
+                     <widget class="QRadioButton" name="light_blue">
                       <property name="text">
                        <string>light_blue</string>
                       </property>
@@ -731,8 +731,8 @@ QPushButton::pressed{
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>189</width>
-                  <height>335</height>
+                  <width>188</width>
+                  <height>353</height>
                  </rect>
                 </property>
                 <attribute name="icon">
@@ -762,7 +762,7 @@ QPushButton::pressed{
                   <number>0</number>
                  </property>
                  <item>
-                  <widget class="QPushButton" name="pushButton_15">
+                  <widget class="QPushButton" name="create_workout">
                    <property name="minimumSize">
                     <size>
                      <width>0</width>
@@ -793,7 +793,7 @@ QPushButton::pressed{
                   </widget>
                  </item>
                  <item>
-                  <widget class="QPushButton" name="pushButton_16">
+                  <widget class="QPushButton" name="open_statistic">
                    <property name="minimumSize">
                     <size>
                      <width>0</width>
@@ -812,7 +812,7 @@ QPushButton::pressed{
                   </widget>
                  </item>
                  <item alignment="Qt::AlignTop">
-                  <widget class="QFrame" name="frame_14">
+                  <widget class="QFrame" name="new_workout">
                    <property name="frameShape">
                     <enum>QFrame::StyledPanel</enum>
                    </property>
@@ -845,8 +845,8 @@ QPushButton::pressed{
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>189</width>
-                  <height>335</height>
+                  <width>188</width>
+                  <height>353</height>
                  </rect>
                 </property>
                 <attribute name="icon">
@@ -897,7 +897,7 @@ QPushButton::pressed{
                      <number>0</number>
                     </property>
                     <item>
-                     <widget class="QPushButton" name="pushButton_17">
+                     <widget class="QPushButton" name="new_record">
                       <property name="minimumSize">
                        <size>
                         <width>0</width>
@@ -916,7 +916,7 @@ QPushButton::pressed{
                      </widget>
                     </item>
                     <item>
-                     <widget class="QPushButton" name="pushButton_18">
+                     <widget class="QPushButton" name="all_records">
                       <property name="minimumSize">
                        <size>
                         <width>0</width>
@@ -944,8 +944,8 @@ QPushButton::pressed{
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>189</width>
-                  <height>335</height>
+                  <width>188</width>
+                  <height>353</height>
                  </rect>
                 </property>
                 <attribute name="icon">
@@ -957,7 +957,7 @@ QPushButton::pressed{
                 </attribute>
                 <layout class="QVBoxLayout" name="verticalLayout_15">
                  <item alignment="Qt::AlignTop">
-                  <widget class="QLabel" name="label_4">
+                  <widget class="QLabel" name="quote">
                    <property name="font">
                     <font>
                      <pointsize>10</pointsize>
@@ -981,8 +981,8 @@ QPushButton::pressed{
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>189</width>
-                  <height>335</height>
+                  <width>188</width>
+                  <height>353</height>
                  </rect>
                 </property>
                 <attribute name="icon">
@@ -1039,7 +1039,7 @@ QPushButton::pressed{
                      <number>0</number>
                     </property>
                     <item>
-                     <widget class="QLabel" name="label_7">
+                     <widget class="QLabel" name="vk_group">
                       <property name="minimumSize">
                        <size>
                         <width>0</width>
@@ -1061,7 +1061,7 @@ QPushButton::pressed{
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLabel" name="label_5">
+                     <widget class="QLabel" name="mail">
                       <property name="minimumSize">
                        <size>
                         <width>0</width>
@@ -1083,7 +1083,7 @@ QPushButton::pressed{
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLabel" name="label_6">
+                     <widget class="QLabel" name="git_hub">
                       <property name="minimumSize">
                        <size>
                         <width>0</width>
@@ -1114,8 +1114,8 @@ QPushButton::pressed{
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>189</width>
-                  <height>335</height>
+                  <width>188</width>
+                  <height>353</height>
                  </rect>
                 </property>
                 <attribute name="icon">
@@ -1205,7 +1205,7 @@ QPushButton::pressed{
                         <number>0</number>
                        </property>
                        <item>
-                        <widget class="QPushButton" name="pushButton_19">
+                        <widget class="QPushButton" name="star1">
                          <property name="text">
                           <string/>
                          </property>
@@ -1216,7 +1216,7 @@ QPushButton::pressed{
                         </widget>
                        </item>
                        <item>
-                        <widget class="QPushButton" name="pushButton_20">
+                        <widget class="QPushButton" name="star2">
                          <property name="text">
                           <string/>
                          </property>
@@ -1227,7 +1227,7 @@ QPushButton::pressed{
                         </widget>
                        </item>
                        <item>
-                        <widget class="QPushButton" name="pushButton_21">
+                        <widget class="QPushButton" name="star3">
                          <property name="text">
                           <string/>
                          </property>
@@ -1238,7 +1238,7 @@ QPushButton::pressed{
                         </widget>
                        </item>
                        <item>
-                        <widget class="QPushButton" name="pushButton_22">
+                        <widget class="QPushButton" name="star4">
                          <property name="text">
                           <string/>
                          </property>
@@ -1249,7 +1249,7 @@ QPushButton::pressed{
                         </widget>
                        </item>
                        <item>
-                        <widget class="QPushButton" name="pushButton_23">
+                        <widget class="QPushButton" name="star5">
                          <property name="text">
                           <string/>
                          </property>
@@ -1322,7 +1322,7 @@ QPushButton::pressed{
               <number>0</number>
              </property>
              <item>
-              <widget class="QPushButton" name="pushButton_5">
+              <widget class="QPushButton" name="exit">
                <property name="text">
                 <string>Выход</string>
                </property>
@@ -1471,7 +1471,7 @@ QPushButton::pressed{
               <number>0</number>
              </property>
              <item>
-              <widget class="QLabel" name="label_2">
+              <widget class="QLabel" name="app_name">
                <property name="font">
                 <font>
                  <pointsize>10</pointsize>
@@ -1513,7 +1513,7 @@ QPushButton::pressed{
               <number>0</number>
              </property>
              <item>
-              <widget class="QPushButton" name="pushButton_3">
+              <widget class="QPushButton" name="wrap">
                <property name="text">
                 <string/>
                </property>
@@ -1524,7 +1524,7 @@ QPushButton::pressed{
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton_2">
+              <widget class="QPushButton" name="maximize">
                <property name="text">
                 <string/>
                </property>
@@ -1535,7 +1535,7 @@ QPushButton::pressed{
               </widget>
              </item>
              <item>
-              <widget class="QPushButton" name="pushButton">
+              <widget class="QPushButton" name="close">
                <property name="text">
                 <string/>
                </property>
@@ -1594,7 +1594,7 @@ QPushButton::pressed{
               <number>0</number>
              </property>
              <item>
-              <widget class="QLabel" name="label_21">
+              <widget class="QLabel" name="user_photo">
                <property name="minimumSize">
                 <size>
                  <width>251</width>
@@ -1662,7 +1662,7 @@ QPushButton::pressed{
                  <number>0</number>
                 </property>
                 <item>
-                 <widget class="QLabel" name="label_22">
+                 <widget class="QLabel" name="user_name">
                   <property name="font">
                    <font>
                     <pointsize>18</pointsize>
@@ -1698,7 +1698,7 @@ QPushButton::pressed{
                     <number>0</number>
                    </property>
                    <item>
-                    <widget class="QLabel" name="label_23">
+                    <widget class="QLabel" name="day_shot">
                      <property name="font">
                       <font>
                        <pointsize>10</pointsize>
@@ -1710,7 +1710,7 @@ QPushButton::pressed{
                     </widget>
                    </item>
                    <item>
-                    <widget class="QPushButton" name="pushButton_24">
+                    <widget class="QPushButton" name="share_days">
                      <property name="minimumSize">
                       <size>
                        <width>30</width>
@@ -1736,7 +1736,7 @@ QPushButton::pressed{
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="label_24">
+                 <widget class="QLabel" name="user_goal">
                   <property name="font">
                    <font>
                     <pointsize>10</pointsize>
@@ -1806,7 +1806,7 @@ QPushButton::pressed{
                        </widget>
                       </item>
                       <item alignment="Qt::AlignBottom">
-                       <widget class="QPushButton" name="pushButton_25">
+                       <widget class="QPushButton" name="swipe_left">
                         <property name="minimumSize">
                          <size>
                           <width>30</width>
@@ -1868,7 +1868,7 @@ QPushButton::pressed{
                        <number>0</number>
                       </property>
                       <item alignment="Qt::AlignBottom">
-                       <widget class="QPushButton" name="pushButton_26">
+                       <widget class="QPushButton" name="swipe_right">
                         <property name="text">
                          <string/>
                         </property>
@@ -1919,7 +1919,7 @@ border-radius: 20px;
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_20">
                 <item>
-                 <widget class="QLabel" name="label_9">
+                 <widget class="QLabel" name="date1">
                   <property name="styleSheet">
                    <string notr="true">border:none;</string>
                   </property>
@@ -1929,7 +1929,7 @@ border-radius: 20px;
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="label_10">
+                 <widget class="QLabel" name="time1">
                   <property name="styleSheet">
                    <string notr="true">border:none;</string>
                   </property>
@@ -1939,7 +1939,7 @@ border-radius: 20px;
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="label_11">
+                 <widget class="QLabel" name="distance1">
                   <property name="styleSheet">
                    <string notr="true">border:none;</string>
                   </property>
@@ -1977,7 +1977,7 @@ border-radius: 20px;
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_21">
                 <item>
-                 <widget class="QLabel" name="label_12">
+                 <widget class="QLabel" name="date2">
                   <property name="styleSheet">
                    <string notr="true">border: none;</string>
                   </property>
@@ -1987,7 +1987,7 @@ border-radius: 20px;
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="label_13">
+                 <widget class="QLabel" name="time2">
                   <property name="styleSheet">
                    <string notr="true">border: none;</string>
                   </property>
@@ -1997,7 +1997,7 @@ border-radius: 20px;
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="label_14">
+                 <widget class="QLabel" name="distance2">
                   <property name="styleSheet">
                    <string notr="true">border: none;</string>
                   </property>
@@ -2029,7 +2029,7 @@ border-radius: 20px;
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_22">
                 <item>
-                 <widget class="QLabel" name="label_15">
+                 <widget class="QLabel" name="date3">
                   <property name="styleSheet">
                    <string notr="true">border: none;</string>
                   </property>
@@ -2039,7 +2039,7 @@ border-radius: 20px;
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="label_16">
+                 <widget class="QLabel" name="time3">
                   <property name="styleSheet">
                    <string notr="true">border: none;</string>
                   </property>
@@ -2049,7 +2049,7 @@ border-radius: 20px;
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="label_17">
+                 <widget class="QLabel" name="distance3">
                   <property name="styleSheet">
                    <string notr="true">border: none;</string>
                   </property>
@@ -2081,7 +2081,7 @@ border-radius: 20px;
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_23">
                 <item>
-                 <widget class="QLabel" name="label_18">
+                 <widget class="QLabel" name="date4">
                   <property name="styleSheet">
                    <string notr="true">border: none;</string>
                   </property>
@@ -2091,7 +2091,7 @@ border-radius: 20px;
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="label_19">
+                 <widget class="QLabel" name="time4">
                   <property name="styleSheet">
                    <string notr="true">border: none;</string>
                   </property>
@@ -2101,7 +2101,7 @@ border-radius: 20px;
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="label_20">
+                 <widget class="QLabel" name="distance4">
                   <property name="styleSheet">
                    <string notr="true">border: none;</string>
                   </property>
@@ -2168,7 +2168,7 @@ border-radius: 20px;
               <number>0</number>
              </property>
              <item>
-              <widget class="QLabel" name="label">
+              <widget class="QLabel" name="version">
                <property name="text">
                 <string>Версия 2.0</string>
                </property>

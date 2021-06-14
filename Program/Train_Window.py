@@ -1,6 +1,6 @@
-from PyQt5.QtWidgets import QMainWindow, QWidget
+from PyQt5.QtWidgets import QMainWindow, QWidget, QDateEdit
 from PyQt5 import QtCore, QtGui, QtWidgets, QtSql
-
+from PyQt5.QtCore import QDate, QTime, QDateTime
 
 class TrainWindow(QMainWindow):
     def __init__(self, parent=None):
@@ -75,15 +75,53 @@ class TrainWindow(QMainWindow):
                                         "background-color: rgb(184, 184, 255);")
         self.pushButton_2.setObjectName("pushButton_2")
         self.createTableQuery = QtSql.QSqlQuery()
+        self.dateEdit.setDate(QDate.currentDate())
 
     def cr_new(self):
-        print("it work")
-        w_date1 = "today"
-        w_time1 = self.lineEdit.text()
+        w_date1 = self.dateEdit.text()
+        w_time1 = self.lineEdit.text().replace('.',':').replace(',',':')
         w_distance1 = self.doubleSpinBox.text()
-        w_temp1 = 'в разработке'
+        # find time from string
+        w_temp1 = 0
+        time_sec = 0
+        help_t = 1
+        count_point = 0
+        for i in range(len(w_time1)-1, -1, -1):
+            if w_time1[i] == ':':
+                help_t = 1
+                count_point += 1
+            else:
+                if count_point == 0:
+                    time_sec += int(w_time1[i]) * help_t
+                else:
+                    time_sec += int(w_time1[i]) * help_t * (60 ** count_point)
+                help_t *= 10
+        print(time_sec)
+        km = w_distance1.replace(',','.')
+        c_temp = float(time_sec) / float(km)
+        print(c_temp)
+        if ((c_temp - (c_temp // 60) * 60) < 10):
+            w_temp1 = str(int(c_temp // 60)) + ".0" + str(int((c_temp - (c_temp // 60) * 60)))
+            print(c_temp // 60)
+            print((c_temp - (c_temp // 60) * 60))
+        else:
+            w_temp1 = str(int(c_temp // 60)) + "." + str(int((c_temp - (c_temp // 60) * 60)))
+            print(c_temp // 60)
+            print((c_temp - (c_temp // 60) * 60))
+
         w_heart1 = self.spinBox.text()
         w_description1 = self.textEdit.toPlainText()
+        # check is this a record
+        self.createTableQuery.prepare('select min(w_temp) as min from workout where w_distance=:wd')
+        self.createTableQuery.bindValue(':wd', w_distance1)
+        if not self.createTableQuery.exec_():
+            self.createTableQuery.lastError()
+        else:
+            self.createTableQuery.next()
+            min_temp = self.createTableQuery.value(0)
+        if (w_temp1 < min_temp):
+            print("You have a new record!")
+
         self.createTableQuery.prepare(
             """
             INSERT INTO workout (
@@ -105,19 +143,5 @@ class TrainWindow(QMainWindow):
         self.createTableQuery.addBindValue(w_description1)
         self.createTableQuery.exec()
 
-        # check is this a record
-        #self.createTableQuery.exec("select min(w_heart) as min from workout where w_distance=9.00")
-        #self.createTableQuery.next()
-        #rec = self.createTableQuery.value(0)
-        #print(rec)
-        self.createTableQuery.prepare('select w_time,w_temp,w_heart from workout where w_heart=:wh')
-        self.createTableQuery.bindValue(':wh', w_heart1)
-        if not self.createTableQuery.exec_():
-            self.createTableQuery.lastError()
-        else:
-            while self.createTableQuery.next():
-                id4 = self.createTableQuery.value(0)
-                name = self.createTableQuery.value(1)
-                age = self.createTableQuery.value(2)
-                print(id4, name, age)
+
         self.close()

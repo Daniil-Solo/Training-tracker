@@ -31,6 +31,11 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">*{
+border:none;
+}</string>
+  </property>
   <widget class="QWidget" name="centralwidget">
    <property name="sizePolicy">
     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -39,20 +44,30 @@
     </sizepolicy>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(54, 38, 38);</string>
+    <string notr="true">*{
+background-color: rgb(24, 24, 36);
+color: rgb(255, 255, 255)
+}</string>
    </property>
    <widget class="QPushButton" name="pushButton">
     <property name="geometry">
      <rect>
-      <x>360</x>
+      <x>365</x>
       <y>0</y>
       <width>25</width>
       <height>25</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true"/>
+     <string notr="true">background-color: rgb(9, 5, 13);
+QPushButton{
+}
+QPushButton::hover{
+	border: 0.5px solid rgb(230, 5, 64);
+}
+QPushButton::pressed{
+	border: 3px solid rgb(230, 5, 64);
+}</string>
     </property>
     <property name="text">
      <string/>
@@ -74,8 +89,12 @@ background-color: rgb(54, 38, 38);</string>
       <x>-10</x>
       <y>0</y>
       <width>401</width>
-      <height>20</height>
+      <height>25</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(9, 5, 13);
+</string>
     </property>
     <property name="text">
      <string>Редактирование профиля</string>
@@ -109,6 +128,12 @@ background-color: rgb(54, 38, 38);</string>
       <height>22</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">border-bottom: 1px solid rgb(230, 5, 64)</string>
+    </property>
+    <property name="placeholderText">
+     <string>Ваше имя</string>
+    </property>
    </widget>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
@@ -139,6 +164,20 @@ background-color: rgb(54, 38, 38);</string>
       <width>251</width>
       <height>31</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+	border: 1.5px solid rgb(230, 5, 64);
+	border-radius: 10px;
+}
+QPushButton::hover{
+	border: 3px solid rgb(230, 5, 64);
+	border-radius: 10px;
+}
+QPushButton::pressed{
+	border: 5px solid rgb(230, 5, 64);
+	border-radius: 10px;
+}</string>
     </property>
     <property name="text">
      <string>Сменить фото</string>
@@ -173,6 +212,12 @@ background-color: rgb(54, 38, 38);</string>
       <width>111</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border-bottom: 1px solid rgb(230, 5, 64)</string>
+    </property>
+    <property name="placeholderText">
+     <string>Ваш вес</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_5">
@@ -231,6 +276,11 @@ background-color: rgb(54, 38, 38);</string>
       <string>Мужской</string>
      </property>
     </item>
+    <item>
+     <property name="text">
+      <string>Женский</string>
+     </property>
+    </item>
    </widget>
    <widget class="QPushButton" name="pushButton_3">
     <property name="geometry">
@@ -240,6 +290,22 @@ background-color: rgb(54, 38, 38);</string>
       <width>111</width>
       <height>41</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+	border: 1.5px solid rgb(230, 5, 64);
+	border-radius: 10px;
+}
+QPushButton::hover{
+	border: 3px solid rgb(230, 5, 64);
+	border-radius: 10px;
+}
+QPushButton::pressed{
+	border: 5px solid rgb(230, 5, 64);
+	border-radius: 10px;
+}
+
+</string>
     </property>
     <property name="text">
      <string>Сохранить</string>

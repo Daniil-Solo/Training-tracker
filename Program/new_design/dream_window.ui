@@ -45,7 +45,7 @@ color: rgb(255, 255, 255)</string>
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="close">
     <property name="geometry">
      <rect>
       <x>415</x>
@@ -121,7 +121,7 @@ QTabBar::tab:!selected {
 }</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="NewRecord_tab">
      <attribute name="title">
@@ -163,7 +163,7 @@ QTabBar::tab:!selected {
        <string>Время</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit">
+     <widget class="QLineEdit" name="distantion">
       <property name="geometry">
        <rect>
         <x>100</x>
@@ -179,7 +179,7 @@ QTabBar::tab:!selected {
        <string>10</string>
       </property>
      </widget>
-     <widget class="QComboBox" name="comboBox">
+     <widget class="QComboBox" name="dist_val">
       <property name="geometry">
        <rect>
         <x>160</x>
@@ -199,7 +199,7 @@ QTabBar::tab:!selected {
        </property>
       </item>
      </widget>
-     <widget class="QTimeEdit" name="timeEdit">
+     <widget class="QTimeEdit" name="time">
       <property name="geometry">
        <rect>
         <x>318</x>
@@ -243,7 +243,7 @@ QTabBar::tab:!selected {
        <string>Название цели</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_2">
+     <widget class="QLineEdit" name="goal_name">
       <property name="geometry">
        <rect>
         <x>140</x>
@@ -259,7 +259,7 @@ QTabBar::tab:!selected {
        <string>Преодолеть 10 км за 3 часа 20 минут 30 секунд</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_2">
+     <widget class="QPushButton" name="create_r">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -309,7 +309,7 @@ QPushButton::pressed{
        <string>Желаемый вес</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_3">
+     <widget class="QLineEdit" name="weight">
       <property name="geometry">
        <rect>
         <x>130</x>
@@ -362,7 +362,7 @@ QPushButton::pressed{
        <string>Похудеть до 65 кг</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_3">
+     <widget class="QPushButton" name="create_w">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -408,7 +408,7 @@ QPushButton::pressed{
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="Space_tab">
+    <widget class="QWidget" name="Visit">
      <attribute name="title">
       <string>Посещаемость</string>
      </attribute>
@@ -435,7 +435,7 @@ QPushButton::pressed{
        <rect>
         <x>10</x>
         <y>30</y>
-        <width>261</width>
+        <width>271</width>
         <height>25</height>
        </rect>
       </property>
@@ -448,7 +448,7 @@ QPushButton::pressed{
        <string>Количество дней без пропусков</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_5">
+     <widget class="QLineEdit" name="goal_name_v">
       <property name="geometry">
        <rect>
         <x>140</x>
@@ -464,7 +464,7 @@ QPushButton::pressed{
        <string>Заниматься 10 дней без пропусков</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="pushButton_4">
+     <widget class="QPushButton" name="create_v">
       <property name="geometry">
        <rect>
         <x>10</x>
@@ -491,10 +491,10 @@ QPushButton::pressed{
        <string>Создать цель</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_6">
+     <widget class="QLineEdit" name="time_visit">
       <property name="geometry">
        <rect>
-        <x>265</x>
+        <x>290</x>
         <y>30</y>
         <width>61</width>
         <height>25</height>

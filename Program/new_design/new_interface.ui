@@ -524,7 +524,7 @@ QPushButton::pressed{
                 <enum>QFrame::Plain</enum>
                </property>
                <property name="currentIndex">
-                <number>1</number>
+                <number>5</number>
                </property>
                <property name="tabSpacing">
                 <number>12</number>
@@ -535,7 +535,7 @@ QPushButton::pressed{
                   <x>0</x>
                   <y>0</y>
                   <width>188</width>
-                  <height>352</height>
+                  <height>353</height>
                  </rect>
                 </property>
                 <attribute name="icon">
@@ -562,7 +562,7 @@ QPushButton::pressed{
                   <number>0</number>
                  </property>
                  <item alignment="Qt::AlignTop">
-                  <widget class="QFrame" name="frame_15">
+                  <widget class="QFrame" name="theme_and_goal">
                    <property name="minimumSize">
                     <size>
                      <width>0</width>
@@ -732,7 +732,7 @@ QPushButton::pressed{
                   <x>0</x>
                   <y>0</y>
                   <width>188</width>
-                  <height>329</height>
+                  <height>353</height>
                  </rect>
                 </property>
                 <attribute name="icon">
@@ -846,7 +846,7 @@ QPushButton::pressed{
                   <x>0</x>
                   <y>0</y>
                   <width>188</width>
-                  <height>348</height>
+                  <height>353</height>
                  </rect>
                 </property>
                 <attribute name="icon">
@@ -873,7 +873,7 @@ QPushButton::pressed{
                   <number>0</number>
                  </property>
                  <item alignment="Qt::AlignTop">
-                  <widget class="QFrame" name="frame_17">
+                  <widget class="QFrame" name="record_frame">
                    <property name="frameShape">
                     <enum>QFrame::StyledPanel</enum>
                    </property>
@@ -945,7 +945,7 @@ QPushButton::pressed{
                   <x>0</x>
                   <y>0</y>
                   <width>188</width>
-                  <height>344</height>
+                  <height>353</height>
                  </rect>
                 </property>
                 <attribute name="icon">
@@ -982,7 +982,7 @@ QPushButton::pressed{
                   <x>0</x>
                   <y>0</y>
                   <width>188</width>
-                  <height>340</height>
+                  <height>353</height>
                  </rect>
                 </property>
                 <attribute name="icon">
@@ -1009,7 +1009,7 @@ QPushButton::pressed{
                   <number>0</number>
                  </property>
                  <item alignment="Qt::AlignTop">
-                  <widget class="QFrame" name="frame_18">
+                  <widget class="QFrame" name="social_frame">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                      <horstretch>0</horstretch>
@@ -1115,7 +1115,7 @@ QPushButton::pressed{
                   <x>0</x>
                   <y>0</y>
                   <width>188</width>
-                  <height>336</height>
+                  <height>353</height>
                  </rect>
                 </property>
                 <attribute name="icon">
@@ -1142,7 +1142,7 @@ QPushButton::pressed{
                   <number>0</number>
                  </property>
                  <item alignment="Qt::AlignTop">
-                  <widget class="QFrame" name="frame_19">
+                  <widget class="QFrame" name="marc_frame">
                    <property name="frameShape">
                     <enum>QFrame::StyledPanel</enum>
                    </property>
@@ -1166,7 +1166,7 @@ QPushButton::pressed{
                      <number>0</number>
                     </property>
                     <item>
-                     <widget class="QFrame" name="frame_16">
+                     <widget class="QFrame" name="stars_frame">
                       <property name="minimumSize">
                        <size>
                         <width>0</width>
@@ -1433,7 +1433,7 @@ QPushButton::pressed{
               <number>0</number>
              </property>
              <item>
-              <widget class="QPushButton" name="pushButton_4">
+              <widget class="QPushButton" name="open_left">
                <property name="text">
                 <string/>
                </property>
@@ -1891,7 +1891,7 @@ QPushButton::pressed{
            </widget>
           </item>
           <item>
-           <widget class="QFrame" name="frame_21">
+           <widget class="QFrame" name="last_w_2">
             <property name="frameShape">
              <enum>QFrame::StyledPanel</enum>
             </property>
@@ -1900,7 +1900,7 @@ QPushButton::pressed{
             </property>
             <layout class="QGridLayout" name="gridLayout">
              <item row="0" column="0">
-              <widget class="QFrame" name="frame_22">
+              <widget class="QFrame" name="last_w_1">
                <property name="styleSheet">
                 <string notr="true">QFrame{
 border: 2px solid rgb(230, 5, 64);
@@ -2010,7 +2010,7 @@ border-radius: 20px;
               </widget>
              </item>
              <item row="1" column="0">
-              <widget class="QFrame" name="frame_24">
+              <widget class="QFrame" name="last_w_3">
                <property name="styleSheet">
                 <string notr="true">QFrame{
 border: 2px solid rgb(230, 5, 64);
@@ -2062,7 +2062,7 @@ border-radius: 20px;
               </widget>
              </item>
              <item row="1" column="1">
-              <widget class="QFrame" name="frame_25">
+              <widget class="QFrame" name="last_w_4">
                <property name="styleSheet">
                 <string notr="true">QFrame{
 border: 2px solid rgb(230, 5, 64);

@@ -24,7 +24,7 @@ color:rgb(255,255,255);
 }
 </string>
   </property>
-  <widget class="QTextEdit" name="textEdit">
+  <widget class="QTextEdit" name="description">
    <property name="geometry">
     <rect>
      <x>300</x>
@@ -42,7 +42,7 @@ color:rgb(255,255,255);
     <string notr="true">border-bottom: 1px solid rgb(230, 5, 64)</string>
    </property>
   </widget>
-  <widget class="QSpinBox" name="spinBox">
+  <widget class="QSpinBox" name="heart">
    <property name="geometry">
     <rect>
      <x>300</x>
@@ -60,7 +60,7 @@ color:rgb(255,255,255);
     <string notr="true">border-bottom: 1px solid rgb(230, 5, 64)</string>
    </property>
   </widget>
-  <widget class="QDoubleSpinBox" name="doubleSpinBox">
+  <widget class="QDoubleSpinBox" name="diastance">
    <property name="geometry">
     <rect>
      <x>300</x>
@@ -360,7 +360,7 @@ QPushButton::pressed{
      <string>RunWihtMe</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="close">
     <property name="geometry">
      <rect>
       <x>730</x>
@@ -376,14 +376,14 @@ QPushButton::pressed{
      <string/>
     </property>
     <property name="icon">
-     <iconset resource="python/Training-tracker/Training-tracker/Program/new_design/icons.qrc">
+     <iconset resource="icons.qrc">
       <normaloff>:/icons/icons/x.svg</normaloff>:/icons/icons/x.svg</iconset>
     </property>
    </widget>
   </widget>
  </widget>
  <resources>
-  <include location="python/Training-tracker/Training-tracker/Program/new_design/icons.qrc"/>
+  <include location="icons.qrc"/>
  </resources>
  <connections/>
 </ui>

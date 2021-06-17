@@ -7,6 +7,10 @@ from PyQt5 import QtWidgets, QtCore, QtGui, QtSvg
 from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow
 
 from My_profile import Profile
+from Program.Edit_profile_window import EditProfile
+from Program.My_records_window import ViewMyRecords
+from Program.New_workout_window import NewWorkoutWindow
+from Program.Set_goal_window import SetGoal
 from Trainings_Manager import TrainingsManager
 
 
@@ -59,12 +63,22 @@ class HomeWindow(QMainWindow):
         self.swipe_left.clicked.connect(self.move_left_page)
         self.swipe_right.clicked.connect(self.move_right_page)
 
+        # Кнопки меню
+        self.create_workout.clicked.connect(self.create_new_training)
+        self.reduct_profile.clicked.connect(self.edit_profile)
+        self.set_goal.clicked.connect(self.set_goal_function)
+        self.all_records.clicked.connect(self.view_my_records)
+
     def move_left_page(self):
+        self.curent_page += 1
+        self.update_trainings()
         if self.training_manager.is_page_exist(self.curent_page+1):
             self.swipe_left.setEnabled(False)
         else:
             self.swipe_left.setEnabled(True)
     def move_right_page(self):
+        self.curent_page -= 1
+        self.update_trainings()
         if self.training_manager.is_page_exist(self.curent_page - 1):
             self.swipe_right.setEnabled(False)
         else:
@@ -98,9 +112,6 @@ class HomeWindow(QMainWindow):
         self.day_shot.setText("0 дней без пропусков")
         # оценка (0 звезд)
         self.set_mark(0)
-        # кнопки свапа страниц (заблокированы)
-        self.swipe_left.setEnabled(False)
-        self.swipe_right.setEnabled(False)
 
     def filling_values(self, data):
         if os.path.exists('source/my_photo.jpg'):
@@ -122,7 +133,7 @@ class HomeWindow(QMainWindow):
                             [self.date2, self.time2, self.distance2],
                             [self.date3, self.time3, self.distance3],
                             [self.date4, self.time4, self.distance4]]
-        training_values = self.training_manager.get_4_trainings()
+        training_values = self.training_manager.get_4_trainings(page=self.curent_page)
         for training_place, training_value in zip(trainings_places, training_values):
             training_place[0].setText(training_value[0])
             training_place[1].setText(training_value[1])
@@ -130,6 +141,9 @@ class HomeWindow(QMainWindow):
         if self.training_manager.get_n_page() > 1:
             self.swipe_left.setEnabled(True)
             self.swipe_right.setEnabled(True)
+        else:
+            self.swipe_left.setEnabled(False)
+            self.swipe_right.setEnabled(False)
 
     def move_slider(self, number=5):
         self.toolBox.setCurrentIndex(number)
@@ -173,8 +187,21 @@ class HomeWindow(QMainWindow):
             self.thanks_for_raiting.setText(messages[5])
 
 
+    def create_new_training(self):
+        self.window_new_training = NewWorkoutWindow()
+        self.window_new_training.show()
 
+    def edit_profile(self):
+        self.window_edit_profile = EditProfile()
+        self.window_edit_profile.show()
 
+    def set_goal_function(self):
+        self.window_set_goal = SetGoal()
+        self.window_set_goal.show()
+
+    def view_my_records(self):
+        self.window_view_my_records = ViewMyRecords()
+        self.window_view_my_records.show()
 
 
 

@@ -39,7 +39,10 @@ color:rgb(255,255,255);
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">border-bottom: 1px solid rgb(230, 5, 64)</string>
+    <string notr="true">border-bottom: 1px solid rgb(230, 5, 64);</string>
+   </property>
+   <property name="placeholderText">
+    <string>Здесь вы можете подробнее описать свою тренировку</string>
    </property>
   </widget>
   <widget class="QSpinBox" name="heart">
@@ -303,27 +306,6 @@ QPushButton::pressed{
     <string>Описание</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_6">
-   <property name="geometry">
-    <rect>
-     <x>470</x>
-     <y>150</y>
-     <width>229</width>
-     <height>41</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <pointsize>12</pointsize>
-    </font>
-   </property>
-   <property name="styleSheet">
-    <string notr="true">color: rgb(255, 255, 255);</string>
-   </property>
-   <property name="text">
-    <string>км</string>
-   </property>
-  </widget>
   <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
@@ -380,6 +362,31 @@ QPushButton::pressed{
       <normaloff>:/icons/icons/x.svg</normaloff>:/icons/icons/x.svg</iconset>
     </property>
    </widget>
+  </widget>
+  <widget class="QComboBox" name="type_dist">
+   <property name="geometry">
+    <rect>
+     <x>460</x>
+     <y>160</y>
+     <width>73</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>11</pointsize>
+    </font>
+   </property>
+   <item>
+    <property name="text">
+     <string>км</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>м</string>
+    </property>
+   </item>
   </widget>
  </widget>
  <resources>

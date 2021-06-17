@@ -397,7 +397,7 @@ QPushButton::pressed{
       </property>
       <property name="minimumSize">
        <size>
-        <width>200</width>
+        <width>0</width>
         <height>0</height>
        </size>
       </property>
@@ -536,7 +536,7 @@ QPushButton::pressed{
                 <enum>QFrame::Plain</enum>
                </property>
                <property name="currentIndex">
-                <number>5</number>
+                <number>2</number>
                </property>
                <property name="tabSpacing">
                 <number>12</number>
@@ -546,7 +546,7 @@ QPushButton::pressed{
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>189</width>
+                  <width>187</width>
                   <height>331</height>
                  </rect>
                 </property>
@@ -743,7 +743,7 @@ QPushButton::pressed{
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>189</width>
+                  <width>187</width>
                   <height>331</height>
                  </rect>
                 </property>
@@ -857,7 +857,7 @@ QPushButton::pressed{
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>189</width>
+                  <width>187</width>
                   <height>331</height>
                  </rect>
                 </property>
@@ -956,7 +956,7 @@ QPushButton::pressed{
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>189</width>
+                  <width>187</width>
                   <height>331</height>
                  </rect>
                 </property>
@@ -993,7 +993,7 @@ QPushButton::pressed{
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>189</width>
+                  <width>187</width>
                   <height>331</height>
                  </rect>
                 </property>
@@ -1126,7 +1126,7 @@ QPushButton::pressed{
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>189</width>
+                  <width>187</width>
                   <height>331</height>
                  </rect>
                 </property>

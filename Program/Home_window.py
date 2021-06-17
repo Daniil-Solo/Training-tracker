@@ -7,6 +7,7 @@ from PyQt5 import QtWidgets, QtCore, QtGui, QtSvg
 from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow
 
 from My_profile import Profile
+from Trainings_Manager import TrainingsManager
 
 
 class HomeWindow(QMainWindow):
@@ -14,13 +15,17 @@ class HomeWindow(QMainWindow):
         super(HomeWindow, self).__init__()
         loadUi("new_design/new_interface.ui", self)
         self.my_profile = Profile()
+        self.training_manager = TrainingsManager()
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
-        self.my_profile.save_changes()
+        #self.my_profile.save_changes()
+        self.training_manager.load_database()
         data = self.my_profile.load_data()
+        self.curent_page = 0
         self.default_filling_values()
         self.filling_values(data)
         self.all_connection()
+
 
     def all_connection(self):
         # иконка скрыть
@@ -50,6 +55,21 @@ class HomeWindow(QMainWindow):
         self.star4.clicked.connect(lambda: self.set_mark(4))
         self.star5.clicked.connect(lambda: self.set_mark(5))
 
+        # Кнопки для переключения страниц тренировок
+        self.swipe_left.clicked.connect(self.move_left_page)
+        self.swipe_right.clicked.connect(self.move_right_page)
+
+    def move_left_page(self):
+        if self.training_manager.is_page_exist(self.curent_page+1):
+            self.swipe_left.setEnabled(False)
+        else:
+            self.swipe_left.setEnabled(True)
+    def move_right_page(self):
+        if self.training_manager.is_page_exist(self.curent_page - 1):
+            self.swipe_right.setEnabled(False)
+        else:
+            self.swipe_right.setEnabled(True)
+
     def restore_or_maximize_window(self):
         if self.isMaximized():
             self.showNormal()
@@ -69,12 +89,18 @@ class HomeWindow(QMainWindow):
         self.clickPosition = event.globalPos()
 
     def default_filling_values(self):
+        # изображжение по умолчанию
         pixmap = QtGui.QPixmap('source/default_photo.jpg')
         self.user_photo.setPixmap(pixmap)
+        # основная информация (нет информации)
         self.user_name.setText("Нет имени")
         self.user_goal.setText("Нет цели")
         self.day_shot.setText("0 дней без пропусков")
+        # оценка (0 звезд)
         self.set_mark(0)
+        # кнопки свапа страниц (заблокированы)
+        self.swipe_left.setEnabled(False)
+        self.swipe_right.setEnabled(False)
 
     def filling_values(self, data):
         if os.path.exists('source/my_photo.jpg'):
@@ -88,6 +114,22 @@ class HomeWindow(QMainWindow):
             self.day_shot.setText(data['nice_days'] + " дней без пропусков")
         if data['raiting_app'] != 0:
             self.set_mark(int(data['raiting_app']))
+
+        self.update_trainings()
+
+    def update_trainings(self):
+        trainings_places = [[self.date1, self.time1, self.distance1],
+                            [self.date2, self.time2, self.distance2],
+                            [self.date3, self.time3, self.distance3],
+                            [self.date4, self.time4, self.distance4]]
+        training_values = self.training_manager.get_4_trainings()
+        for training_place, training_value in zip(trainings_places, training_values):
+            training_place[0].setText(training_value[0])
+            training_place[1].setText(training_value[1])
+            training_place[2].setText(training_value[2])
+        if self.training_manager.get_n_page() > 1:
+            self.swipe_left.setEnabled(True)
+            self.swipe_right.setEnabled(True)
 
     def move_slider(self, number=5):
         self.toolBox.setCurrentIndex(number)
@@ -113,12 +155,22 @@ class HomeWindow(QMainWindow):
 
     def set_mark(self, n_stars):
         stars = [self.star1, self.star2, self.star3, self.star4, self.star5]
+        messages = [
+            "Пожалуйста оцените наше приложение",
+            "Спасибо за Вашу оценку! Мы будем работать над нашими ошибками",
+            "Спасибо за Вашу оценку! Мы будем работать над нашими ошибками",
+            "Спасибо за Вашу оценку! Мы рады, что вам нравится наше приложение",
+            "Спасибо за Вашу оценку! Мы стараемся для Вас!",
+            "Спасибо за Вашу оценку! Мы рады, что вы с нами!"
+        ]
         for i in range(5, 0, -1):
             if n_stars >= i:
                 stars[i-1].setIcon(QtGui.QIcon('new_design/icons/star-fill.svg'))
             else:
                 stars[i - 1].setIcon(QtGui.QIcon('new_design/icons/star.svg'))
-
+                self.thanks_for_raiting.setText(messages[i-1])
+        if n_stars == 5:
+            self.thanks_for_raiting.setText(messages[5])
 
 
 

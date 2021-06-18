@@ -2,6 +2,7 @@ import json
 import random
 import sys
 import os
+import datetime
 
 from PyQt5.QtCore import Qt, QPropertyAnimation
 from PyQt5.uic import loadUi
@@ -206,6 +207,13 @@ class HomeWindow(QMainWindow):
         self.window_view_my_records = ViewMyRecords()
         self.window_view_my_records.show()
 
+
+    def view_quote(self):
+        with open(r"Quotes/Daily_quotes.json", "r") as read_file:
+            quote_dict = json.load(read_file)
+        today = datetime.datetime.today().day
+        random_quote = quote_dict[str(today)]
+        self.quote.setText(random_quote['text'] + "\nАвтор: " + random_quote['author'])
 
 
 if __name__ == "__main__":

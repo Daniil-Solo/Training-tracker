@@ -59,22 +59,26 @@ color: rgb(255, 255, 255)
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(9, 5, 13);
-QPushButton{
+     <string notr="true">QPushButton{
+	background-color: rgb(9, 5, 13);
 }
 QPushButton::hover{
-	border: 0.5px solid rgb(230, 5, 64);
+	border: 1.5px solid rgb(230, 5, 64);
+	border-radius: 10px;
 }
 QPushButton::pressed{
 	border: 3px solid rgb(230, 5, 64);
-}</string>
+	border-radius: 10px;
+}
+
+</string>
     </property>
     <property name="text">
      <string/>
     </property>
     <property name="icon">
-     <iconset resource="icons.qrc">
-      <normaloff>:/icons/icons/x.svg</normaloff>:/icons/icons/x.svg</iconset>
+     <iconset>
+      <normaloff>icons/x.svg</normaloff>icons/x.svg</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -83,7 +87,7 @@ QPushButton::pressed{
      </size>
     </property>
    </widget>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="header_frame">
     <property name="geometry">
      <rect>
       <x>-10</x>
@@ -321,8 +325,7 @@ QPushButton::pressed{
      </rect>
     </property>
    </widget>
-   <zorder>label</zorder>
-   <zorder>close</zorder>
+   <zorder>header_frame</zorder>
    <zorder>photo_label</zorder>
    <zorder>name</zorder>
    <zorder>label_3</zorder>
@@ -334,6 +337,7 @@ QPushButton::pressed{
    <zorder>gender</zorder>
    <zorder>save</zorder>
    <zorder>birthday</zorder>
+   <zorder>close</zorder>
   </widget>
  </widget>
  <resources>

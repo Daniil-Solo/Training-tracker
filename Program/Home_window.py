@@ -23,6 +23,7 @@ class HomeWindow(QMainWindow):
         loadUi("new_design/new_interface.ui", self)
         self.my_profile = Profile()
         self.training_manager = TrainingsManager()
+        self.data_transfer = None
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         #self.my_profile.save_changes()
@@ -196,7 +197,7 @@ class HomeWindow(QMainWindow):
         self.window_new_training.show()
 
     def edit_profile(self):
-        self.window_edit_profile = EditProfile()
+        self.window_edit_profile = EditProfile(data_transfer=self.data_transfer)
         self.window_edit_profile.show()
 
     def set_goal_function(self):

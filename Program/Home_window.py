@@ -1,3 +1,5 @@
+import json
+import random
 import sys
 import os
 
@@ -29,6 +31,7 @@ class HomeWindow(QMainWindow):
         self.default_filling_values()
         self.filling_values(data)
         self.all_connection()
+        self.view_quote()
 
 
     def all_connection(self):
@@ -202,7 +205,6 @@ class HomeWindow(QMainWindow):
     def view_my_records(self):
         self.window_view_my_records = ViewMyRecords()
         self.window_view_my_records.show()
-
 
 
 

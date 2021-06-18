@@ -1,5 +1,4 @@
 import json
-import random
 import sys
 import os
 import datetime
@@ -23,18 +22,17 @@ class HomeWindow(QMainWindow):
         loadUi("new_design/new_interface.ui", self)
         self.my_profile = Profile()
         self.training_manager = TrainingsManager()
-        self.data_transfer = None
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
-        #self.my_profile.save_changes()
         self.training_manager.load_database()
-        data = self.my_profile.load_data()
         self.curent_page = 0
-        self.default_filling_values()
-        self.filling_values(data)
+        self.filling_values()
         self.all_connection()
         self.view_quote()
 
+    def update(self):
+        self.filling_values()
+        self.my_profile.save_changes()
 
     def all_connection(self):
         # иконка скрыть
@@ -107,29 +105,27 @@ class HomeWindow(QMainWindow):
     def mousePressEvent(self, event):
         self.clickPosition = event.globalPos()
 
-    def default_filling_values(self):
-        # изображжение по умолчанию
-        pixmap = QtGui.QPixmap('source/default_photo.jpg')
-        self.user_photo.setPixmap(pixmap)
-        # основная информация (нет информации)
-        self.user_name.setText("Нет имени")
-        self.user_goal.setText("Нет цели")
-        self.day_shot.setText("0 дней без пропусков")
-        # оценка (0 звезд)
-        self.set_mark(0)
-
-    def filling_values(self, data):
-        if os.path.exists('source/my_photo.jpg'):
-            pixmap = QtGui.QPixmap('source/my_photo.jpg')
+    def filling_values(self):
+        data = self.my_profile.get_data_dict()
+        # установка фото
+        filename = self.my_profile.get_photo_path()
+        if filename is not None:
+            pixmap = QtGui.QPixmap(filename)
             self.user_photo.setPixmap(pixmap)
+        # установка имени
         if data['name'] is not None:
             self.user_name.setText(data['name'])
+        else:
+            self.user_name.setText("Нет имени")
+        # установка цели
         if data['goal']['title'] is not None:
             self.user_goal.setText(data['goal']['title'])
-        if data['nice_days'] is not None:
-            self.day_shot.setText(data['nice_days'] + " дней без пропусков")
-        if data['raiting_app'] != 0:
-            self.set_mark(int(data['raiting_app']))
+        else:
+            self.user_goal.setText("Нет цели")
+        # установка количества дней без пропусков
+        self.day_shot.setText(str(data['nice_days']) + " дней без пропусков")
+        # установка рейтинга приложения
+        self.set_mark(int(data['raiting_app']))
 
         self.update_trainings()
 
@@ -197,7 +193,7 @@ class HomeWindow(QMainWindow):
         self.window_new_training.show()
 
     def edit_profile(self):
-        self.window_edit_profile = EditProfile(data_transfer=self.data_transfer)
+        self.window_edit_profile = EditProfile(self, self.my_profile)
         self.window_edit_profile.show()
 
     def set_goal_function(self):

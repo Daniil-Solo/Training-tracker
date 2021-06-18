@@ -132,6 +132,11 @@ QPushButton::pressed{
       <height>22</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
     <property name="styleSheet">
      <string notr="true">border-bottom: 1px solid rgb(230, 5, 64)</string>
     </property>
@@ -163,9 +168,9 @@ QPushButton::pressed{
    <widget class="QPushButton" name="change_photo">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>140</x>
       <y>300</y>
-      <width>251</width>
+      <width>120</width>
       <height>31</height>
      </rect>
     </property>
@@ -216,6 +221,11 @@ QPushButton::pressed{
       <width>111</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
     </property>
     <property name="styleSheet">
      <string notr="true">border-bottom: 1px solid rgb(230, 5, 64)</string>
@@ -275,6 +285,11 @@ QPushButton::pressed{
       <height>22</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
     <item>
      <property name="text">
       <string>Мужской</string>
@@ -324,6 +339,38 @@ QPushButton::pressed{
       <height>22</height>
      </rect>
     </property>
+    <property name="font">
+     <font>
+      <pointsize>10</pointsize>
+     </font>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="set_default_photo">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>300</y>
+      <width>120</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton{
+	border: 1.5px solid rgb(230, 5, 64);
+	border-radius: 10px;
+}
+QPushButton::hover{
+	border: 3px solid rgb(230, 5, 64);
+	border-radius: 10px;
+}
+QPushButton::pressed{
+	border: 5px solid rgb(230, 5, 64);
+	border-radius: 10px;
+}</string>
+    </property>
+    <property name="text">
+     <string>По умолчанию</string>
+    </property>
    </widget>
    <zorder>header_frame</zorder>
    <zorder>photo_label</zorder>
@@ -338,6 +385,7 @@ QPushButton::pressed{
    <zorder>save</zorder>
    <zorder>birthday</zorder>
    <zorder>close</zorder>
+   <zorder>set_default_photo</zorder>
   </widget>
  </widget>
  <resources>

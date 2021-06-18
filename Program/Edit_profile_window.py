@@ -8,39 +8,64 @@ from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog
 
 
 class EditProfile(QMainWindow):
-    def __init__(self, data_transfer=dict()):
+    def __init__(self, home_page, profile):
         super(EditProfile, self).__init__()
-        self.data_transfer = data_transfer
+        self.data = dict()
+        self.home_page = home_page
+        self.profile = profile
 
         loadUi("new_design/profile.ui", self)
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         self.all_connections()
+        self.load_data()
+        self.load_photo()
 
 
     def all_connections(self):
         # закрытие окна
-        self.close.clicked.connect(lambda: self.close())
+        self.close.clicked.connect(lambda: self.hide())
         # передвижение окна
         self.header_frame.mouseMoveEvent = self.moveWindow
-        #
+        # изменение фото
         self.change_photo.clicked.connect(lambda: self.change_photo_function())
+        self.set_default_photo.clicked.connect(lambda: self.set_default_photo_function())
+        # сохранение
         self.save.clicked.connect(lambda: self.save_data())
+
 
     def change_photo_function(self):
         filename = QFileDialog.getOpenFileName(filter="Image (*.jpg)")[0]
         if os.path.exists(filename):
-            self.data_transfer['photo_path'] = filename
-            new_filename = filename
-            pixmap = QtGui.QPixmap(new_filename)
+            self.profile.photo_change(filename)
+            pixmap = QtGui.QPixmap(self.profile.get_photo_path())
             self.photo_label.setPixmap(pixmap)
 
+    def set_default_photo_function(self):
+        self.profile.data_change('photo_path', 'source/default_photo.jpg')
+        pixmap = QtGui.QPixmap(self.profile.get_photo_path())
+        self.photo_label.setPixmap(pixmap)
+
     def save_data(self):
-        self.data_transfer['name'] = self.name.text()
-        self.data_transfer['gender'] = self.gender.currentIndex()
-        self.data_transfer['weight'] = self.weight.text()
-        self.data_transfer['birthday'] = self.birthday.dateTime().toString()
-        print(str(self.data_transfer))
+        self.profile.data_change('name', self.name.text())
+        self.profile.data_change('gender', self.gender.currentIndex())
+        self.profile.data_change('weight', self.weight.text())
+        self.profile.data_change('birthday', self.birthday.dateTime().toString())
+        self.home_page.update()
+        self.hide()
+
+    def load_data(self):
+        data = self.profile.get_data_dict()
+        self.name.setText(data['name'])
+        self.gender.setCurrentIndex(int(data['gender']))
+        self.weight.setText(data['weight'])
+        self.birthday.setDateTime(QtCore.QDateTime.fromString(data['birthday']))
+
+    def load_photo(self):
+        filename = self.profile.get_photo_path()
+        if filename is not None:
+            pixmap = QtGui.QPixmap(filename)
+            self.photo_label.setPixmap(pixmap)
 
     def moveWindow(self, e):
         if not self.isMaximized():

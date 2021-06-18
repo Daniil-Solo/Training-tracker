@@ -10,22 +10,16 @@ class Profile:
         self.data_dict = {
             'name': None,
             'gender': 0,
-            'height': None,
-            'weight': None,
-            'birthday': None,
+            'theme': 1,
+            'nice_days': None,
+            'goal':
+                {
+                    'title': None,
+                    'type': None,
+                    'values': [None, None]
+                },
+            'raiting_app': 0
 
-            'record_100': None,
-            'record_200': None,
-            'record_400': None,
-            'record_800': None,
-            'record_1_000': None,
-            'record_3_000': None,
-            'record_5_000': None,
-            'record_10_000': None,
-            'record_21_000': None,
-            'record_42_000': None,
-
-            'theme': 1
         }
         self.new_photo_adress = None
         self.need_saving = False

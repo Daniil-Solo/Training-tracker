@@ -56,12 +56,12 @@ color: rgb(255, 255, 255)
        <string notr="true">QPushButton{
 }
 QPushButton::hover{
-	border: 0.5px solid rgb(230, 5, 64);
-	border-radius: 40px;
+	border: 1.5px solid rgb(230, 5, 64);
+	border-radius: 10px;
 }
 QPushButton::pressed{
 	border: 3px solid rgb(230, 5, 64);
-	border-radius: 40px;
+	border-radius: 10px;
 }</string>
       </property>
       <property name="frameShape">
@@ -117,13 +117,13 @@ QPushButton::pressed{
            <number>0</number>
           </property>
           <item>
-           <widget class="QPushButton" name="my_profile">
+           <widget class="QPushButton" name="my_profile_btn">
             <property name="text">
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="icons.qrc">
-              <normaloff>:/icons/icons/user.svg</normaloff>:/icons/icons/user.svg</iconset>
+             <iconset>
+              <normaloff>icons/user.svg</normaloff>icons/user.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -165,13 +165,13 @@ QPushButton::pressed{
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="workouts">
+           <widget class="QPushButton" name="workouts_btn">
             <property name="text">
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="icons.qrc">
-              <normaloff>:/icons/icons/calendar.svg</normaloff>:/icons/icons/calendar.svg</iconset>
+             <iconset>
+              <normaloff>icons/calendar.svg</normaloff>icons/calendar.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -204,13 +204,13 @@ QPushButton::pressed{
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="my_records">
+           <widget class="QPushButton" name="my_records_btn">
             <property name="text">
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="icons.qrc">
-              <normaloff>:/icons/icons/award.svg</normaloff>:/icons/icons/award.svg</iconset>
+             <iconset>
+              <normaloff>icons/award.svg</normaloff>icons/award.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -243,13 +243,13 @@ QPushButton::pressed{
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="connect_developers">
+           <widget class="QPushButton" name="connect_developers_btn">
             <property name="text">
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="icons.qrc">
-              <normaloff>:/icons/icons/twitch.svg</normaloff>:/icons/icons/twitch.svg</iconset>
+             <iconset>
+              <normaloff>icons/twitch.svg</normaloff>icons/twitch.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -282,13 +282,13 @@ QPushButton::pressed{
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="settings">
+           <widget class="QPushButton" name="settings_btn">
             <property name="text">
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="icons.qrc">
-              <normaloff>:/icons/icons/tool.svg</normaloff>:/icons/icons/tool.svg</iconset>
+             <iconset>
+              <normaloff>icons/tool.svg</normaloff>icons/tool.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -321,13 +321,13 @@ QPushButton::pressed{
            </widget>
           </item>
           <item>
-           <widget class="QPushButton" name="give_mark">
+           <widget class="QPushButton" name="give_mark_btn">
             <property name="text">
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="icons.qrc">
-              <normaloff>:/icons/icons/thumbs-up.svg</normaloff>:/icons/icons/thumbs-up.svg</iconset>
+             <iconset>
+              <normaloff>icons/thumbs-up.svg</normaloff>icons/thumbs-up.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -365,13 +365,13 @@ QPushButton::pressed{
            <number>0</number>
           </property>
           <item>
-           <widget class="QPushButton" name="maximize_bottom">
+           <widget class="QPushButton" name="exit_2_btn">
             <property name="text">
              <string/>
             </property>
             <property name="icon">
-             <iconset resource="icons.qrc">
-              <normaloff>:/icons/icons/external-link.svg</normaloff>:/icons/icons/external-link.svg</iconset>
+             <iconset>
+              <normaloff>icons/external-link.svg</normaloff>icons/external-link.svg</iconset>
             </property>
             <property name="iconSize">
              <size>
@@ -388,10 +388,22 @@ QPushButton::pressed{
      </widget>
     </item>
     <item>
-     <widget class="QFrame" name="slide_menu_container">
+     <widget class="QFrame" name="slider_menu_container">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
       <property name="maximumSize">
        <size>
-        <width>200</width>
+        <width>0</width>
         <height>16777215</height>
        </size>
       </property>
@@ -524,7 +536,7 @@ QPushButton::pressed{
                 <enum>QFrame::Plain</enum>
                </property>
                <property name="currentIndex">
-                <number>5</number>
+                <number>2</number>
                </property>
                <property name="tabSpacing">
                 <number>12</number>
@@ -534,13 +546,13 @@ QPushButton::pressed{
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>188</width>
-                  <height>353</height>
+                  <width>187</width>
+                  <height>331</height>
                  </rect>
                 </property>
                 <attribute name="icon">
-                 <iconset resource="icons.qrc">
-                  <normaloff>:/icons/icons/chevron-down.svg</normaloff>:/icons/icons/chevron-down.svg</iconset>
+                 <iconset>
+                  <normaloff>icons/chevron-down.svg</normaloff>icons/chevron-down.svg</iconset>
                 </attribute>
                 <attribute name="label">
                  <string>Мой профиль</string>
@@ -731,13 +743,13 @@ QPushButton::pressed{
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>188</width>
-                  <height>353</height>
+                  <width>187</width>
+                  <height>331</height>
                  </rect>
                 </property>
                 <attribute name="icon">
-                 <iconset resource="icons.qrc">
-                  <normaloff>:/icons/icons/chevron-down.svg</normaloff>:/icons/icons/chevron-down.svg</iconset>
+                 <iconset>
+                  <normaloff>icons/chevron-down.svg</normaloff>icons/chevron-down.svg</iconset>
                 </attribute>
                 <attribute name="label">
                  <string>Мои тренировки</string>
@@ -845,13 +857,13 @@ QPushButton::pressed{
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>188</width>
-                  <height>353</height>
+                  <width>187</width>
+                  <height>331</height>
                  </rect>
                 </property>
                 <attribute name="icon">
-                 <iconset resource="icons.qrc">
-                  <normaloff>:/icons/icons/chevron-down.svg</normaloff>:/icons/icons/chevron-down.svg</iconset>
+                 <iconset>
+                  <normaloff>icons/chevron-down.svg</normaloff>icons/chevron-down.svg</iconset>
                 </attribute>
                 <attribute name="label">
                  <string>Мои рекорды</string>
@@ -944,13 +956,13 @@ QPushButton::pressed{
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>188</width>
-                  <height>353</height>
+                  <width>187</width>
+                  <height>331</height>
                  </rect>
                 </property>
                 <attribute name="icon">
-                 <iconset resource="icons.qrc">
-                  <normaloff>:/icons/icons/chevron-down.svg</normaloff>:/icons/icons/chevron-down.svg</iconset>
+                 <iconset>
+                  <normaloff>icons/chevron-down.svg</normaloff>icons/chevron-down.svg</iconset>
                 </attribute>
                 <attribute name="label">
                  <string>Цитата дня</string>
@@ -981,13 +993,13 @@ QPushButton::pressed{
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>188</width>
-                  <height>353</height>
+                  <width>187</width>
+                  <height>331</height>
                  </rect>
                 </property>
                 <attribute name="icon">
-                 <iconset resource="icons.qrc">
-                  <normaloff>:/icons/icons/chevron-down.svg</normaloff>:/icons/icons/chevron-down.svg</iconset>
+                 <iconset>
+                  <normaloff>icons/chevron-down.svg</normaloff>icons/chevron-down.svg</iconset>
                 </attribute>
                 <attribute name="label">
                  <string>Связь с разработчиком</string>
@@ -1114,13 +1126,13 @@ QPushButton::pressed{
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>188</width>
-                  <height>353</height>
+                  <width>187</width>
+                  <height>331</height>
                  </rect>
                 </property>
                 <attribute name="icon">
-                 <iconset resource="icons.qrc">
-                  <normaloff>:/icons/icons/chevron-down.svg</normaloff>:/icons/icons/chevron-down.svg</iconset>
+                 <iconset>
+                  <normaloff>icons/chevron-down.svg</normaloff>icons/chevron-down.svg</iconset>
                 </attribute>
                 <attribute name="label">
                  <string>Оценить приложение</string>
@@ -1141,7 +1153,7 @@ QPushButton::pressed{
                  <property name="bottomMargin">
                   <number>0</number>
                  </property>
-                 <item alignment="Qt::AlignTop">
+                 <item>
                   <widget class="QFrame" name="marc_frame">
                    <property name="frameShape">
                     <enum>QFrame::StyledPanel</enum>
@@ -1206,85 +1218,100 @@ QPushButton::pressed{
                        </property>
                        <item>
                         <widget class="QPushButton" name="star1">
+                         <property name="styleSheet">
+                          <string notr="true">QPushButton::hover{
+	border: 2px solid rgb(230, 5, 64);
+	border-radius: 10px;
+}</string>
+                         </property>
                          <property name="text">
                           <string/>
                          </property>
                          <property name="icon">
-                          <iconset resource="icons.qrc">
-                           <normaloff>:/icons/icons/star.svg</normaloff>:/icons/icons/star.svg</iconset>
+                          <iconset>
+                           <normaloff>icons/star.svg</normaloff>icons/star.svg</iconset>
                          </property>
                         </widget>
                        </item>
                        <item>
                         <widget class="QPushButton" name="star2">
+                         <property name="styleSheet">
+                          <string notr="true">QPushButton::hover{
+	border: 2px solid rgb(230, 5, 64);
+	border-radius: 10px;
+}</string>
+                         </property>
                          <property name="text">
                           <string/>
                          </property>
                          <property name="icon">
-                          <iconset resource="icons.qrc">
-                           <normaloff>:/icons/icons/star.svg</normaloff>:/icons/icons/star.svg</iconset>
+                          <iconset>
+                           <normaloff>icons/star.svg</normaloff>icons/star.svg</iconset>
                          </property>
                         </widget>
                        </item>
                        <item>
                         <widget class="QPushButton" name="star3">
+                         <property name="styleSheet">
+                          <string notr="true">QPushButton::hover{
+	border: 2px solid rgb(230, 5, 64);
+	border-radius: 10px;
+}</string>
+                         </property>
                          <property name="text">
                           <string/>
                          </property>
                          <property name="icon">
-                          <iconset resource="icons.qrc">
-                           <normaloff>:/icons/icons/star.svg</normaloff>:/icons/icons/star.svg</iconset>
+                          <iconset>
+                           <normaloff>icons/star.svg</normaloff>icons/star.svg</iconset>
                          </property>
                         </widget>
                        </item>
                        <item>
                         <widget class="QPushButton" name="star4">
+                         <property name="styleSheet">
+                          <string notr="true">QPushButton::hover{
+	border: 2px solid rgb(230, 5, 64);
+	border-radius: 10px;
+}</string>
+                         </property>
                          <property name="text">
                           <string/>
                          </property>
                          <property name="icon">
-                          <iconset resource="icons.qrc">
-                           <normaloff>:/icons/icons/star.svg</normaloff>:/icons/icons/star.svg</iconset>
+                          <iconset>
+                           <normaloff>icons/star.svg</normaloff>icons/star.svg</iconset>
                          </property>
                         </widget>
                        </item>
                        <item>
                         <widget class="QPushButton" name="star5">
+                         <property name="styleSheet">
+                          <string notr="true">QPushButton::hover{
+	border: 2px solid rgb(230, 5, 64);
+	border-radius: 10px;
+}</string>
+                         </property>
                          <property name="text">
                           <string/>
                          </property>
                          <property name="icon">
-                          <iconset resource="icons.qrc">
-                           <normaloff>:/icons/icons/star.svg</normaloff>:/icons/icons/star.svg</iconset>
+                          <iconset>
+                           <normaloff>icons/star.svg</normaloff>icons/star.svg</iconset>
                          </property>
                         </widget>
                        </item>
                       </layout>
                      </widget>
                     </item>
-                    <item>
-                     <widget class="QLabel" name="label_8">
-                      <property name="minimumSize">
-                       <size>
-                        <width>0</width>
-                        <height>40</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>16777215</width>
-                        <height>40</height>
-                       </size>
-                      </property>
-                      <property name="text">
-                       <string>Спасибо за вашу оценку!</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignCenter</set>
-                      </property>
-                     </widget>
-                    </item>
                    </layout>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QTextEdit" name="thanks_for_raiting">
+                   <property name="readOnly">
+                    <bool>true</bool>
+                   </property>
                   </widget>
                  </item>
                 </layout>
@@ -1322,13 +1349,27 @@ QPushButton::pressed{
               <number>0</number>
              </property>
              <item>
-              <widget class="QPushButton" name="exit">
+              <widget class="QPushButton" name="exit_btn">
+               <property name="styleSheet">
+                <string notr="true">QPushButton{
+	border: 1.5px solid rgb(230, 5, 64);
+	border-radius: 10px;
+}
+QPushButton::hover{
+	border: 3px solid rgb(230, 5, 64);
+	border-radius: 10px;
+}
+QPushButton::pressed{
+	border: 5px solid rgb(230, 5, 64);
+	border-radius: 10px;
+}</string>
+               </property>
                <property name="text">
                 <string>Выход</string>
                </property>
                <property name="icon">
-                <iconset resource="icons.qrc">
-                 <normaloff>:/icons/icons/external-link.svg</normaloff>:/icons/icons/external-link.svg</iconset>
+                <iconset>
+                 <normaloff>icons/external-link.svg</normaloff>icons/external-link.svg</iconset>
                </property>
                <property name="iconSize">
                 <size>
@@ -1353,10 +1394,12 @@ QPushButton::pressed{
        <string notr="true">QPushButton{
 }
 QPushButton::hover{
-	border: 0.5px solid rgb(230, 5, 64);
+	border: 1.5px solid rgb(230, 5, 64);
+	border-radius: 10px;
 }
 QPushButton::pressed{
 	border: 3px solid rgb(230, 5, 64);
+	border-radius: 10px;
 }</string>
       </property>
       <property name="frameShape">
@@ -1381,7 +1424,7 @@ QPushButton::pressed{
        <property name="bottomMargin">
         <number>0</number>
        </property>
-       <item alignment="Qt::AlignTop">
+       <item>
         <widget class="QFrame" name="header_frame">
          <property name="styleSheet">
           <string notr="true">background-color: rgb(9, 5, 13);</string>
@@ -1438,8 +1481,8 @@ QPushButton::pressed{
                 <string/>
                </property>
                <property name="icon">
-                <iconset resource="icons.qrc">
-                 <normaloff>:/icons/icons/chevrons-left.svg</normaloff>:/icons/icons/chevrons-left.svg</iconset>
+                <iconset>
+                 <normaloff>icons/chevrons-right.svg</normaloff>icons/chevrons-right.svg</iconset>
                </property>
               </widget>
              </item>
@@ -1481,7 +1524,7 @@ QPushButton::pressed{
                 <string notr="true">color: rgb(255, 255, 255);</string>
                </property>
                <property name="text">
-                <string>My Application</string>
+                <string>RunWithMe</string>
                </property>
               </widget>
              </item>
@@ -1518,8 +1561,8 @@ QPushButton::pressed{
                 <string/>
                </property>
                <property name="icon">
-                <iconset resource="icons.qrc">
-                 <normaloff>:/icons/icons/arrow-down-left.svg</normaloff>:/icons/icons/arrow-down-left.svg</iconset>
+                <iconset>
+                 <normaloff>icons/arrow-down-left.svg</normaloff>icons/arrow-down-left.svg</iconset>
                </property>
               </widget>
              </item>
@@ -1529,8 +1572,8 @@ QPushButton::pressed{
                 <string/>
                </property>
                <property name="icon">
-                <iconset resource="icons.qrc">
-                 <normaloff>:/icons/icons/maximize-2.svg</normaloff>:/icons/icons/maximize-2.svg</iconset>
+                <iconset>
+                 <normaloff>icons/maximize-2.svg</normaloff>icons/maximize-2.svg</iconset>
                </property>
               </widget>
              </item>
@@ -1540,8 +1583,8 @@ QPushButton::pressed{
                 <string/>
                </property>
                <property name="icon">
-                <iconset resource="icons.qrc">
-                 <normaloff>:/icons/icons/x.svg</normaloff>:/icons/icons/x.svg</iconset>
+                <iconset>
+                 <normaloff>icons/x.svg</normaloff>icons/x.svg</iconset>
                </property>
               </widget>
              </item>
@@ -1727,8 +1770,8 @@ QPushButton::pressed{
                       <string/>
                      </property>
                      <property name="icon">
-                      <iconset resource="icons.qrc">
-                       <normaloff>:/icons/icons/share-2.svg</normaloff>:/icons/icons/share-2.svg</iconset>
+                      <iconset>
+                       <normaloff>icons/share-2.svg</normaloff>icons/share-2.svg</iconset>
                      </property>
                     </widget>
                    </item>
@@ -1823,8 +1866,8 @@ QPushButton::pressed{
                          <string/>
                         </property>
                         <property name="icon">
-                         <iconset resource="icons.qrc">
-                          <normaloff>:/icons/icons/arrow-left.svg</normaloff>:/icons/icons/arrow-left.svg</iconset>
+                         <iconset>
+                          <normaloff>icons/arrow-left.svg</normaloff>icons/arrow-left.svg</iconset>
                         </property>
                        </widget>
                       </item>
@@ -1873,8 +1916,8 @@ QPushButton::pressed{
                          <string/>
                         </property>
                         <property name="icon">
-                         <iconset resource="icons.qrc">
-                          <normaloff>:/icons/icons/arrow-right.svg</normaloff>:/icons/icons/arrow-right.svg</iconset>
+                         <iconset>
+                          <normaloff>icons/arrow-right.svg</normaloff>icons/arrow-right.svg</iconset>
                         </property>
                        </widget>
                       </item>

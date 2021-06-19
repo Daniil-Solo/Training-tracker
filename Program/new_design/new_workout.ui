@@ -62,8 +62,11 @@ color:rgb(255,255,255);
    <property name="styleSheet">
     <string notr="true">border-bottom: 1px solid rgb(230, 5, 64)</string>
    </property>
+   <property name="maximum">
+    <number>260</number>
+   </property>
   </widget>
-  <widget class="QDoubleSpinBox" name="diastance">
+  <widget class="QDoubleSpinBox" name="distance">
    <property name="geometry">
     <rect>
      <x>300</x>
@@ -79,6 +82,9 @@ color:rgb(255,255,255);
    </property>
    <property name="styleSheet">
     <string notr="true">border-bottom: 1px solid rgb(230, 5, 64)</string>
+   </property>
+   <property name="maximum">
+    <double>999.990000000000009</double>
    </property>
   </widget>
   <widget class="QDateEdit" name="dateEdit">

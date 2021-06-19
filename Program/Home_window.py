@@ -10,10 +10,10 @@ from PyQt5 import QtWidgets, QtCore, QtGui, QtSvg
 from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow
 
 from My_profile import Profile
-from Program.Edit_profile_window import EditProfile
-from Program.My_records_window import ViewMyRecords
-from Program.New_workout_window import NewWorkoutWindow
-from Program.Set_goal_window import SetGoal
+from Edit_profile_window import EditProfile
+from My_records_window import ViewMyRecords
+from New_workout_window import NewWorkoutWindow
+from Set_goal_window import SetGoal
 from Trainings_Manager import TrainingsManager
 
 
@@ -195,6 +195,7 @@ class HomeWindow(QMainWindow):
         self.window_new_training = NewWorkoutWindow()
         self.window_new_training.show()
 
+
     def edit_profile(self):
         self.window_edit_profile = EditProfile()
         self.window_edit_profile.show()
@@ -206,6 +207,7 @@ class HomeWindow(QMainWindow):
     def view_my_records(self):
         self.window_view_my_records = ViewMyRecords()
         self.window_view_my_records.show()
+
 
 
     def view_quote(self):

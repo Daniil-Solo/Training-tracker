@@ -74,19 +74,21 @@ class HomeWindow(QMainWindow):
         self.all_records.clicked.connect(self.view_my_records)
 
     def move_left_page(self):
-        self.curent_page += 1
-        self.update_trainings()
-        if self.training_manager.is_page_exist(self.curent_page+1):
-            self.swipe_left.setEnabled(False)
-        else:
-            self.swipe_left.setEnabled(True)
-    def move_right_page(self):
         self.curent_page -= 1
         self.update_trainings()
-        if self.training_manager.is_page_exist(self.curent_page - 1):
-            self.swipe_right.setEnabled(False)
+        print("is left page E = ", self.training_manager.is_page_exist(self.curent_page-1))
+        if self.training_manager.is_page_exist(self.curent_page-1):
+            self.swipe_left.setEnabled(True)
         else:
+            self.swipe_left.setEnabled(False)
+    def move_right_page(self):
+        self.curent_page += 1
+        self.update_trainings()
+        print("is right page E = ", self.training_manager.is_page_exist(self.curent_page + 1))
+        if self.training_manager.is_page_exist(self.curent_page + 1):
             self.swipe_right.setEnabled(True)
+        else:
+            self.swipe_right.setEnabled(False)
 
     def restore_or_maximize_window(self):
         if self.isMaximized():
@@ -142,12 +144,26 @@ class HomeWindow(QMainWindow):
             training_place[0].setText(training_value[0])
             training_place[1].setText(training_value[1])
             training_place[2].setText(training_value[2])
-        if self.training_manager.get_n_page() > 1:
+        print("cp = ", self.curent_page)
+        print("is left page E = ", self.training_manager.is_page_exist(self.curent_page - 1))
+        if self.training_manager.is_page_exist(self.curent_page-1):
             self.swipe_left.setEnabled(True)
-            self.swipe_right.setEnabled(True)
         else:
             self.swipe_left.setEnabled(False)
+        print("is right page E = ", self.training_manager.is_page_exist(self.curent_page + 1))
+        if self.training_manager.is_page_exist(self.curent_page+1):
+            self.swipe_right.setEnabled(True)
+        else:
             self.swipe_right.setEnabled(False)
+        '''if self.training_manager.get_n_page() > 1:
+            self.swipe_left.setEnabled(True)
+            self.swipe_right.setEnabled(True)
+            if(self.curent_page == 0):
+                self.swipe_left.setEnabled(False)
+            
+        else:
+            self.swipe_left.setEnabled(False)
+            self.swipe_right.setEnabled(False)'''
 
     def move_slider(self, number=5):
         self.toolBox.setCurrentIndex(number)

@@ -56,6 +56,8 @@ class NewWorkoutWindow(QMainWindow):
         cQuery.addBindValue(w_description1)
         cQuery.exec()
 
+        self.hide()
+
 
 
 

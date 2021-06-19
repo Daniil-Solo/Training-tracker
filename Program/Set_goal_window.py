@@ -34,6 +34,8 @@ class SetGoal(QMainWindow):
         self.time.timeChanged.connect(lambda: self.auto_goal_r())
         # Вес
         self.weight.textChanged.connect(lambda: self.auto_goal_w())
+        # Посещаемость
+        self.nice_days.textChanged.connect(lambda: self.auto_goal_v())
 
     def auto_goal_r(self):
         self.goal = dict()
@@ -73,6 +75,16 @@ class SetGoal(QMainWindow):
         self.goal['values'].append(weight)
         self.goal_name_w.setPlaceholderText(goal_name)
 
+    def auto_goal_v(self):
+        self.goal = dict()
+        nice_days = self.nice_days.text()
+        goal_name = "Заниматься " + nice_days + " дней без пропуска"
+        self.goal['title'] = goal_name
+        self.goal['weight'] = 'nice_days'
+        self.goal['values'] = []
+        self.goal['values'].append(nice_days)
+        self.goal_name_v.setPlaceholderText(goal_name)
+
     def save_wishful_record_as_goal(self):
         if self.goal_name_r.text() != "":
             self.goal['title'] = self.goal_name_r.text()
@@ -86,7 +98,10 @@ class SetGoal(QMainWindow):
         self.close_goal_window()
 
     def save_wishful_nice_days_as_goal(self):
-        pass
+        if self.goal_name_v.text() != "":
+            self.goal['title'] = self.goal_name_v.text()
+        self.profile.data_change('goal', self.goal)
+        self.close_goal_window()
 
     def close_goal_window(self):
         self.home_page.update()

@@ -155,15 +155,6 @@ class HomeWindow(QMainWindow):
             self.swipe_right.setEnabled(True)
         else:
             self.swipe_right.setEnabled(False)
-        '''if self.training_manager.get_n_page() > 1:
-            self.swipe_left.setEnabled(True)
-            self.swipe_right.setEnabled(True)
-            if(self.curent_page == 0):
-                self.swipe_left.setEnabled(False)
-            
-        else:
-            self.swipe_left.setEnabled(False)
-            self.swipe_right.setEnabled(False)'''
 
     def move_slider(self, number=5):
         self.toolBox.setCurrentIndex(number)

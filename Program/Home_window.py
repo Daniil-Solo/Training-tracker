@@ -119,7 +119,7 @@ class HomeWindow(QMainWindow):
             self.user_name.setText("Нет имени")
         # установка цели
         if data['goal']['title'] is not None:
-            self.user_goal.setText(data['goal']['title'])
+            self.user_goal.setText("Цель: " + data['goal']['title'])
         else:
             self.user_goal.setText("Нет цели")
         # установка количества дней без пропусков

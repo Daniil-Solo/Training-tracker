@@ -1,5 +1,4 @@
 import json
-import random
 import sys
 import os
 import datetime
@@ -25,15 +24,16 @@ class HomeWindow(QMainWindow):
         self.training_manager = TrainingsManager()
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
-        #self.my_profile.save_changes()
         self.training_manager.load_database()
-        data = self.my_profile.load_data()
         self.curent_page = 0
-        self.default_filling_values()
-        self.filling_values(data)
+        self.start_filling()
+        self.filling_values()
         self.all_connection()
-        self.view_quote()
 
+    def update(self):
+        self.setEnabled(True)
+        self.filling_values()
+        self.my_profile.save_changes()
 
     def all_connection(self):
         # иконка скрыть
@@ -108,29 +108,27 @@ class HomeWindow(QMainWindow):
     def mousePressEvent(self, event):
         self.clickPosition = event.globalPos()
 
-    def default_filling_values(self):
-        # изображжение по умолчанию
-        pixmap = QtGui.QPixmap('source/default_photo.jpg')
-        self.user_photo.setPixmap(pixmap)
-        # основная информация (нет информации)
-        self.user_name.setText("Нет имени")
-        self.user_goal.setText("Нет цели")
-        self.day_shot.setText("0 дней без пропусков")
-        # оценка (0 звезд)
-        self.set_mark(0)
-
-    def filling_values(self, data):
-        if os.path.exists('source/my_photo.jpg'):
-            pixmap = QtGui.QPixmap('source/my_photo.jpg')
+    def filling_values(self):
+        data = self.my_profile.get_data_dict()
+        # установка фото
+        filename = self.my_profile.get_photo_path()
+        if filename is not None:
+            pixmap = QtGui.QPixmap(filename)
             self.user_photo.setPixmap(pixmap)
+        # установка имени
         if data['name'] is not None:
             self.user_name.setText(data['name'])
+        else:
+            self.user_name.setText("Нет имени")
+        # установка цели
         if data['goal']['title'] is not None:
-            self.user_goal.setText(data['goal']['title'])
-        if data['nice_days'] is not None:
-            self.day_shot.setText(data['nice_days'] + " дней без пропусков")
-        if data['raiting_app'] != 0:
-            self.set_mark(int(data['raiting_app']))
+            self.user_goal.setText("Цель: " + data['goal']['title'])
+        else:
+            self.user_goal.setText("Нет цели")
+        # установка количества дней без пропусков
+        self.day_shot.setText(str(data['nice_days']) + " дней без пропусков")
+        # установка рейтинга приложения
+        self.set_mark(int(data['raiting_app']))
 
         self.update_trainings()
 
@@ -196,34 +194,41 @@ class HomeWindow(QMainWindow):
                 self.thanks_for_raiting.setText(messages[i-1])
         if n_stars == 5:
             self.thanks_for_raiting.setText(messages[5])
-
+        self.my_profile.data_change('raiting_app', n_stars)
+        self.my_profile.save_changes()
 
     def create_new_training(self):
+        self.setEnabled(False)
         self.window_new_training = NewWorkoutWindow()
         self.window_new_training.show()
 
 
     def edit_profile(self):
-        self.window_edit_profile = EditProfile()
+        self.setEnabled(False)
+        self.window_edit_profile = EditProfile(self, self.my_profile)
         self.window_edit_profile.show()
 
     def set_goal_function(self):
-        self.window_set_goal = SetGoal()
+        self.setEnabled(False)
+        self.window_set_goal = SetGoal(self, self.my_profile)
         self.window_set_goal.show()
 
     def view_my_records(self):
+        self.setEnabled(False)
         self.window_view_my_records = ViewMyRecords()
         self.window_view_my_records.show()
 
 
-
-    def view_quote(self):
+    def start_filling(self):
+        # Установка цитаты
         with open(r"Quotes/Daily_quotes.json", "r") as read_file:
             quote_dict = json.load(read_file)
         today = datetime.datetime.today().day
         random_quote = quote_dict[str(today)]
         self.quote.setText(random_quote['text'] + "\nАвтор: " + random_quote['author'])
-
+        # Установка оценки
+        mark = int(self.my_profile.get_data_dict()['raiting_app'])
+        self.set_mark(mark)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

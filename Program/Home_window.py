@@ -26,9 +26,9 @@ class HomeWindow(QMainWindow):
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         self.training_manager.load_database()
         self.curent_page = 0
+        self.start_filling()
         self.filling_values()
         self.all_connection()
-        self.view_quote()
 
     def update(self):
         self.filling_values()
@@ -186,8 +186,9 @@ class HomeWindow(QMainWindow):
                 self.thanks_for_raiting.setText(messages[i-1])
         if n_stars == 5:
             self.thanks_for_raiting.setText(messages[5])
-
-
+        self.my_profile.data_change('raiting_app', n_stars)
+        self.my_profile.save_changes()
+        
     def create_new_training(self):
         self.window_new_training = NewWorkoutWindow()
         self.window_new_training.show()
@@ -205,13 +206,16 @@ class HomeWindow(QMainWindow):
         self.window_view_my_records.show()
 
 
-    def view_quote(self):
+    def start_filling(self):
+        # Установка цитаты
         with open(r"Quotes/Daily_quotes.json", "r") as read_file:
             quote_dict = json.load(read_file)
         today = datetime.datetime.today().day
         random_quote = quote_dict[str(today)]
         self.quote.setText(random_quote['text'] + "\nАвтор: " + random_quote['author'])
-
+        # Установка оценки
+        mark = int(self.my_profile.get_data_dict()['raiting_app'])
+        self.set_mark(mark)
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)

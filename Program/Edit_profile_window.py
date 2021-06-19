@@ -24,7 +24,7 @@ class EditProfile(QMainWindow):
 
     def all_connections(self):
         # закрытие окна
-        self.close.clicked.connect(lambda: self.hide())
+        self.close.clicked.connect(lambda: self.close_goal_window())
         # передвижение окна
         self.header_frame.mouseMoveEvent = self.moveWindow
         # изменение фото
@@ -51,6 +51,10 @@ class EditProfile(QMainWindow):
         self.profile.data_change('gender', self.gender.currentIndex())
         self.profile.data_change('weight', self.weight.text())
         self.profile.data_change('birthday', self.birthday.dateTime().toString())
+        self.home_page.update()
+        self.hide()
+
+    def close_goal_window(self):
         self.home_page.update()
         self.hide()
 

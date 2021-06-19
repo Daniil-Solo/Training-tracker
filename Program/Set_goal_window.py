@@ -21,7 +21,7 @@ class SetGoal(QMainWindow):
 
     def all_connections(self):
         # закрытие окна
-        self.close.clicked.connect(lambda: self.hide())
+        self.close.clicked.connect(lambda: self.close_goal_window())
         # передвижение окна
         self.header_frame.mouseMoveEvent = self.moveWindow
         # сохранение
@@ -40,6 +40,8 @@ class SetGoal(QMainWindow):
     def auto_goal_r(self):
         self.goal = dict()
         distance = self.distantion.text()
+        if distance == "":
+            distance = "0"
         is_m = self.dist_val.currentIndex()
         time = self.time.dateTime().time()
         hour = time.hour()
@@ -62,22 +64,26 @@ class SetGoal(QMainWindow):
         self.goal['type'] = 'record'
         self.goal['values'] = []
         self.goal['values'].append(time.toString())
-        self.goal['values'].append(distance)
+        self.goal['values'].append(float(distance))
         self.goal_name_r.setPlaceholderText(goal_name)
 
     def auto_goal_w(self):
         self.goal = dict()
         weight = self.weight.text()
+        if weight == "":
+            weight = "0"
         goal_name = "Похудеть до " + weight + " кг"
         self.goal['title'] = goal_name
         self.goal['weight'] = 'record'
         self.goal['values'] = []
-        self.goal['values'].append(weight)
+        self.goal['values'].append(float(weight))
         self.goal_name_w.setPlaceholderText(goal_name)
 
     def auto_goal_v(self):
         self.goal = dict()
         nice_days = self.nice_days.text()
+        if nice_days == "":
+            nice_days = "0"
         goal_name = "Заниматься " + nice_days + " дней без пропуска"
         self.goal['title'] = goal_name
         self.goal['weight'] = 'nice_days'

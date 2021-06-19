@@ -31,6 +31,7 @@ class HomeWindow(QMainWindow):
         self.all_connection()
 
     def update(self):
+        self.setEnabled(True)
         self.filling_values()
         self.my_profile.save_changes()
 
@@ -188,20 +189,24 @@ class HomeWindow(QMainWindow):
             self.thanks_for_raiting.setText(messages[5])
         self.my_profile.data_change('raiting_app', n_stars)
         self.my_profile.save_changes()
-        
+
     def create_new_training(self):
+        self.setEnabled(False)
         self.window_new_training = NewWorkoutWindow()
         self.window_new_training.show()
 
     def edit_profile(self):
+        self.setEnabled(False)
         self.window_edit_profile = EditProfile(self, self.my_profile)
         self.window_edit_profile.show()
 
     def set_goal_function(self):
+        self.setEnabled(False)
         self.window_set_goal = SetGoal(self, self.my_profile)
         self.window_set_goal.show()
 
     def view_my_records(self):
+        self.setEnabled(False)
         self.window_view_my_records = ViewMyRecords()
         self.window_view_my_records.show()
 

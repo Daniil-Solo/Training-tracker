@@ -312,7 +312,7 @@ QPushButton::pressed{
     <string>Описание</string>
    </property>
   </widget>
-  <widget class="QFrame" name="frame">
+  <widget class="QFrame" name="header_frame">
    <property name="geometry">
     <rect>
      <x>0</x>

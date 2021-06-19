@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>483</width>
-    <height>277</height>
+    <width>438</width>
+    <height>258</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -27,7 +27,7 @@ color:rgb(255,255,255);
      <rect>
       <x>0</x>
       <y>0</y>
-      <width>481</width>
+      <width>441</width>
       <height>31</height>
      </rect>
     </property>
@@ -40,13 +40,13 @@ color:rgb(255,255,255);
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QLabel" name="label_7">
+    <widget class="QLabel" name="header_frame">
      <property name="geometry">
       <rect>
-       <x>180</x>
+       <x>0</x>
        <y>0</y>
-       <width>131</width>
-       <height>20</height>
+       <width>441</width>
+       <height>31</height>
       </rect>
      </property>
      <property name="font">
@@ -57,18 +57,30 @@ color:rgb(255,255,255);
      <property name="text">
       <string>RunWihtMe</string>
      </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
     </widget>
     <widget class="QPushButton" name="close">
      <property name="geometry">
       <rect>
-       <x>730</x>
+       <x>407</x>
        <y>0</y>
        <width>31</width>
        <height>31</height>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true"/>
+      <string notr="true">QPushButton{
+	background-color: rgb(9, 5, 13);
+}
+QPushButton::hover{
+	border: 1.5px solid rgb(230, 5, 64);
+	border-radius: 10px
+}
+QPushButton::pressed{
+	border: 3px solid rgb(230, 5, 64);
+}</string>
      </property>
      <property name="text">
       <string/>
@@ -77,25 +89,11 @@ color:rgb(255,255,255);
       <iconset resource="icons.qrc">
        <normaloff>:/icons/icons/x.svg</normaloff>:/icons/icons/x.svg</iconset>
      </property>
-    </widget>
-    <widget class="QPushButton" name="close_2">
-     <property name="geometry">
-      <rect>
-       <x>450</x>
-       <y>0</y>
-       <width>31</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true"/>
-     </property>
-     <property name="text">
-      <string/>
-     </property>
-     <property name="icon">
-      <iconset resource="icons.qrc">
-       <normaloff>:/icons/icons/x.svg</normaloff>:/icons/icons/x.svg</iconset>
+     <property name="iconSize">
+      <size>
+       <width>25</width>
+       <height>25</height>
+      </size>
      </property>
     </widget>
    </widget>
@@ -203,7 +201,7 @@ color:rgb(255,255,255);
    <widget class="QPushButton" name="create">
     <property name="geometry">
      <rect>
-      <x>130</x>
+      <x>120</x>
       <y>190</y>
       <width>201</width>
       <height>51</height>

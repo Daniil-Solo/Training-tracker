@@ -8,7 +8,7 @@ class TrainingsManager:
 
     def load_database(self):
         conn = QtSql.QSqlDatabase.addDatabase('QSQLITE')
-        conn.setDatabaseName("./workout.db")
+        conn.setDatabaseName("source/workout.db")
         if conn.open():
             print("база данных окрыта")
         else:

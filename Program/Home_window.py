@@ -199,9 +199,8 @@ class HomeWindow(QMainWindow):
 
     def create_new_training(self):
         self.setEnabled(False)
-        self.window_new_training = NewWorkoutWindow()
+        self.window_new_training = NewWorkoutWindow(self, self.training_manager)
         self.window_new_training.show()
-
 
     def edit_profile(self):
         self.setEnabled(False)

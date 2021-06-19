@@ -20,7 +20,7 @@ class Profile:
                 {
                     'title': None,
                     'type': None,
-                    'values': [None, None]
+                    'values': None
                 },
 
             'raiting_app': 0

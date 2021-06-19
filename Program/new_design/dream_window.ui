@@ -21,7 +21,7 @@
     <string notr="true">background-color: rgb(24, 24, 36);
 color: rgb(255, 255, 255)</string>
    </property>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="header_frame">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -60,9 +60,11 @@ color: rgb(255, 255, 255)</string>
 }
 QPushButton::hover{
 	border: 0.5px solid rgb(230, 5, 64);
+	border-radius: 10px
 }
 QPushButton::pressed{
 	border: 3px solid rgb(230, 5, 64);
+	border-radius: 10px
 }
 </string>
     </property>
@@ -121,7 +123,7 @@ QTabBar::tab:!selected {
 }</string>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="NewRecord_tab">
      <attribute name="title">
@@ -243,7 +245,7 @@ QTabBar::tab:!selected {
        <string>Название цели</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="goal_name">
+     <widget class="QLineEdit" name="goal_name_r">
       <property name="geometry">
        <rect>
         <x>140</x>
@@ -346,7 +348,7 @@ QPushButton::pressed{
        <string>Название цели</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="lineEdit_4">
+     <widget class="QLineEdit" name="goal_name_w">
       <property name="geometry">
        <rect>
         <x>140</x>
@@ -491,7 +493,7 @@ QPushButton::pressed{
        <string>Создать цель</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="time_visit">
+     <widget class="QLineEdit" name="nice_days">
       <property name="geometry">
        <rect>
         <x>290</x>

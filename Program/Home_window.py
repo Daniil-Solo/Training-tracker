@@ -197,7 +197,7 @@ class HomeWindow(QMainWindow):
         self.window_edit_profile.show()
 
     def set_goal_function(self):
-        self.window_set_goal = SetGoal()
+        self.window_set_goal = SetGoal(self, self.my_profile)
         self.window_set_goal.show()
 
     def view_my_records(self):

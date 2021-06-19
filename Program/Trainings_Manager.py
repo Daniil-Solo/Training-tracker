@@ -1,16 +1,53 @@
+import PyQt5
+from PyQt5 import QtSql
+import math
+
 class TrainingsManager:
     def __init__(self):
         self.n_pages = 0
 
     def load_database(self):
-        pass
+        conn = QtSql.QSqlDatabase.addDatabase('QSQLITE')
+        conn.setDatabaseName("./workout.db")
+        if conn.open():
+            print("база данных окрыта")
+        else:
+            print("не открылась, жалко")
+        global cQuery
+        cQuery = QtSql.QSqlQuery()
+        cQuery.exec(
+            """
+            CREATE TABLE workout(
+                id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,
+                w_date TEXT,
+                w_time TEXT,
+                w_distance REAL,
+                w_temp TEXT,
+                w_heart INT,
+                w_description TEXT
+            )
+            """
+        )
         # открываем таблицу, если её нет, то создаем
 
     def update_n_pages(self):
-        pass
+        cQuery.exec("SELECT id from workout")
+        count_str = 0
+        while (cQuery.next()):
+            count_str += 1
+        self.n_pages = math.ceil(count_str/4)
         # записываем в self.n_pages число записей в таблице, деленное на 4
 
     def get_n_page(self):
+        #print(self.n_pages)
+        cQuery.exec("SELECT id from workout")
+        count_str = 0
+        while (cQuery.next()):
+            count_str += 1
+
+        print(count_str)
+        print(math.ceil(count_str / 4))
+        self.n_pages = math.ceil(count_str / 4)
         return self.n_pages
 
     def get_4_trainings(self, page=0):
@@ -23,10 +60,48 @@ class TrainingsManager:
         train2 = ["Нет информации", "", ""]
         train3 = ["Нет информации", "", ""]
         train4 = ["Нет информации", "", ""]
+
+        cQuery.exec("SELECT w_date, w_time, w_distance from workout")
+        page_index = 0
+        while (cQuery.next()):
+            page_index += 1
+
+        pass_rec = 0
+        while(cQuery.previous()):
+            if (pass_rec < page * 4):
+                pass_rec += 1
+                continue
+
+            train1[0] = "Дата: " + cQuery.value(0)
+            train1[1] = "Продолжительность: " + cQuery.value(1)
+            train1[2] = "Дистанция: " + cQuery.value(2)
+            if(cQuery.previous()):
+                train2[0] = "Дата: " + cQuery.value(0)
+                train2[1] = "Продолжительность: " + cQuery.value(1)
+                train2[2] = "Дистанция: " + cQuery.value(2)
+                if (cQuery.previous()):
+                    train3[0] = "Дата: " + cQuery.value(0)
+                    train3[1] = "Продолжительность: " + cQuery.value(1)
+                    train3[2] = "Дистанция: " + cQuery.value(2)
+                    if (cQuery.previous()):
+                        train4[0] = "Дата: " + cQuery.value(0)
+                        train4[1] = "Продолжительность: " + cQuery.value(1)
+                        train4[2] = "Дистанция: " + cQuery.value(2)
+
+            break
+
         return [train1, train2, train3, train4]
 
     def is_page_exist(self, page):
-        pass
+        if (page < 0):
+            print("page<0", page)
+            return False
+        elif (page >= self.get_n_page()):
+            print("page>n", page)
+            return False
+        else:
+            print("pageT",page)
+            return True
         # проверяет, есть ли данная страница в таблице
         # учесть отрицательные значения
         # возвращает True, False

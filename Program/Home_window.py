@@ -12,6 +12,8 @@ from My_profile import Profile
 from Edit_profile_window import EditProfile
 from My_records_window import ViewMyRecords
 from New_workout_window import NewWorkoutWindow
+from Program.New_record_window import NewRecord
+from Program.Records_Manager import RecordManager
 from Set_goal_window import SetGoal
 from Trainings_Manager import TrainingsManager
 
@@ -22,6 +24,7 @@ class HomeWindow(QMainWindow):
         loadUi("new_design/new_interface.ui", self)
         self.my_profile = Profile()
         self.training_manager = TrainingsManager()
+        self.record_manager = RecordManager()
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         self.training_manager.load_database()
@@ -72,6 +75,7 @@ class HomeWindow(QMainWindow):
         self.reduct_profile.clicked.connect(self.edit_profile)
         self.set_goal.clicked.connect(self.set_goal_function)
         self.all_records.clicked.connect(self.view_my_records)
+        self.new_record.clicked.connect(self.create_new_record)
 
     def move_left_page(self):
         self.curent_page -= 1
@@ -217,6 +221,10 @@ class HomeWindow(QMainWindow):
         self.window_view_my_records = ViewMyRecords()
         self.window_view_my_records.show()
 
+    def create_new_record(self):
+        self.setEnabled(False)
+        self.window_create_new_record = NewRecord(self, self.record_manager)
+        self.window_create_new_record.show()
 
     def start_filling(self):
         # Установка цитаты

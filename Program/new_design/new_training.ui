@@ -45,7 +45,7 @@ color: rgb(255, 255, 255)</string>
    <widget class="QPushButton" name="create">
     <property name="geometry">
      <rect>
-      <x>190</x>
+      <x>160</x>
       <y>420</y>
       <width>201</width>
       <height>51</height>
@@ -325,7 +325,7 @@ QPushButton::pressed{
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>521</width>
+       <width>531</width>
        <height>21</height>
       </rect>
      </property>
@@ -366,8 +366,8 @@ QPushButton::pressed{
       <string/>
      </property>
      <property name="icon">
-      <iconset resource="icons.qrc">
-       <normaloff>:/icons/icons/x.svg</normaloff>:/icons/icons/x.svg</iconset>
+      <iconset>
+       <normaloff>icons/x.svg</normaloff>icons/x.svg</iconset>
      </property>
      <property name="iconSize">
       <size>

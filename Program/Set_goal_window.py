@@ -40,70 +40,107 @@ class SetGoal(QMainWindow):
     def auto_goal_r(self):
         self.goal = dict()
         distance = self.distantion.text()
-        if distance == "":
-            distance = "0"
-        is_m = self.dist_val.currentIndex()
-        time = self.time.dateTime().time()
-        hour = time.hour()
-        minute = time.minute()
-        second = time.second()
-        goal_name = "Преодолеть " + distance + " "
-        if is_m:
-            goal_name += "м "
-        else:
-            goal_name += "км "
-            distance = float(distance) * 1000
-        goal_name += "за "
-        if hour:
-            goal_name += str(hour) + " часов "
-        if minute:
-            goal_name += str(minute) + " минут "
-        if second:
-            goal_name += str(second) + " секунд"
-        self.goal['title'] = goal_name
-        self.goal['type'] = 'record'
-        self.goal['values'] = []
-        self.goal['values'].append(time.toString())
-        self.goal['values'].append(float(distance))
-        self.goal_name_r.setPlaceholderText(goal_name)
+        try:
+            check_dist = float(distance)
+            is_m = self.dist_val.currentIndex()
+            time = self.time.dateTime().time()
+            hour = time.hour()
+            minute = time.minute()
+            second = time.second()
+
+            if check_dist <= 0:
+                self.goal_name_r.setPlaceholderText("Дистанция должна быть больше 0")
+                return
+            if hour == 0 and minute == 0 and second == 0:
+                self.goal_name_r.setPlaceholderText("Время должно быть не нулевым")
+                return
+            goal_name = "Преодолеть " + distance + " "
+            if is_m:
+                goal_name += "м "
+            else:
+                goal_name += "км "
+                distance = float(distance) * 1000
+            goal_name += "за "
+            if hour:
+                goal_name += str(hour) + " часов "
+            if minute:
+                goal_name += str(minute) + " минут "
+            if second:
+                goal_name += str(second) + " секунд"
+            self.goal['title'] = goal_name
+            self.goal['type'] = 'record'
+            self.goal['values'] = []
+            self.goal['values'].append(time.toString())
+            self.goal['values'].append(float(distance))
+            self.goal_name_r.setPlaceholderText(goal_name)
+        except:
+            self.distantion.setText("")
+            return
+
 
     def auto_goal_w(self):
         self.goal = dict()
         weight = self.weight.text()
-        if weight == "":
-            weight = "0"
-        goal_name = "Похудеть до " + weight + " кг"
-        self.goal['title'] = goal_name
-        self.goal['weight'] = 'record'
-        self.goal['values'] = []
-        self.goal['values'].append(float(weight))
-        self.goal_name_w.setPlaceholderText(goal_name)
+        try:
+            check_weight = float(weight)
+
+            if check_weight <= 0:
+                self.goal_name_w.setPlaceholderText("Вес должен быть больше 0")
+                return
+            goal_name = "Похудеть до " + weight + " кг"
+            self.goal['title'] = goal_name
+            self.goal['weight'] = 'record'
+            self.goal['values'] = []
+            self.goal['values'].append(float(weight))
+            self.goal_name_w.setPlaceholderText(goal_name)
+        except:
+            self.weight.setText("")
+            return
 
     def auto_goal_v(self):
         self.goal = dict()
         nice_days = self.nice_days.text()
-        if nice_days == "":
-            nice_days = "0"
-        goal_name = "Заниматься " + nice_days + " дней без пропуска"
-        self.goal['title'] = goal_name
-        self.goal['weight'] = 'nice_days'
-        self.goal['values'] = []
-        self.goal['values'].append(nice_days)
-        self.goal_name_v.setPlaceholderText(goal_name)
+        try:
+            check_days = float(nice_days)
+
+            if check_days <= 0:
+                self.goal_name_v.setPlaceholderText("Число дней должно быть больше 0")
+                return
+            goal_name = "Заниматься " + nice_days + " дней без пропуска"
+            self.goal['title'] = goal_name
+            self.goal['weight'] = 'nice_days'
+            self.goal['values'] = []
+            self.goal['values'].append(nice_days)
+            self.goal_name_v.setPlaceholderText(goal_name)
+        except:
+            self.nice_days.setText("")
+            return
 
     def save_wishful_record_as_goal(self):
+        if self.distantion.text() == "":
+            return
+        time = self.time.dateTime().time()
+        hour = time.hour()
+        minute = time.minute()
+        second = time.second()
+        if hour == 0 and minute == 0 and second == 0:
+            return
         if self.goal_name_r.text() != "":
             self.goal['title'] = self.goal_name_r.text()
         self.profile.data_change('goal', self.goal)
         self.close_goal_window()
 
     def save_wishful_weight_as_goal(self):
+        if self.weight.text() == "":
+            return
         if self.goal_name_w.text() != "":
             self.goal['title'] = self.goal_name_w.text()
         self.profile.data_change('goal', self.goal)
         self.close_goal_window()
 
     def save_wishful_nice_days_as_goal(self):
+        if self.nice_days.text() == "":
+            return
         if self.goal_name_v.text() != "":
             self.goal['title'] = self.goal_name_v.text()
         self.profile.data_change('goal', self.goal)

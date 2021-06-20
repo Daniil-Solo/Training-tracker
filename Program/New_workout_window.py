@@ -1,10 +1,11 @@
 import sys
 import os
+from time import sleep
 
 from PyQt5.QtCore import Qt, QPropertyAnimation
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets, QtCore, QtGui, QtSvg
-from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow
+from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow, QMessageBox
 from PyQt5.QtCore import QDate, QTime, QDateTime
 import PyQt5
 from PyQt5 import QtSql
@@ -36,12 +37,20 @@ class NewWorkoutWindow(QMainWindow):
         w_date1 = self.dateEdit.text()
         w_time1 = self.timeEdit.text()
         w_distance1 = self.distance.text()
+        km = w_distance1.replace(',', '.')
 
-        print(1)
+        if self.timeEdit.time().second() != 0 or self.timeEdit.time().minute() != 0 or self.timeEdit.time().hour() != 0:
+            pass
+        else:
+            return
+
+        if float(km) == 0.:
+            return
+        else:
+            pass
 
         time_sec = 0
         time_sec += int(w_time1[0])*60*60 + int(w_time1[2])*10*60 + int(w_time1[3])*60 + int(w_time1[5])*10 + int(w_time1[6])
-        km = w_distance1.replace(',','.')
         c_temp = float(time_sec) / float(km)
         if ((c_temp - (c_temp // 60) * 60) < 10):
             w_temp1 = str(int(c_temp // 60)) + ".0" + str(int((c_temp - (c_temp // 60) * 60)))
@@ -51,7 +60,7 @@ class NewWorkoutWindow(QMainWindow):
         w_heart1 = self.heart.text()
         w_description1 = self.description.toPlainText()
 
-        print(2)
+
 
         global cQuery
         cQuery = QtSql.QSqlQuery()
@@ -68,16 +77,13 @@ class NewWorkoutWindow(QMainWindow):
             VALUES (?, ?, ?, ?, ?, ?)
             """
         )
-        print(3)
         cQuery.addBindValue(w_date1)
         cQuery.addBindValue(w_time1)
         cQuery.addBindValue(w_distance1)
         cQuery.addBindValue(w_temp1)
         cQuery.addBindValue(w_heart1)
         cQuery.addBindValue(w_description1)
-        print(4)
         cQuery.exec()
-        print(5)
         self.close_goal_window()
 
     def close_goal_window(self):

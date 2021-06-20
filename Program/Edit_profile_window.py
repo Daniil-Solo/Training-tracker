@@ -1,3 +1,4 @@
+import datetime
 import sys
 import os
 
@@ -49,10 +50,15 @@ class EditProfile(QMainWindow):
     def save_data(self):
         self.profile.data_change('name', self.name.text())
         self.profile.data_change('gender', self.gender.currentIndex())
-        self.profile.data_change('weight', self.weight.text())
-        self.profile.data_change('birthday', self.birthday.dateTime().toString())
-        self.home_page.update()
-        self.hide()
+        try:
+            weight = float(self.weight.text().replace(',', '.'))
+            self.profile.data_change('weight', weight)
+            self.profile.data_change('birthday', self.birthday.dateTime().toString())
+            self.home_page.update()
+            self.hide()
+        except:
+            self.weight.setText("")
+
 
     def close_goal_window(self):
         self.home_page.update()
@@ -62,7 +68,7 @@ class EditProfile(QMainWindow):
         data = self.profile.get_data_dict()
         self.name.setText(data['name'])
         self.gender.setCurrentIndex(int(data['gender']))
-        self.weight.setText(data['weight'])
+        self.weight.setText(str(data['weight']))
         self.birthday.setDateTime(QtCore.QDateTime.fromString(data['birthday']))
 
     def load_photo(self):

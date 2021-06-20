@@ -51,7 +51,7 @@ class EditProfile(QMainWindow):
         self.profile.data_change('name', self.name.text())
         self.profile.data_change('gender', self.gender.currentIndex())
         try:
-            weight =  float(self.weight.text())
+            weight = float(self.weight.text().replace(',', '.'))
             self.profile.data_change('weight', weight)
             self.profile.data_change('birthday', self.birthday.dateTime().toString())
             self.home_page.update()

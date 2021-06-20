@@ -231,7 +231,7 @@ QPushButton::pressed{
      <string notr="true">border-bottom: 1px solid rgb(230, 5, 64)</string>
     </property>
     <property name="placeholderText">
-     <string>Ваш вес</string>
+     <string>Ваш вес в кг</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_5">

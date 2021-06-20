@@ -36,12 +36,12 @@ class NewWorkoutWindow(QMainWindow):
         w_date1 = self.dateEdit.text()
         w_time1 = self.timeEdit.text()
         w_distance1 = self.distance.text()
-
-        print(1)
-
         time_sec = 0
         time_sec += int(w_time1[0])*60*60 + int(w_time1[2])*10*60 + int(w_time1[3])*60 + int(w_time1[5])*10 + int(w_time1[6])
-        km = w_distance1.replace(',','.')
+        dist = w_distance1.replace(',','.')
+        if(self.type_dist.currentIndex() == 1):
+            km = float(dist)/1000.0
+            w_distance1 = str(km).replace('.',',')
         c_temp = float(time_sec) / float(km)
         if ((c_temp - (c_temp // 60) * 60) < 10):
             w_temp1 = str(int(c_temp // 60)) + ".0" + str(int((c_temp - (c_temp // 60) * 60)))
@@ -50,8 +50,6 @@ class NewWorkoutWindow(QMainWindow):
 
         w_heart1 = self.heart.text()
         w_description1 = self.description.toPlainText()
-
-        print(2)
 
         global cQuery
         cQuery = QtSql.QSqlQuery()
@@ -68,16 +66,13 @@ class NewWorkoutWindow(QMainWindow):
             VALUES (?, ?, ?, ?, ?, ?)
             """
         )
-        print(3)
         cQuery.addBindValue(w_date1)
         cQuery.addBindValue(w_time1)
         cQuery.addBindValue(w_distance1)
         cQuery.addBindValue(w_temp1)
         cQuery.addBindValue(w_heart1)
         cQuery.addBindValue(w_description1)
-        print(4)
         cQuery.exec()
-        print(5)
         self.close_goal_window()
 
     def close_goal_window(self):

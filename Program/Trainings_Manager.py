@@ -9,10 +9,7 @@ class TrainingsManager:
     def load_database(self):
         conn = QtSql.QSqlDatabase.addDatabase('QSQLITE')
         conn.setDatabaseName("source/workout.db")
-        if conn.open():
-            print("база данных окрыта")
-        else:
-            print("не открылась, жалко")
+        conn.open()
         global cQuery
         cQuery = QtSql.QSqlQuery()
         cQuery.exec(
@@ -45,8 +42,6 @@ class TrainingsManager:
         while (cQuery.next()):
             count_str += 1
 
-        print(count_str)
-        print(math.ceil(count_str / 4))
         self.n_pages = math.ceil(count_str / 4)
         return self.n_pages
 
@@ -74,19 +69,19 @@ class TrainingsManager:
 
             train1[0] = "Дата: " + cQuery.value(0)
             train1[1] = "Продолжительность: " + cQuery.value(1)
-            train1[2] = "Дистанция: " + cQuery.value(2)
+            train1[2] = "Дистанция: " + str(cQuery.value(2))
             if(cQuery.previous()):
                 train2[0] = "Дата: " + cQuery.value(0)
                 train2[1] = "Продолжительность: " + cQuery.value(1)
-                train2[2] = "Дистанция: " + cQuery.value(2)
+                train2[2] = "Дистанция: " + str(cQuery.value(2))
                 if (cQuery.previous()):
                     train3[0] = "Дата: " + cQuery.value(0)
                     train3[1] = "Продолжительность: " + cQuery.value(1)
-                    train3[2] = "Дистанция: " + cQuery.value(2)
+                    train3[2] = "Дистанция: " + str(cQuery.value(2))
                     if (cQuery.previous()):
                         train4[0] = "Дата: " + cQuery.value(0)
                         train4[1] = "Продолжительность: " + cQuery.value(1)
-                        train4[2] = "Дистанция: " + cQuery.value(2)
+                        train4[2] = "Дистанция: " + str(cQuery.value(2))
 
             break
 
@@ -94,13 +89,10 @@ class TrainingsManager:
 
     def is_page_exist(self, page):
         if (page < 0):
-            print("page<0", page)
             return False
         elif (page >= self.get_n_page()):
-            print("page>n", page)
             return False
         else:
-            print("pageT",page)
             return True
         # проверяет, есть ли данная страница в таблице
         # учесть отрицательные значения

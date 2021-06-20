@@ -12,8 +12,8 @@ from My_profile import Profile
 from Edit_profile_window import EditProfile
 from My_records_window import ViewMyRecords
 from New_workout_window import NewWorkoutWindow
-from Program.New_record_window import NewRecord
-from Program.Records_Manager import RecordManager
+from New_record_window import NewRecord
+from Records_Manager import RecordManager
 from Set_goal_window import SetGoal
 from Trainings_Manager import TrainingsManager
 
@@ -80,7 +80,6 @@ class HomeWindow(QMainWindow):
     def move_left_page(self):
         self.curent_page -= 1
         self.update_trainings()
-        print("is left page E = ", self.training_manager.is_page_exist(self.curent_page-1))
         if self.training_manager.is_page_exist(self.curent_page-1):
             self.swipe_left.setEnabled(True)
         else:
@@ -88,7 +87,6 @@ class HomeWindow(QMainWindow):
     def move_right_page(self):
         self.curent_page += 1
         self.update_trainings()
-        print("is right page E = ", self.training_manager.is_page_exist(self.curent_page + 1))
         if self.training_manager.is_page_exist(self.curent_page + 1):
             self.swipe_right.setEnabled(True)
         else:
@@ -146,13 +144,10 @@ class HomeWindow(QMainWindow):
             training_place[0].setText(training_value[0])
             training_place[1].setText(training_value[1])
             training_place[2].setText(training_value[2])
-        print("cp = ", self.curent_page)
-        print("is left page E = ", self.training_manager.is_page_exist(self.curent_page - 1))
         if self.training_manager.is_page_exist(self.curent_page-1):
             self.swipe_left.setEnabled(True)
         else:
             self.swipe_left.setEnabled(False)
-        print("is right page E = ", self.training_manager.is_page_exist(self.curent_page + 1))
         if self.training_manager.is_page_exist(self.curent_page+1):
             self.swipe_right.setEnabled(True)
         else:

@@ -6,12 +6,14 @@ class TrainingsManager:
     def __init__(self):
         self.n_pages = 0
 
+
     def load_database(self):
-        conn = QtSql.QSqlDatabase.addDatabase('QSQLITE')
+        global conn
+        conn = QtSql.QSqlDatabase.addDatabase('QSQLITE', "con1")
         conn.setDatabaseName("source/workout.db")
         conn.open()
         global cQuery
-        cQuery = QtSql.QSqlQuery()
+        cQuery = QtSql.QSqlQuery(conn)
         cQuery.exec(
             """
             CREATE TABLE workout(

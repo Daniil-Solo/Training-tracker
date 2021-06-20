@@ -14,14 +14,16 @@ class NewWorkoutWindow(QMainWindow):
     def __init__(self, home_page, training_manager):
         super(NewWorkoutWindow, self).__init__()
         self.home_page = home_page
-        self.training_manager = training_manager
         loadUi("new_design/new_training.ui", self)
 
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
-
+        db = QtSql.QSqlDatabase.database('con1')
+        global cQuery
+        cQuery = QtSql.QSqlQuery(db)
         self.dateEdit.setDate(QDate.currentDate())
         self.all_connections()
+
 
     def all_connections(self):
         # закрытие окна
@@ -39,10 +41,11 @@ class NewWorkoutWindow(QMainWindow):
         time_sec = 0
         time_sec += int(w_time1[0])*60*60 + int(w_time1[2])*10*60 + int(w_time1[3])*60 + int(w_time1[5])*10 + int(w_time1[6])
         dist = w_distance1.replace(',','.')
+        km = float(dist)
         if(self.type_dist.currentIndex() == 1):
             km = float(dist)/1000.0
-            w_distance1 = str(km).replace('.',',')
-        c_temp = float(time_sec) / float(km)
+            w_distance1 = str(float(dist)/1000.0).replace('.',',')
+        c_temp = float(time_sec) / km
         if ((c_temp - (c_temp // 60) * 60) < 10):
             w_temp1 = str(int(c_temp // 60)) + ".0" + str(int((c_temp - (c_temp // 60) * 60)))
         else:
@@ -51,8 +54,25 @@ class NewWorkoutWindow(QMainWindow):
         w_heart1 = self.heart.text()
         w_description1 = self.description.toPlainText()
 
+        '''global conn
+        conn = QtSql.QSqlDatabase.addDatabase('QSQLITE', "con1")
+        conn.setDatabaseName("source/workout.db")
+        conn.open()
         global cQuery
-        cQuery = QtSql.QSqlQuery()
+        cQuery = QtSql.QSqlQuery(conn)'''
+
+
+        # check is this a record
+        cQuery.prepare('select min(w_temp) as min from workout where w_distance=:wd')
+        cQuery.bindValue(':wd', w_distance1)
+        if not cQuery.exec_():
+            cQuery.lastError()
+        else:
+            cQuery.next()
+            min_temp = cQuery.value(0)
+            if (w_temp1 < min_temp):
+                print("You have a new record!")
+
         cQuery.prepare(
             """
             INSERT INTO workout (

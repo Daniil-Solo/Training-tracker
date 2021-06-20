@@ -1,5 +1,6 @@
 import sys
 import os
+from PyQt5 import QtSql
 
 from PyQt5.QtCore import Qt
 from PyQt5.uic import loadUi
@@ -18,6 +19,9 @@ class NewRecord(QMainWindow):
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         self.all_connections()
+        db = QtSql.QSqlDatabase.database('con2')
+        global cQuery
+        cQuery = QtSql.QSqlQuery(db)
 
     def all_connections(self):
         # закрытие окна
@@ -25,10 +29,27 @@ class NewRecord(QMainWindow):
         # передвижение окна
         self.header_frame.mouseMoveEvent = self.moveWindow
         # сохранение
-        self.create.clicked.connect(lambda: self.create_new_training())
+        self.create.clicked.connect(lambda: self.create_new_record())
 
-    def create_new_training(self):
+
+
+    def create_new_record(self):
+        w_time1 = self.timeEdit.text()
+        w_distance1 = self.distance.text()
+        cQuery.prepare(
+            """
+            INSERT INTO record (
+                w_time,
+                w_distance,
+            )
+            VALUES (?, ?)
+            """
+        )
+        cQuery.addBindValue(w_time1)
+        cQuery.addBindValue(w_distance1)
+        cQuery.exec()
         # save all info
+
         self.close_goal_window()
 
     def close_goal_window(self):

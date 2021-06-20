@@ -28,6 +28,7 @@ class HomeWindow(QMainWindow):
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         self.training_manager.load_database()
+        self.record_manager.load_records()
         self.curent_page = 0
         self.start_filling()
         self.filling_values()

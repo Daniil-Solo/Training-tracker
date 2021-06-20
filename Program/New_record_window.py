@@ -28,7 +28,22 @@ class NewRecord(QMainWindow):
         self.create.clicked.connect(lambda: self.create_new_training())
 
     def create_new_training(self):
-        # save all info
+        w_time1 = self.timeEdit.text()
+        w_distance1 = self.distance.text()
+        km = w_distance1.replace(',', '.')
+
+        if self.timeEdit.time().second() != 0 or self.timeEdit.time().minute() != 0 or self.timeEdit.time().hour() != 0:
+            pass
+        else:
+            return
+
+        if float(km) == 0.:
+            return
+        else:
+            pass
+
+        # запись рекорда
+
         self.close_goal_window()
 
     def close_goal_window(self):

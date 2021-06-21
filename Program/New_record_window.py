@@ -19,9 +19,7 @@ class NewRecord(QMainWindow):
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         self.all_connections()
-        db = QtSql.QSqlDatabase.database('con2')
-        global cQuery
-        cQuery = QtSql.QSqlQuery(db)
+
 
     def all_connections(self):
         # закрытие окна
@@ -36,19 +34,7 @@ class NewRecord(QMainWindow):
     def create_new_record(self):
         w_time1 = self.timeEdit.text()
         w_distance1 = self.distance.text()
-        cQuery.prepare(
-            """
-            INSERT INTO record (
-                w_time,
-                w_distance,
-            )
-            VALUES (?, ?)
-            """
-        )
-        cQuery.addBindValue(w_time1)
-        cQuery.addBindValue(w_distance1)
-        cQuery.exec()
-        # save all info
+
 
         self.close_goal_window()
 

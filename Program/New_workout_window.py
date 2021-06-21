@@ -19,8 +19,8 @@ class NewWorkoutWindow(QMainWindow):
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         db = QtSql.QSqlDatabase.database('con1')
-        global cQuery
-        cQuery = QtSql.QSqlQuery(db)
+
+        self.cQuery = QtSql.QSqlQuery(db)
         self.dateEdit.setDate(QDate.currentDate())
         self.all_connections()
 
@@ -63,17 +63,17 @@ class NewWorkoutWindow(QMainWindow):
 
 
         # check is this a record
-        cQuery.prepare('select min(w_temp) as min from workout where w_distance=:wd')
-        cQuery.bindValue(':wd', w_distance1)
-        if not cQuery.exec_():
-            cQuery.lastError()
+        self.cQuery.prepare('select min(w_temp) as min from workout where w_distance=:wd')
+        self.cQuery.bindValue(':wd', w_distance1)
+        if not self.cQuery.exec_():
+            self.cQuery.lastError()
         else:
-            cQuery.next()
-            min_temp = cQuery.value(0)
+            self.cQuery.next()
+            min_temp = self.cQuery.value(0)
             if (w_temp1 < min_temp):
                 print("You have a new record!")
 
-        cQuery.prepare(
+        self.cQuery.prepare(
             """
             INSERT INTO workout (
                 w_date,
@@ -86,13 +86,13 @@ class NewWorkoutWindow(QMainWindow):
             VALUES (?, ?, ?, ?, ?, ?)
             """
         )
-        cQuery.addBindValue(w_date1)
-        cQuery.addBindValue(w_time1)
-        cQuery.addBindValue(w_distance1)
-        cQuery.addBindValue(w_temp1)
-        cQuery.addBindValue(w_heart1)
-        cQuery.addBindValue(w_description1)
-        cQuery.exec()
+        self.cQuery.addBindValue(w_date1)
+        self.cQuery.addBindValue(w_time1)
+        self.cQuery.addBindValue(w_distance1)
+        self.cQuery.addBindValue(w_temp1)
+        self.cQuery.addBindValue(w_heart1)
+        self.cQuery.addBindValue(w_description1)
+        self.cQuery.exec()
         self.close_goal_window()
 
     def close_goal_window(self):

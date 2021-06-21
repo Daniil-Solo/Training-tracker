@@ -42,10 +42,14 @@ class TrainingsManager:
         while (cQuery.next()):
             count_str += 1
 
-        print(count_str)
-        print(math.ceil(count_str / 4))
         self.n_pages = math.ceil(count_str / 4)
         return self.n_pages
+
+    def get_last_date(self):
+        cQuery.exec("SELECT w_date from workout")
+        while (cQuery.next()):
+            last = cQuery.value(0)
+        return last
 
     def get_4_trainings(self, page=0):
         # берем из таблицы записи, соответствующие номеру страницы page
@@ -91,13 +95,10 @@ class TrainingsManager:
 
     def is_page_exist(self, page):
         if (page < 0):
-            print("page<0", page)
             return False
         elif (page >= self.get_n_page()):
-            print("page>n", page)
             return False
         else:
-            print("pageT",page)
             return True
         # проверяет, есть ли данная страница в таблице
         # учесть отрицательные значения

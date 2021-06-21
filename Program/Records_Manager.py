@@ -21,7 +21,17 @@ class RecordManager:
     def data_change(self, distance, time):
         self.data_dict[distance] = time
 
-# функция сохранения
+    # функция сохранения
     def save_changes(self):
         with open('source/my_records.json', "w") as write_file:
             json.dump(self.data_dict, write_file)
+
+    def get_list_records(self, order=True):
+        list_records = []
+        for key in self.data_dict:
+            value = self.data_dict[key]
+            item = (float(key), value)
+            list_records.append(item)
+        if order:
+            list_records.sort(key=lambda x: x[0])
+        return list_records

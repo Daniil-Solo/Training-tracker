@@ -29,13 +29,14 @@ color: rgb(255, 255, 255)
 QPushButton{
 }
 QPushButton::hover{
-	border: 0.5px solid rgb(230, 5, 64);
+	border: 1.5px solid rgb(230, 5, 64);
+	border-radius: 10px
 }
 QPushButton::pressed{
 	border: 3px solid rgb(230, 5, 64);
 }</string>
    </property>
-   <widget class="QLabel" name="label">
+   <widget class="QLabel" name="header_frame">
     <property name="geometry">
      <rect>
       <x>0</x>
@@ -60,7 +61,7 @@ QPushButton::pressed{
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="close">
     <property name="geometry">
      <rect>
       <x>387</x>
@@ -70,14 +71,17 @@ QPushButton::pressed{
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(9, 5, 13);</string>
+     <string notr="true">QPushButton{
+	background-color: rgb(9, 5, 13);
+}
+</string>
     </property>
     <property name="text">
      <string/>
     </property>
     <property name="icon">
-     <iconset resource="icons.qrc">
-      <normaloff>:/icons/icons/x.svg</normaloff>:/icons/icons/x.svg</iconset>
+     <iconset>
+      <normaloff>icons/x.svg</normaloff>icons/x.svg</iconset>
     </property>
     <property name="iconSize">
      <size>
@@ -122,7 +126,7 @@ QPushButton::pressed{
      <string>Лучшее время</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_4">
+   <widget class="QLabel" name="distance_1">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -140,7 +144,7 @@ QPushButton::pressed{
      <string>42 км</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_5">
+   <widget class="QLabel" name="time_1">
     <property name="geometry">
      <rect>
       <x>180</x>
@@ -158,7 +162,7 @@ QPushButton::pressed{
      <string>8 ч 23 м 42 с</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_6">
+   <widget class="QLabel" name="number_1">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -179,7 +183,7 @@ QPushButton::pressed{
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="share_1">
     <property name="geometry">
      <rect>
       <x>320</x>
@@ -192,11 +196,11 @@ QPushButton::pressed{
      <string/>
     </property>
     <property name="icon">
-     <iconset resource="icons.qrc">
-      <normaloff>:/icons/icons/share-2.svg</normaloff>:/icons/icons/share-2.svg</iconset>
+     <iconset>
+      <normaloff>icons/share-2.svg</normaloff>icons/share-2.svg</iconset>
     </property>
    </widget>
-   <widget class="QLabel" name="label_7">
+   <widget class="QLabel" name="time_2">
     <property name="geometry">
      <rect>
       <x>180</x>
@@ -214,7 +218,7 @@ QPushButton::pressed{
      <string>8 ч 23 м 42 с</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_8">
+   <widget class="QLabel" name="distance_2">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -232,7 +236,7 @@ QPushButton::pressed{
      <string>42 км</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_9">
+   <widget class="QLabel" name="number_2">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -253,7 +257,7 @@ QPushButton::pressed{
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="share_2">
     <property name="geometry">
      <rect>
       <x>320</x>
@@ -266,11 +270,11 @@ QPushButton::pressed{
      <string/>
     </property>
     <property name="icon">
-     <iconset resource="icons.qrc">
-      <normaloff>:/icons/icons/share-2.svg</normaloff>:/icons/icons/share-2.svg</iconset>
+     <iconset>
+      <normaloff>icons/share-2.svg</normaloff>icons/share-2.svg</iconset>
     </property>
    </widget>
-   <widget class="QLabel" name="label_10">
+   <widget class="QLabel" name="time_3">
     <property name="geometry">
      <rect>
       <x>180</x>
@@ -288,7 +292,7 @@ QPushButton::pressed{
      <string>8 ч 23 м 42 с</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_4">
+   <widget class="QPushButton" name="share_3">
     <property name="geometry">
      <rect>
       <x>320</x>
@@ -301,11 +305,11 @@ QPushButton::pressed{
      <string/>
     </property>
     <property name="icon">
-     <iconset resource="icons.qrc">
-      <normaloff>:/icons/icons/share-2.svg</normaloff>:/icons/icons/share-2.svg</iconset>
+     <iconset>
+      <normaloff>icons/share-2.svg</normaloff>icons/share-2.svg</iconset>
     </property>
    </widget>
-   <widget class="QLabel" name="label_11">
+   <widget class="QLabel" name="number_3">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -326,7 +330,7 @@ QPushButton::pressed{
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="label_12">
+   <widget class="QLabel" name="distance_3">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -360,7 +364,7 @@ QPushButton::pressed{
      <enum>Qt::Vertical</enum>
     </property>
    </widget>
-   <widget class="QLabel" name="label_13">
+   <widget class="QLabel" name="distance_6">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -378,7 +382,7 @@ QPushButton::pressed{
      <string>42 км</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_14">
+   <widget class="QLabel" name="time_6">
     <property name="geometry">
      <rect>
       <x>180</x>
@@ -396,7 +400,7 @@ QPushButton::pressed{
      <string>8 ч 23 м 42 с</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_15">
+   <widget class="QLabel" name="time_4">
     <property name="geometry">
      <rect>
       <x>180</x>
@@ -414,7 +418,7 @@ QPushButton::pressed{
      <string>8 ч 23 м 42 с</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_16">
+   <widget class="QLabel" name="number_5">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -435,7 +439,7 @@ QPushButton::pressed{
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_5">
+   <widget class="QPushButton" name="share_4">
     <property name="geometry">
      <rect>
       <x>320</x>
@@ -448,11 +452,11 @@ QPushButton::pressed{
      <string/>
     </property>
     <property name="icon">
-     <iconset resource="icons.qrc">
-      <normaloff>:/icons/icons/share-2.svg</normaloff>:/icons/icons/share-2.svg</iconset>
+     <iconset>
+      <normaloff>icons/share-2.svg</normaloff>icons/share-2.svg</iconset>
     </property>
    </widget>
-   <widget class="QLabel" name="label_17">
+   <widget class="QLabel" name="time_5">
     <property name="geometry">
      <rect>
       <x>180</x>
@@ -470,7 +474,7 @@ QPushButton::pressed{
      <string>8 ч 23 м 42 с</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_6">
+   <widget class="QPushButton" name="share_5">
     <property name="geometry">
      <rect>
       <x>320</x>
@@ -483,11 +487,11 @@ QPushButton::pressed{
      <string/>
     </property>
     <property name="icon">
-     <iconset resource="icons.qrc">
-      <normaloff>:/icons/icons/share-2.svg</normaloff>:/icons/icons/share-2.svg</iconset>
+     <iconset>
+      <normaloff>icons/share-2.svg</normaloff>icons/share-2.svg</iconset>
     </property>
    </widget>
-   <widget class="QLabel" name="label_18">
+   <widget class="QLabel" name="number_4">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -508,7 +512,7 @@ QPushButton::pressed{
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="label_19">
+   <widget class="QLabel" name="distance_4">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -526,7 +530,7 @@ QPushButton::pressed{
      <string>42 км</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_7">
+   <widget class="QPushButton" name="share_6">
     <property name="geometry">
      <rect>
       <x>320</x>
@@ -539,11 +543,11 @@ QPushButton::pressed{
      <string/>
     </property>
     <property name="icon">
-     <iconset resource="icons.qrc">
-      <normaloff>:/icons/icons/share-2.svg</normaloff>:/icons/icons/share-2.svg</iconset>
+     <iconset>
+      <normaloff>icons/share-2.svg</normaloff>icons/share-2.svg</iconset>
     </property>
    </widget>
-   <widget class="QLabel" name="label_20">
+   <widget class="QLabel" name="number_6">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -564,7 +568,7 @@ QPushButton::pressed{
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="label_21">
+   <widget class="QLabel" name="distance_5">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -582,7 +586,7 @@ QPushButton::pressed{
      <string>42 км</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_22">
+   <widget class="QLabel" name="distance_9">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -600,7 +604,7 @@ QPushButton::pressed{
      <string>42 км</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_23">
+   <widget class="QLabel" name="number_10">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -621,7 +625,7 @@ QPushButton::pressed{
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="label_24">
+   <widget class="QLabel" name="time_7">
     <property name="geometry">
      <rect>
       <x>180</x>
@@ -639,7 +643,7 @@ QPushButton::pressed{
      <string>8 ч 23 м 42 с</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_25">
+   <widget class="QLabel" name="number_9">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -660,7 +664,7 @@ QPushButton::pressed{
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="label_26">
+   <widget class="QLabel" name="distance_7">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -678,7 +682,7 @@ QPushButton::pressed{
      <string>42 км</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_27">
+   <widget class="QLabel" name="time_9">
     <property name="geometry">
      <rect>
       <x>180</x>
@@ -696,7 +700,7 @@ QPushButton::pressed{
      <string>8 ч 23 м 42 с</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_28">
+   <widget class="QLabel" name="distance_10">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -714,7 +718,7 @@ QPushButton::pressed{
      <string>42 км</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_29">
+   <widget class="QLabel" name="time_8">
     <property name="geometry">
      <rect>
       <x>180</x>
@@ -732,7 +736,7 @@ QPushButton::pressed{
      <string>8 ч 23 м 42 с</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_30">
+   <widget class="QLabel" name="number_8">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -753,7 +757,7 @@ QPushButton::pressed{
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QLabel" name="label_31">
+   <widget class="QLabel" name="time_10">
     <property name="geometry">
      <rect>
       <x>180</x>
@@ -771,7 +775,7 @@ QPushButton::pressed{
      <string>8 ч 23 м 42 с</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_8">
+   <widget class="QPushButton" name="share_8">
     <property name="geometry">
      <rect>
       <x>320</x>
@@ -784,11 +788,11 @@ QPushButton::pressed{
      <string/>
     </property>
     <property name="icon">
-     <iconset resource="icons.qrc">
-      <normaloff>:/icons/icons/share-2.svg</normaloff>:/icons/icons/share-2.svg</iconset>
+     <iconset>
+      <normaloff>icons/share-2.svg</normaloff>icons/share-2.svg</iconset>
     </property>
    </widget>
-   <widget class="QLabel" name="label_32">
+   <widget class="QLabel" name="distance_8">
     <property name="geometry">
      <rect>
       <x>80</x>
@@ -806,7 +810,7 @@ QPushButton::pressed{
      <string>42 км</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_9">
+   <widget class="QPushButton" name="share_7">
     <property name="geometry">
      <rect>
       <x>320</x>
@@ -819,11 +823,11 @@ QPushButton::pressed{
      <string/>
     </property>
     <property name="icon">
-     <iconset resource="icons.qrc">
-      <normaloff>:/icons/icons/share-2.svg</normaloff>:/icons/icons/share-2.svg</iconset>
+     <iconset>
+      <normaloff>icons/share-2.svg</normaloff>icons/share-2.svg</iconset>
     </property>
    </widget>
-   <widget class="QLabel" name="label_33">
+   <widget class="QLabel" name="number_7">
     <property name="geometry">
      <rect>
       <x>30</x>
@@ -844,7 +848,7 @@ QPushButton::pressed{
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_10">
+   <widget class="QPushButton" name="share_9">
     <property name="geometry">
      <rect>
       <x>320</x>
@@ -857,11 +861,11 @@ QPushButton::pressed{
      <string/>
     </property>
     <property name="icon">
-     <iconset resource="icons.qrc">
-      <normaloff>:/icons/icons/share-2.svg</normaloff>:/icons/icons/share-2.svg</iconset>
+     <iconset>
+      <normaloff>icons/share-2.svg</normaloff>icons/share-2.svg</iconset>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_11">
+   <widget class="QPushButton" name="share_10">
     <property name="geometry">
      <rect>
       <x>320</x>
@@ -874,10 +878,55 @@ QPushButton::pressed{
      <string/>
     </property>
     <property name="icon">
-     <iconset resource="icons.qrc">
-      <normaloff>:/icons/icons/share-2.svg</normaloff>:/icons/icons/share-2.svg</iconset>
+     <iconset>
+      <normaloff>icons/share-2.svg</normaloff>icons/share-2.svg</iconset>
     </property>
    </widget>
+   <zorder>header_frame</zorder>
+   <zorder>label_2</zorder>
+   <zorder>label_3</zorder>
+   <zorder>distance_1</zorder>
+   <zorder>time_1</zorder>
+   <zorder>number_1</zorder>
+   <zorder>share_1</zorder>
+   <zorder>time_2</zorder>
+   <zorder>distance_2</zorder>
+   <zorder>number_2</zorder>
+   <zorder>share_2</zorder>
+   <zorder>time_3</zorder>
+   <zorder>share_3</zorder>
+   <zorder>number_3</zorder>
+   <zorder>distance_3</zorder>
+   <zorder>verticalScrollBar</zorder>
+   <zorder>distance_6</zorder>
+   <zorder>time_6</zorder>
+   <zorder>time_4</zorder>
+   <zorder>number_5</zorder>
+   <zorder>share_4</zorder>
+   <zorder>time_5</zorder>
+   <zorder>share_5</zorder>
+   <zorder>number_4</zorder>
+   <zorder>distance_4</zorder>
+   <zorder>share_6</zorder>
+   <zorder>number_6</zorder>
+   <zorder>distance_5</zorder>
+   <zorder>distance_9</zorder>
+   <zorder>number_10</zorder>
+   <zorder>time_7</zorder>
+   <zorder>number_9</zorder>
+   <zorder>distance_7</zorder>
+   <zorder>time_9</zorder>
+   <zorder>distance_10</zorder>
+   <zorder>time_8</zorder>
+   <zorder>number_8</zorder>
+   <zorder>time_10</zorder>
+   <zorder>share_8</zorder>
+   <zorder>distance_8</zorder>
+   <zorder>share_7</zorder>
+   <zorder>number_7</zorder>
+   <zorder>share_9</zorder>
+   <zorder>share_10</zorder>
+   <zorder>close</zorder>
   </widget>
  </widget>
  <resources>

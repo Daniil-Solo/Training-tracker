@@ -9,10 +9,7 @@ class TrainingsManager:
     def load_database(self):
         conn = QtSql.QSqlDatabase.addDatabase('QSQLITE')
         conn.setDatabaseName("source/workout.db")
-        if conn.open():
-            print("база данных окрыта")
-        else:
-            print("не открылась, жалко")
+        conn.open()
         global cQuery
         cQuery = QtSql.QSqlQuery()
         cQuery.exec(
@@ -61,7 +58,7 @@ class TrainingsManager:
         train3 = ["Нет информации", "", ""]
         train4 = ["Нет информации", "", ""]
 
-        cQuery.exec("SELECT w_date, w_time, w_distance from workout")
+        cQuery.exec("SELECT w_date, w_time, w_distance from workout ORDER BY w_date")
         page_index = 0
         while (cQuery.next()):
             page_index += 1

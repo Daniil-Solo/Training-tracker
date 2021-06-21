@@ -46,10 +46,13 @@ class TrainingsManager:
         return self.n_pages
 
     def get_last_date(self):
-        cQuery.exec("SELECT w_date from workout")
-        while (cQuery.next()):
-            last = cQuery.value(0)
-        return last
+        try:
+            cQuery.exec("SELECT w_date from workout ORDER BY w_date")
+            while (cQuery.next()):
+                last = cQuery.value(0)
+            return last
+        except:
+            return None
 
     def get_4_trainings(self, page=0):
         # берем из таблицы записи, соответствующие номеру страницы page

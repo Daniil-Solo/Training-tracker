@@ -120,6 +120,7 @@ class HomeWindow(QMainWindow):
         self.clickPosition = event.globalPos()
 
     def filling_values(self):
+        self.update_trainings()
         data = self.my_profile.get_data_dict()
         # установка фото
         filename = self.my_profile.get_photo_path()
@@ -137,11 +138,9 @@ class HomeWindow(QMainWindow):
         else:
             self.user_goal.setText("Нет цели")
         # установка количества дней без пропусков
-        self.day_shot.setText(str(data['nice_days']) + " дней без пропусков")
+        self.day_shot.setText("Количество дней без пропуска: " + str(data['nice_days']))
         # установка рейтинга приложения
         self.set_mark(int(data['raiting_app']))
-
-        self.update_trainings()
 
     def update_trainings(self):
         trainings_places = [[self.date1, self.time1, self.distance1],
@@ -162,20 +161,18 @@ class HomeWindow(QMainWindow):
         else:
             self.swipe_right.setEnabled(False)
 
-        yesterday = QDate.currentDate().addDays(-1).toString('dd.MM.yyyy')
         today = QDate.currentDate().toString('dd.MM.yyyy')
-        self.date4 = self.training_manager.get_last_date()
+        today_train_date = datetime.date(int(today.split('.')[2]), int(today.split('.')[1]),
+                                         int(today.split('.')[0]))
+        last_date = self.training_manager.get_last_date()
+        if last_date is None:
+            return
+        last_train_date = datetime.date(int(last_date.split('.')[2]), int(last_date.split('.')[1]),
+                                        int(last_date.split('.')[0]))
+        date_delta = (today_train_date - last_train_date).days
+        if date_delta >= 2:
+            self.my_profile.data_change('nice_days', 0)
 
-        #изменять значения в словаре
-        #я не умею, сделайте пж
-        data = self.my_profile.get_data_dict()
-        if (yesterday == self.date4 or today == self.date4):
-            #print("last is y or t")
-            data['nice_days'] += 1
-            print(data['nice_days'])
-        else:
-            data['nice_days'] = 0
-            print(data['nice_days'])
 
 
     def move_slider(self, number=5):
@@ -228,7 +225,7 @@ class HomeWindow(QMainWindow):
 
     def create_new_training(self):
         self.setEnabled(False)
-        self.window_new_training = NewWorkoutWindow(self, self.training_manager)
+        self.window_new_training = NewWorkoutWindow(self, self.training_manager, self.my_profile)
         self.window_new_training.show()
 
     def edit_profile(self):

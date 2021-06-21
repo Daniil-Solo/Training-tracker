@@ -1,3 +1,4 @@
+import datetime
 import sys
 import os
 from time import sleep
@@ -12,10 +13,11 @@ from PyQt5 import QtSql
 
 
 class NewWorkoutWindow(QMainWindow):
-    def __init__(self, home_page, training_manager):
+    def __init__(self, home_page, training_manager, profile):
         super(NewWorkoutWindow, self).__init__()
         self.home_page = home_page
         self.training_manager = training_manager
+        self.profile = profile
         loadUi("new_design/new_training.ui", self)
 
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
@@ -31,6 +33,7 @@ class NewWorkoutWindow(QMainWindow):
         self.header_frame.mouseMoveEvent = self.moveWindow
         # создание новой тренировки
         self.create.clicked.connect(lambda: self.cr_new())
+        self.dateEdit.setEnabled(False)
 
     def cr_new(self):
 
@@ -60,7 +63,17 @@ class NewWorkoutWindow(QMainWindow):
         w_heart1 = self.heart.text()
         w_description1 = self.description.toPlainText()
 
-
+        today_train_date = datetime.date(int(w_date1.split('.')[2]), int(w_date1.split('.')[1]), int(w_date1.split('.')[0]))
+        last_date = self.training_manager.get_last_date()
+        if last_date is None:
+            self.profile.data_change('nice_days', 1)
+        else:
+            last_train_date = datetime.date(int(last_date.split('.')[2]), int(last_date.split('.')[1]), int(last_date.split('.')[0]))
+            date_delta = (today_train_date - last_train_date).days
+            if date_delta == 1:
+                current_nice_days = self.profile.get_data_dict()['nice_days']
+                current_nice_days += 1
+                self.profile.data_change('nice_days', current_nice_days)
 
         global cQuery
         cQuery = QtSql.QSqlQuery()

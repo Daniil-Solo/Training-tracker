@@ -20,9 +20,9 @@ class ViewMyRecords(QMainWindow):
 
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
-        self.diactivate_excess_objects(self.n_records)
+        self.deactivate_excess_objects(self.n_records)
         self.all_connections()
-        self.print_records(0, min(10, self.n_records))
+        self.print_records(0, min(8, self.n_records))
 
     def all_connections(self):
         # закрытие окна
@@ -40,8 +40,6 @@ class ViewMyRecords(QMainWindow):
         self.share_6.clicked.connect(lambda: self.share(5))
         self.share_7.clicked.connect(lambda: self.share(6))
         self.share_8.clicked.connect(lambda: self.share(7))
-        self.share_9.clicked.connect(lambda: self.share(8))
-        self.share_10.clicked.connect(lambda: self.share(9))
 
     def share(self, number):
         print(number)
@@ -55,7 +53,7 @@ class ViewMyRecords(QMainWindow):
     def view_records(self):
         value = self.verticalScrollBar.value()
         k = int(value * (self.n_records - 1) / 99)
-        left, right = self.get_index(k, self.n_records, 10)
+        left, right = self.get_index(k, self.n_records, 8)
         if self.old_left != left:
             self.old_left = left
             self.print_records(left, right)
@@ -109,11 +107,11 @@ class ViewMyRecords(QMainWindow):
                 right = k + int(m / 2)
             return left, right
 
-    def diactivate_excess_objects(self, n):
-        if n > 10:
+    def deactivate_excess_objects(self, n):
+        if n > 8:
             return
         self.verticalScrollBar.setEnabled(False)
-        for i in range(n, 10):
+        for i in range(n, 8):
             for object in self.list_objects[i]:
                 object.hide()
 
@@ -126,10 +124,8 @@ class ViewMyRecords(QMainWindow):
         item6 = (self.number_6, self.distance_6, self.time_6, self.share_6)
         item7 = (self.number_7, self.distance_7, self.time_7, self.share_7)
         item8 = (self.number_8, self.distance_8, self.time_8, self.share_8)
-        item9 = (self.number_9, self.distance_9, self.time_9, self.share_9)
-        item10 = (self.number_10, self.distance_10, self.time_10, self.share_10)
-        list_objects = [item1, item2, item3, item4, item5,
-                        item6, item7, item8, item9, item10]
+        list_objects = [item1, item2, item3, item4,
+                        item5, item6, item7, item8]
         return list_objects
 
     def close_goal_window(self):

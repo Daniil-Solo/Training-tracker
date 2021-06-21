@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>415</width>
-    <height>570</height>
+    <height>469</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -354,7 +354,7 @@ QPushButton::pressed{
       <x>370</x>
       <y>50</y>
       <width>20</width>
-      <height>501</height>
+      <height>411</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -586,45 +586,6 @@ QPushButton::pressed{
      <string>42 км</string>
     </property>
    </widget>
-   <widget class="QLabel" name="distance_9">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>470</y>
-      <width>71</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>42 км</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="number_10">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>520</y>
-      <width>31</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>108.</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-    </property>
-   </widget>
    <widget class="QLabel" name="time_7">
     <property name="geometry">
      <rect>
@@ -643,68 +604,11 @@ QPushButton::pressed{
      <string>8 ч 23 м 42 с</string>
     </property>
    </widget>
-   <widget class="QLabel" name="number_9">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>470</y>
-      <width>31</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>107.</string>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-    </property>
-   </widget>
    <widget class="QLabel" name="distance_7">
     <property name="geometry">
      <rect>
       <x>80</x>
       <y>370</y>
-      <width>71</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>42 км</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="time_9">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>470</y>
-      <width>111</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>8 ч 23 м 42 с</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="distance_10">
-    <property name="geometry">
-     <rect>
-      <x>80</x>
-      <y>520</y>
       <width>71</width>
       <height>25</height>
      </rect>
@@ -755,24 +659,6 @@ QPushButton::pressed{
     </property>
     <property name="alignment">
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-    </property>
-   </widget>
-   <widget class="QLabel" name="time_10">
-    <property name="geometry">
-     <rect>
-      <x>180</x>
-      <y>520</y>
-      <width>111</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>10</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>8 ч 23 м 42 с</string>
     </property>
    </widget>
    <widget class="QPushButton" name="share_8">
@@ -848,40 +734,6 @@ QPushButton::pressed{
      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
-   <widget class="QPushButton" name="share_9">
-    <property name="geometry">
-     <rect>
-      <x>320</x>
-      <y>470</y>
-      <width>25</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>icons/share-2.svg</normaloff>icons/share-2.svg</iconset>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="share_10">
-    <property name="geometry">
-     <rect>
-      <x>320</x>
-      <y>520</y>
-      <width>25</width>
-      <height>25</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="icon">
-     <iconset>
-      <normaloff>icons/share-2.svg</normaloff>icons/share-2.svg</iconset>
-    </property>
-   </widget>
    <zorder>header_frame</zorder>
    <zorder>label_2</zorder>
    <zorder>label_3</zorder>
@@ -910,22 +762,14 @@ QPushButton::pressed{
    <zorder>share_6</zorder>
    <zorder>number_6</zorder>
    <zorder>distance_5</zorder>
-   <zorder>distance_9</zorder>
-   <zorder>number_10</zorder>
    <zorder>time_7</zorder>
-   <zorder>number_9</zorder>
    <zorder>distance_7</zorder>
-   <zorder>time_9</zorder>
-   <zorder>distance_10</zorder>
    <zorder>time_8</zorder>
    <zorder>number_8</zorder>
-   <zorder>time_10</zorder>
    <zorder>share_8</zorder>
    <zorder>distance_8</zorder>
    <zorder>share_7</zorder>
    <zorder>number_7</zorder>
-   <zorder>share_9</zorder>
-   <zorder>share_10</zorder>
    <zorder>close</zorder>
   </widget>
  </widget>

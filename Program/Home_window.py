@@ -38,6 +38,7 @@ class HomeWindow(QMainWindow):
         self.setEnabled(True)
         self.filling_values()
         self.my_profile.save_changes()
+        self.record_manager.save_changes()
 
     def all_connection(self):
         # иконка скрыть

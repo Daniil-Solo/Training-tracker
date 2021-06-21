@@ -2,6 +2,7 @@ import json
 import sys
 import os
 import datetime
+import random
 
 from PyQt5.QtCore import Qt, QPropertyAnimation
 from PyQt5.uic import loadUi
@@ -76,6 +77,11 @@ class HomeWindow(QMainWindow):
         self.set_goal.clicked.connect(self.set_goal_function)
         self.all_records.clicked.connect(self.view_my_records)
         self.new_record.clicked.connect(self.create_new_record)
+
+        # ссылки
+        self.git_hub.setText('<a style="color:rgb(230, 5, 64);" href="https://github.com/Daniil-Solo/Training-tracker"> Наш GitHub </a>')
+        self.mail.setText('<a style="color:rgb(230, 5, 64);" href="daniil.solo1723@gmail.com"> Наша почта </a>')
+        self.vk_group.setText('<a style="color:rgb(230, 5, 64);" href="https://vk.com/public205217752"> Наша группа Vk </a>')
 
     def move_left_page(self):
         self.curent_page -= 1
@@ -183,21 +189,26 @@ class HomeWindow(QMainWindow):
     def set_mark(self, n_stars):
         stars = [self.star1, self.star2, self.star3, self.star4, self.star5]
         messages = [
-            "Пожалуйста оцените наше приложение",
-            "Спасибо за Вашу оценку! Мы будем работать над нашими ошибками",
-            "Спасибо за Вашу оценку! Мы будем работать над нашими ошибками",
-            "Спасибо за Вашу оценку! Мы рады, что вам нравится наше приложение",
-            "Спасибо за Вашу оценку! Мы стараемся для Вас!",
-            "Спасибо за Вашу оценку! Мы рады, что вы с нами!"
+            ["Пожалуйста оцените наше приложение", "Пожалуйста оцените наше приложение"],
+            ["Спасибо за Вашу оценку! Мы будем работать над нашими ошибками",
+             "Спасибо за Вашу оценку! Мы постараемся улучшить приложение"],
+            ["Спасибо за Вашу оценку! Мы будем работать над нашими ошибками",
+             "Спасибо за Вашу оценку! Мы постараемся улучшить приложение"],
+            ["Спасибо за Вашу оценку! Мы рады, что вам нравится наше приложение",
+             "Спасибо за Вашу оценку! Приложение будет усовершенствоваться!"],
+            ["Спасибо за Вашу оценку! Мы стараемся для Вас!",
+             "Спасибо за Вашу оценку! Рады стараться!"],
+            ["Спасибо за Вашу оценку! Мы рады, что вы с нами!",
+             "Спасибо за Вашу оценку! Заходите сюда почаще!"]
         ]
         for i in range(5, 0, -1):
             if n_stars >= i:
                 stars[i-1].setIcon(QtGui.QIcon('new_design/icons/star-fill.svg'))
             else:
                 stars[i - 1].setIcon(QtGui.QIcon('new_design/icons/star.svg'))
-                self.thanks_for_raiting.setText(messages[i-1])
+                self.thanks_for_raiting.setText(messages[i-1][random.randint(0, 1)])
         if n_stars == 5:
-            self.thanks_for_raiting.setText(messages[5])
+            self.thanks_for_raiting.setText(messages[5][random.randint(0, 1)])
         self.my_profile.data_change('raiting_app', n_stars)
         self.my_profile.save_changes()
 

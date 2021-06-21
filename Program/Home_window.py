@@ -230,7 +230,7 @@ class HomeWindow(QMainWindow):
 
     def view_my_records(self):
         self.setEnabled(False)
-        self.window_view_my_records = ViewMyRecords(self)
+        self.window_view_my_records = ViewMyRecords(self, self.record_manager)
         self.window_view_my_records.show()
 
     def create_new_record(self):

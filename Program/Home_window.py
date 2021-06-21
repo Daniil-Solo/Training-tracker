@@ -8,15 +8,17 @@ from PyQt5.QtCore import Qt, QPropertyAnimation
 from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets, QtCore, QtGui, QtSvg
 from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow
+from PyQt5.QtCore import QDate, QTime, QDateTime
 
 from My_profile import Profile
 from Edit_profile_window import EditProfile
 from My_records_window import ViewMyRecords
 from New_workout_window import NewWorkoutWindow
-from Program.New_record_window import NewRecord
-from Program.Records_Manager import RecordManager
+from New_record_window import NewRecord
+from Records_Manager import RecordManager
 from Set_goal_window import SetGoal
 from Trainings_Manager import TrainingsManager
+
 
 
 class HomeWindow(QMainWindow):
@@ -86,7 +88,6 @@ class HomeWindow(QMainWindow):
     def move_left_page(self):
         self.curent_page -= 1
         self.update_trainings()
-        print("is left page E = ", self.training_manager.is_page_exist(self.curent_page-1))
         if self.training_manager.is_page_exist(self.curent_page-1):
             self.swipe_left.setEnabled(True)
         else:
@@ -94,7 +95,6 @@ class HomeWindow(QMainWindow):
     def move_right_page(self):
         self.curent_page += 1
         self.update_trainings()
-        print("is right page E = ", self.training_manager.is_page_exist(self.curent_page + 1))
         if self.training_manager.is_page_exist(self.curent_page + 1):
             self.swipe_right.setEnabled(True)
         else:
@@ -152,17 +152,30 @@ class HomeWindow(QMainWindow):
             training_place[0].setText(training_value[0])
             training_place[1].setText(training_value[1])
             training_place[2].setText(training_value[2])
-        print("cp = ", self.curent_page)
-        print("is left page E = ", self.training_manager.is_page_exist(self.curent_page - 1))
         if self.training_manager.is_page_exist(self.curent_page-1):
             self.swipe_left.setEnabled(True)
         else:
             self.swipe_left.setEnabled(False)
-        print("is right page E = ", self.training_manager.is_page_exist(self.curent_page + 1))
         if self.training_manager.is_page_exist(self.curent_page+1):
             self.swipe_right.setEnabled(True)
         else:
             self.swipe_right.setEnabled(False)
+
+        yesterday = QDate.currentDate().addDays(-1).toString('dd.MM.yyyy')
+        today = QDate.currentDate().toString('dd.MM.yyyy')
+        self.date4 = self.training_manager.get_last_date()
+
+        #изменять значения в словаре
+        #я не умею, сделайте пж
+        data = self.my_profile.get_data_dict()
+        if (yesterday == self.date4 or today == self.date4):
+            #print("last is y or t")
+            data['nice_days'] += 1
+            print(data['nice_days'])
+        else:
+            data['nice_days'] = 0
+            print(data['nice_days'])
+
 
     def move_slider(self, number=5):
         self.toolBox.setCurrentIndex(number)

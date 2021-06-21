@@ -52,7 +52,13 @@ class EditProfile(QMainWindow):
         self.profile.data_change('gender', self.gender.currentIndex())
         try:
             weight = float(self.weight.text().replace(',', '.'))
+            if weight <= 0:
+                self.weight.setText("")
+                return
             self.profile.data_change('weight', weight)
+            if self.birthday.dateTime() > QtCore.QDateTime.currentDateTime():
+                self.birthday.setDateTime(QtCore.QDateTime.currentDateTime())
+                return
             self.profile.data_change('birthday', self.birthday.dateTime().toString())
             self.home_page.update()
             self.hide()
@@ -68,8 +74,14 @@ class EditProfile(QMainWindow):
         data = self.profile.get_data_dict()
         self.name.setText(data['name'])
         self.gender.setCurrentIndex(int(data['gender']))
-        self.weight.setText(str(data['weight']))
-        self.birthday.setDateTime(QtCore.QDateTime.fromString(data['birthday']))
+        if data['weight'] is None:
+            self.weight.setText("")
+        else:
+            self.weight.setText(str(data['weight']))
+        if data['birthday'] is None:
+            self.birthday.setDateTime(QtCore.QDateTime.currentDateTime())
+        else:
+            self.birthday.setDateTime(QtCore.QDateTime.fromString(data['birthday']))
 
     def load_photo(self):
         filename = self.profile.get_photo_path()

@@ -56,17 +56,26 @@ class TrainingsManager:
     def day_count(self, today_train_date):
         cQuery.exec("SELECT w_date from workout ORDER BY w_date")
         count_str = 0
-        days = 1
+        days = 0
+        first = True
         while (cQuery.next()):
             count_str += 1
         while (cQuery.previous()):
+            if first:
+                first = False
+                last_date = cQuery.value(0)
+                last_train_date = datetime.date(int(last_date.split('.')[2]), int(last_date.split('.')[1]),
+                                                int(last_date.split('.')[0]))
+                date_delta = (today_train_date - last_train_date).days
+                if date_delta == 0:
+                    days += 1
             last_date = cQuery.value(0)
             last_train_date = datetime.date(int(last_date.split('.')[2]), int(last_date.split('.')[1]),
                                             int(last_date.split('.')[0]))
             date_delta = (today_train_date - last_train_date).days
             if date_delta >= 2:
                 return days
-            elif (date_delta != 0):
+            elif date_delta == 1:
                 today_train_date = last_train_date
                 days += 1
         return days

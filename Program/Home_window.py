@@ -117,11 +117,10 @@ class HomeWindow(QMainWindow):
         menu.exec_(self.mapToGlobal(pos))
 
     def del_action1(self):
-        print("del1")
         w_date = self.date1.text().partition(' ')[2]
         w_time = self.time1.text().partition(' ')[2]
         self.training_manager.del_workout(w_date, w_time)
-
+        self.update_trainings()
 
     def edit_action1(self):
         print("edit1")
@@ -129,21 +128,22 @@ class HomeWindow(QMainWindow):
         w_date = self.date2.text().partition(' ')[2]
         w_time = self.time2.text().partition(' ')[2]
         self.training_manager.del_workout(w_date, w_time)
+        self.update_trainings()
     def edit_action2(self):
         print("edit2")
 
     def del_action3(self):
-        print("del3")
         w_date = self.date3.text().partition(' ')[2]
         w_time = self.time3.text().partition(' ')[2]
         self.training_manager.del_workout(w_date, w_time)
+        self.update_trainings()
     def edit_action3(self):
         print("edit3")
     def del_action4(self):
-        print("del4")
         w_date = self.date4.text().partition(' ')[2]
         w_time = self.time4.text().partition(' ')[2]
         self.training_manager.del_workout(w_date, w_time)
+        self.update_trainings()
     def edit_action4(self):
         print("edit4")
 
@@ -282,9 +282,11 @@ class HomeWindow(QMainWindow):
         last_train_date = datetime.date(int(last_date.split('.')[2]), int(last_date.split('.')[1]),
                                         int(last_date.split('.')[0]))
         date_delta = (today_train_date - last_train_date).days
+
         if date_delta >= 2:
             self.my_profile.data_change('nice_days', 0)
-
+        else:
+            print(self.training_manager.day_count(today_train_date))
 
 
     def move_slider(self, number=5):

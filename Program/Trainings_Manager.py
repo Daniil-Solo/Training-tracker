@@ -35,6 +35,13 @@ class TrainingsManager:
         self.n_pages = math.ceil(count_str/4)
         # записываем в self.n_pages число записей в таблице, деленное на 4
 
+    def del_workout(self, w_date1, w_time1):
+        cQuery.prepare("DELETE FROM workout WHERE w_date=:x and w_time=:y")
+        cQuery.bindValue(':x', w_date1)
+        cQuery.bindValue(':y', w_time1)
+        cQuery.exec()
+
+
     def get_n_page(self):
         #print(self.n_pages)
         cQuery.exec("SELECT id from workout")

@@ -9,6 +9,8 @@ from PyQt5.uic import loadUi
 from PyQt5 import QtWidgets, QtCore, QtGui, QtSvg
 from PyQt5.QtWidgets import QApplication, QWidget, QMainWindow
 from PyQt5.QtCore import QDate, QTime, QDateTime
+from PyQt5.QtWidgets import QApplication, QWidget, QMenu, QListWidget, QVBoxLayout, QAction
+from PyQt5.QtCore import QEvent, Qt
 
 from My_profile import Profile
 from Edit_profile_window import EditProfile
@@ -35,6 +37,115 @@ class HomeWindow(QMainWindow):
         self.start_filling()
         self.filling_values()
         self.all_connection()
+        self.last_w_1.setContextMenuPolicy(Qt.CustomContextMenu)
+        self.last_w_1.customContextMenuRequested.connect(self.wr_context_menu1)
+        self.last_w_1.installEventFilter(self)
+        self.last_w_2.setContextMenuPolicy(Qt.CustomContextMenu)
+        self.last_w_2.customContextMenuRequested.connect(self.wr_context_menu2)
+        self.last_w_2.installEventFilter(self)
+        self.last_w_3.setContextMenuPolicy(Qt.CustomContextMenu)
+        self.last_w_3.customContextMenuRequested.connect(self.wr_context_menu3)
+        self.last_w_3.installEventFilter(self)
+        self.last_w_4.setContextMenuPolicy(Qt.CustomContextMenu)
+        self.last_w_4.customContextMenuRequested.connect(self.wr_context_menu4)
+        self.last_w_4.installEventFilter(self)
+        self.copy_all_action1 = QAction('Удалить', self)
+        self.copy_all_action1.triggered.connect(self.del_action1)
+        self.edit_all_action1 = QAction('Подробнее', self)
+        self.edit_all_action1.triggered.connect(self.edit_action1)
+        self.copy_all_action2 = QAction('Удалить', self)
+        self.copy_all_action2.triggered.connect(self.del_action2)
+        self.edit_all_action2 = QAction('Подробнее', self)
+        self.edit_all_action2.triggered.connect(self.edit_action2)
+        self.copy_all_action3 = QAction('Удалить', self)
+        self.copy_all_action3.triggered.connect(self.del_action3)
+        self.edit_all_action3 = QAction('Подробнее', self)
+        self.edit_all_action3.triggered.connect(self.edit_action3)
+        self.copy_all_action4 = QAction('Удалить', self)
+        self.copy_all_action4.triggered.connect(self.del_action4)
+        self.edit_all_action4 = QAction('Подробнее', self)
+        self.edit_all_action4.triggered.connect(self.edit_action4)
+
+    def eventFilter(self, obj, event):
+        type(obj), type(event)
+        if event.type() == QEvent.ContextMenu and obj is self.last_w_1:
+            menu = QMenu(self)
+            menu.addAction(self.copy_all_action1)
+            menu.addAction(self.edit_all_action1)
+            menu.exec_(event.globalPos())
+            return True
+        elif event.type() == QEvent.ContextMenu and obj is self.last_w_2:
+            menu = QMenu(self)
+            menu.addAction(self.copy_all_action2)
+            menu.addAction(self.edit_all_action2)
+            menu.exec_(event.globalPos())
+            return True
+        elif event.type() == QEvent.ContextMenu and obj is self.last_w_3:
+            menu = QMenu(self)
+            menu.addAction(self.copy_all_action3)
+            menu.addAction(self.edit_all_action3)
+            menu.exec_(event.globalPos())
+            return True
+        elif event.type() == QEvent.ContextMenu and obj is self.last_w_4:
+            menu = QMenu(self)
+            menu.addAction(self.copy_all_action4)
+            menu.addAction(self.edit_all_action4)
+            menu.exec_(event.globalPos())
+            return True
+        return False
+
+
+    def wr_context_menu1(self, pos):
+        menu = QMenu(self)
+        menu.addAction(self.copy_all_action1)
+        menu.addAction(self.edit_all_action1)
+        menu.exec_(self.mapToGlobal(pos))
+    def wr_context_menu2(self, pos):
+        menu = QMenu(self)
+        menu.addAction(self.copy_all_action2)
+        menu.addAction(self.edit_all_action2)
+        menu.exec_(self.mapToGlobal(pos))
+    def wr_context_menu3(self, pos):
+        menu = QMenu(self)
+        menu.addAction(self.copy_all_action3)
+        menu.addAction(self.edit_all_action3)
+        menu.exec_(self.mapToGlobal(pos))
+    def wr_context_menu4(self, pos):
+        menu = QMenu(self)
+        menu.addAction(self.copy_all_action4)
+        menu.addAction(self.edit_all_action4)
+        menu.exec_(self.mapToGlobal(pos))
+
+    def del_action1(self):
+        print("del1")
+        w_date = self.date1.text().partition(' ')[2]
+        w_time = self.time1.text().partition(' ')[2]
+        self.training_manager.del_workout(w_date, w_time)
+
+
+    def edit_action1(self):
+        print("edit1")
+    def del_action2(self):
+        w_date = self.date2.text().partition(' ')[2]
+        w_time = self.time2.text().partition(' ')[2]
+        self.training_manager.del_workout(w_date, w_time)
+    def edit_action2(self):
+        print("edit2")
+
+    def del_action3(self):
+        print("del3")
+        w_date = self.date3.text().partition(' ')[2]
+        w_time = self.time3.text().partition(' ')[2]
+        self.training_manager.del_workout(w_date, w_time)
+    def edit_action3(self):
+        print("edit3")
+    def del_action4(self):
+        print("del4")
+        w_date = self.date4.text().partition(' ')[2]
+        w_time = self.time4.text().partition(' ')[2]
+        self.training_manager.del_workout(w_date, w_time)
+    def edit_action4(self):
+        print("edit4")
 
     def update(self):
         self.setEnabled(True)

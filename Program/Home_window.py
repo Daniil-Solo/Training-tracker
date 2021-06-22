@@ -400,8 +400,8 @@ class HomeWindow(QMainWindow):
         # Установка цитаты
         with open(r"Quotes/Daily_quotes.json", "r") as read_file:
             quote_dict = json.load(read_file)
-        today = datetime.datetime.today().day
-        random_quote = quote_dict[str(today)]
+        number = random.randint(1, 31)
+        random_quote = quote_dict[str(number)]
         self.quote.setText(random_quote['text'] + "\nАвтор: " + random_quote['author'])
         # Установка оценки
         mark = int(self.my_profile.get_data_dict()['raiting_app'])

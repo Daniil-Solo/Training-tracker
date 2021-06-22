@@ -547,7 +547,7 @@ QPushButton::pressed{
                   <x>0</x>
                   <y>0</y>
                   <width>187</width>
-                  <height>331</height>
+                  <height>335</height>
                  </rect>
                 </property>
                 <attribute name="icon">
@@ -666,8 +666,8 @@ QPushButton::pressed{
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>189</width>
-                  <height>331</height>
+                  <width>187</width>
+                  <height>335</height>
                  </rect>
                 </property>
                 <attribute name="icon">
@@ -761,8 +761,8 @@ QPushButton::pressed{
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>189</width>
-                  <height>331</height>
+                  <width>187</width>
+                  <height>335</height>
                  </rect>
                 </property>
                 <attribute name="icon">
@@ -860,8 +860,8 @@ QPushButton::pressed{
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>189</width>
-                  <height>331</height>
+                  <width>187</width>
+                  <height>335</height>
                  </rect>
                 </property>
                 <attribute name="icon">
@@ -897,8 +897,8 @@ QPushButton::pressed{
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>189</width>
-                  <height>331</height>
+                  <width>187</width>
+                  <height>335</height>
                  </rect>
                 </property>
                 <attribute name="icon">
@@ -1030,8 +1030,8 @@ QPushButton::pressed{
                  <rect>
                   <x>0</x>
                   <y>0</y>
-                  <width>189</width>
-                  <height>331</height>
+                  <width>187</width>
+                  <height>335</height>
                  </rect>
                 </property>
                 <attribute name="icon">
@@ -1848,6 +1848,9 @@ QPushButton::pressed{
             <layout class="QGridLayout" name="gridLayout">
              <item row="0" column="0">
               <widget class="QFrame" name="last_w_1">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QFrame{
 border: 2px solid rgb(230, 5, 64);
@@ -1900,6 +1903,9 @@ border-radius: 20px;
              </item>
              <item row="0" column="1">
               <widget class="QFrame" name="frame_23">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="statusTip">
                 <string/>
                </property>
@@ -1958,6 +1964,9 @@ border-radius: 20px;
              </item>
              <item row="1" column="0">
               <widget class="QFrame" name="last_w_3">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QFrame{
 border: 2px solid rgb(230, 5, 64);
@@ -2010,6 +2019,9 @@ border-radius: 20px;
              </item>
              <item row="1" column="1">
               <widget class="QFrame" name="last_w_4">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QFrame{
 border: 2px solid rgb(230, 5, 64);

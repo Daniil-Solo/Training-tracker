@@ -37,6 +37,10 @@ class HomeWindow(QMainWindow):
         self.start_filling()
         self.filling_values()
         self.all_connection()
+        self.context_menu()
+
+
+    def context_menu(self):
         self.last_w_1.setContextMenuPolicy(Qt.CustomContextMenu)
         self.last_w_1.customContextMenuRequested.connect(self.wr_context_menu1)
         self.last_w_1.installEventFilter(self)
@@ -121,7 +125,7 @@ class HomeWindow(QMainWindow):
         w_date = self.date1.text().partition(' ')[2]
         w_time = self.time1.text().partition(' ')[2]
         self.training_manager.del_workout(w_date, w_time)
-
+        self.update_trainings()
 
     def edit_action1(self):
         print("edit1")
@@ -129,6 +133,7 @@ class HomeWindow(QMainWindow):
         w_date = self.date2.text().partition(' ')[2]
         w_time = self.time2.text().partition(' ')[2]
         self.training_manager.del_workout(w_date, w_time)
+        self.update_trainings()
     def edit_action2(self):
         print("edit2")
 
@@ -137,6 +142,7 @@ class HomeWindow(QMainWindow):
         w_date = self.date3.text().partition(' ')[2]
         w_time = self.time3.text().partition(' ')[2]
         self.training_manager.del_workout(w_date, w_time)
+        self.update_trainings()
     def edit_action3(self):
         print("edit3")
     def del_action4(self):
@@ -144,6 +150,7 @@ class HomeWindow(QMainWindow):
         w_date = self.date4.text().partition(' ')[2]
         w_time = self.time4.text().partition(' ')[2]
         self.training_manager.del_workout(w_date, w_time)
+        self.update_trainings()
     def edit_action4(self):
         print("edit4")
 

@@ -42,6 +42,17 @@ class TrainingsManager:
         cQuery.bindValue(':y', w_time1)
         cQuery.exec()
 
+    def view_workout(self, w_date1, w_time1):
+        cQuery.prepare("SELECT w_temp, w_heart, w_description FROM workout WHERE w_date=:x and w_time=:y")
+        cQuery.bindValue(':x', w_date1)
+        cQuery.bindValue(':y', w_time1)
+        cQuery.exec()
+        cQuery.next()
+        temp = cQuery.value(0)
+        heart = cQuery.value(1)
+        description = cQuery.value(2)
+        return temp, heart, description
+
     def day_count(self, today_train_date):
         cQuery.exec("SELECT w_date from workout ORDER BY w_date")
         count_str = 0

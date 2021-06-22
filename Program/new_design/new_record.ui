@@ -55,7 +55,7 @@ color:rgb(255,255,255);
       </font>
      </property>
      <property name="text">
-      <string>RunWihtMe</string>
+      <string>Новый рекорд</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>

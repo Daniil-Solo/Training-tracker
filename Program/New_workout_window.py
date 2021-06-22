@@ -13,11 +13,12 @@ from PyQt5 import QtSql
 
 
 class NewWorkoutWindow(QMainWindow):
-    def __init__(self, home_page, training_manager, profile):
+    def __init__(self, home_page, training_manager, profile, data=None):
         super(NewWorkoutWindow, self).__init__()
         self.home_page = home_page
         self.training_manager = training_manager
         self.profile = profile
+        self.data = data
         loadUi("new_design/new_training.ui", self)
 
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
@@ -25,6 +26,23 @@ class NewWorkoutWindow(QMainWindow):
 
         self.dateEdit.setDate(QDate.currentDate())
         self.all_connections()
+        self.describe_mode()
+
+    def describe_mode(self):
+        if self.data is None:
+            return
+        self.create.hide()
+        w_date, w_time, dist, temp, heart, description = self.data
+        self.dateEdit.setDate(QtCore.QDate(int(w_date.split('.')[2]), int(w_date.split('.')[1]), int(w_date.split('.')[0])))
+        self.timeEdit.setTime(QtCore.QTime(int(w_time.split(':')[0]), int(w_time.split(':')[1]), int(w_time.split(':')[2])))
+        self.distance.setValue(float(dist.replace(',', '.')))
+        self.heart.setValue(float(heart))
+        self.description.setText("Темп: " + str(temp) + "\n" + description)
+        self.dateEdit.setEnabled(False)
+        self.timeEdit.setEnabled(False)
+        self.distance.setEnabled(False)
+        self.heart.setEnabled(False)
+        self.description.setEnabled(False)
 
     def all_connections(self):
         # закрытие окна
@@ -40,6 +58,8 @@ class NewWorkoutWindow(QMainWindow):
         w_date1 = self.dateEdit.text()
         w_time1 = self.timeEdit.text()
         w_distance1 = self.distance.text()
+        w_heart1 = self.heart.text()
+        w_description1 = self.description.toPlainText()
         km = w_distance1.replace(',', '.')
 
         if self.timeEdit.time().second() != 0 or self.timeEdit.time().minute() != 0 or self.timeEdit.time().hour() != 0:
@@ -60,8 +80,6 @@ class NewWorkoutWindow(QMainWindow):
         else:
             w_temp1 = str(int(c_temp // 60)) + "." + str(int((c_temp - (c_temp // 60) * 60)))
 
-        w_heart1 = self.heart.text()
-        w_description1 = self.description.toPlainText()
 
         today_train_date = datetime.date(int(w_date1.split('.')[2]), int(w_date1.split('.')[1]), int(w_date1.split('.')[0]))
         last_date = self.training_manager.get_last_date()

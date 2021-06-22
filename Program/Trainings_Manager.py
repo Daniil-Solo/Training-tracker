@@ -1,6 +1,7 @@
 import PyQt5
 from PyQt5 import QtSql
 import math
+import datetime
 
 class TrainingsManager:
     def __init__(self):
@@ -51,6 +52,39 @@ class TrainingsManager:
         heart = cQuery.value(1)
         description = cQuery.value(2)
         return temp, heart, description
+
+    def day_count(self, today_train_date):
+        cQuery.exec("SELECT w_date from workout ORDER BY w_date")
+        count_str = 0
+        days = 1
+        while (cQuery.next()):
+            count_str += 1
+        while (cQuery.previous()):
+            last_date = cQuery.value(0)
+            last_train_date = datetime.date(int(last_date.split('.')[2]), int(last_date.split('.')[1]),
+                                            int(last_date.split('.')[0]))
+            date_delta = (today_train_date - last_train_date).days
+            if date_delta >= 2:
+                return days
+            elif (date_delta != 0):
+                today_train_date = last_train_date
+                days += 1
+        return days
+
+
+
+        '''
+        today = QDate.currentDate().toString('dd.MM.yyyy')
+        today_train_date = datetime.date(int(today.split('.')[2]), int(today.split('.')[1]),
+                                         int(today.split('.')[0]))
+        last_date = self.training_manager.get_last_date()
+        if last_date is None:
+            return
+        last_train_date = datetime.date(int(last_date.split('.')[2]), int(last_date.split('.')[1]),
+                                        int(last_date.split('.')[0]))
+        date_delta = (today_train_date - last_train_date).days
+        '''
+
 
     def get_n_page(self):
         #print(self.n_pages)

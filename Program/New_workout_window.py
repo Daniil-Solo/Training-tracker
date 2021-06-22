@@ -51,7 +51,7 @@ class NewWorkoutWindow(QMainWindow):
         self.header_frame.mouseMoveEvent = self.moveWindow
         # создание новой тренировки
         self.create.clicked.connect(lambda: self.cr_new())
-        self.dateEdit.setEnabled(False)
+        #self.dateEdit.setEnabled(False)
 
     def cr_new(self):
 

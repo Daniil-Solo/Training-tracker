@@ -324,9 +324,11 @@ class HomeWindow(QMainWindow):
         last_train_date = datetime.date(int(last_date.split('.')[2]), int(last_date.split('.')[1]),
                                         int(last_date.split('.')[0]))
         date_delta = (today_train_date - last_train_date).days
+
         if date_delta >= 2:
             self.my_profile.data_change('nice_days', 0)
-
+        else:
+            print(self.training_manager.day_count(today_train_date))
 
 
     def move_slider(self, number=5):

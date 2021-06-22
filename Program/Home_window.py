@@ -121,38 +121,73 @@ class HomeWindow(QMainWindow):
         menu.exec_(self.mapToGlobal(pos))
 
     def del_action1(self):
-        print("del1")
         w_date = self.date1.text().partition(' ')[2]
         w_time = self.time1.text().partition(' ')[2]
         self.training_manager.del_workout(w_date, w_time)
         self.update_trainings()
 
     def edit_action1(self):
-        print("edit1")
+        if self.date1.text() == "Нет информации":
+            return
+        w_date = self.date1.text().partition(' ')[2]
+        w_time = self.time1.text().partition(' ')[2]
+        dist = self.distance1.text().partition(' ')[2]
+        temp, heart, description = self.training_manager.view_workout(w_date, w_time)
+        self.setEnabled(False)
+        data = [w_date, w_time, dist, temp, heart, description]
+        self.window_new_training = NewWorkoutWindow(self, self.training_manager, self.my_profile, data=data)
+        self.window_new_training.show()
+
     def del_action2(self):
         w_date = self.date2.text().partition(' ')[2]
         w_time = self.time2.text().partition(' ')[2]
         self.training_manager.del_workout(w_date, w_time)
         self.update_trainings()
     def edit_action2(self):
-        print("edit2")
+        if self.date2.text() == "Нет информации":
+            return
+        w_date = self.date2.text().partition(' ')[2]
+        w_time = self.time2.text().partition(' ')[2]
+        dist = self.distance2.text().partition(' ')[2]
+        temp, heart, description = self.training_manager.view_workout(w_date, w_time)
+        self.setEnabled(False)
+        data = [w_date, w_time, dist, temp, heart, description]
+        self.window_new_training = NewWorkoutWindow(self, self.training_manager, self.my_profile, data=data)
+        self.window_new_training.show()
 
     def del_action3(self):
-        print("del3")
         w_date = self.date3.text().partition(' ')[2]
         w_time = self.time3.text().partition(' ')[2]
         self.training_manager.del_workout(w_date, w_time)
         self.update_trainings()
+
     def edit_action3(self):
-        print("edit3")
+        if self.date3.text() == "Нет информации":
+            return
+        w_date = self.date3.text().partition(' ')[2]
+        w_time = self.time3.text().partition(' ')[2]
+        dist = self.distance3.text().partition(' ')[2]
+        temp, heart, description = self.training_manager.view_workout(w_date, w_time)
+        self.setEnabled(False)
+        data = [w_date, w_time, dist, temp, heart, description]
+        self.window_new_training = NewWorkoutWindow(self, self.training_manager, self.my_profile, data=data)
+        self.window_new_training.show()
     def del_action4(self):
-        print("del4")
         w_date = self.date4.text().partition(' ')[2]
         w_time = self.time4.text().partition(' ')[2]
         self.training_manager.del_workout(w_date, w_time)
         self.update_trainings()
     def edit_action4(self):
-        print("edit4")
+        if self.date4.text() == "Нет информации":
+            return
+        w_date = self.date4.text().partition(' ')[2]
+        w_time = self.time4.text().partition(' ')[2]
+        dist = self.distance4.text().partition(' ')[2]
+        temp, heart, description = self.training_manager.view_workout(w_date, w_time)
+        self.setEnabled(False)
+        data = [w_date, w_time, dist, temp, heart, description]
+        self.window_new_training = NewWorkoutWindow(self, self.training_manager, self.my_profile, data=data)
+        self.window_new_training.show()
 
     def update(self):
         self.setEnabled(True)

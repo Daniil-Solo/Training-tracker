@@ -48,7 +48,11 @@ class EditProfile(QMainWindow):
         self.photo_label.setPixmap(pixmap)
 
     def save_data(self):
-        self.profile.data_change('name', self.name.text())
+        if self.name.text() == "":
+            return
+        else:
+            self.profile.data_change('name', self.name.text())
+
         self.profile.data_change('gender', self.gender.currentIndex())
         try:
             weight = float(self.weight.text().replace(',', '.'))

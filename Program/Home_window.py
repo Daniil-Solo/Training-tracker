@@ -24,7 +24,7 @@ from Trainings_Manager import TrainingsManager
 class HomeWindow(QMainWindow):
     def __init__(self):
         super(HomeWindow, self).__init__()
-        loadUi("new_design/new_interface.ui", self)
+        loadUi("new_design/new_interface_without_excess.ui", self)
         self.my_profile = Profile()
         self.training_manager = TrainingsManager()
         self.record_manager = RecordManager()
@@ -41,6 +41,7 @@ class HomeWindow(QMainWindow):
         self.filling_values()
         self.my_profile.save_changes()
         self.record_manager.save_changes()
+
 
     def all_connection(self):
         # иконка скрыть

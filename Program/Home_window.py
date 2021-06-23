@@ -209,6 +209,9 @@ class HomeWindow(QMainWindow):
         self.exit_btn.clicked.connect(lambda: self.close())
         # передвижение окна
         self.header_frame.mouseMoveEvent = self.moveWindow
+        # to share
+        self.share_days.clicked.connect(self.to_share_d)
+        self.share_goal.clicked.connect(self.to_share_g)
 
         # Движение слайдера: общее движение и отдельное для каждой иконки
         self.open_left.clicked.connect(lambda: self.move_slider())
@@ -242,6 +245,22 @@ class HomeWindow(QMainWindow):
         self.git_hub.setText('<a style="color:rgb(230, 5, 64);" href="https://github.com/Daniil-Solo/Training-tracker"> Наш GitHub </a>')
         self.mail.setText('<a style="color:rgb(230, 5, 64);" href="daniil.solo1723@gmail.com"> Наша почта </a>')
         self.vk_group.setText('<a style="color:rgb(230, 5, 64);" href="https://vk.com/public205217752"> Наша группа Vk </a>')
+
+    def to_share_d(self):
+        today_train_date = datetime.date.today()
+        days = self.training_manager.day_count(today_train_date)
+        c = QApplication.clipboard()
+        text_r = "Я занимаюсь спортом {0} дней без пропуска вместе с приложением RunWithMe!".format(days)
+        if c != None:
+            c.setText(text_r)
+
+    def to_share_g(self):
+        goal = self.user_goal.text()
+        c = QApplication.clipboard()
+        text_r = "Я иду к достижению цели {0} вместе с приложением RunWithMe!".format(goal.partition(' ')[2])
+        if c != None:
+            c.setText(text_r)
+
 
     def move_left_page(self):
         self.curent_page -= 1

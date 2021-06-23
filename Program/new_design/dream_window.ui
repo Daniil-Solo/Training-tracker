@@ -27,7 +27,7 @@ color: rgb(255, 255, 255)</string>
       <x>0</x>
       <y>0</y>
       <width>451</width>
-      <height>25</height>
+      <height>28</height>
      </rect>
     </property>
     <property name="font">
@@ -48,11 +48,14 @@ color: rgb(255, 255, 255)</string>
    <widget class="QPushButton" name="close">
     <property name="geometry">
      <rect>
-      <x>415</x>
-      <y>0</y>
-      <width>25</width>
-      <height>25</height>
+      <x>412</x>
+      <y>2</y>
+      <width>26</width>
+      <height>26</height>
      </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{
@@ -123,7 +126,7 @@ QTabBar::tab:!selected {
 }</string>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="NewRecord_tab">
      <attribute name="title">
@@ -270,6 +273,9 @@ QTabBar::tab:!selected {
         <height>41</height>
        </rect>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="styleSheet">
        <string notr="true">QPushButton{
 	border: 1.5px solid rgb(230, 5, 64);
@@ -373,6 +379,9 @@ QPushButton::pressed{
         <height>41</height>
        </rect>
       </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
       <property name="styleSheet">
        <string notr="true">QPushButton{
 	border: 1.5px solid rgb(230, 5, 64);
@@ -474,6 +483,9 @@ QPushButton::pressed{
         <width>421</width>
         <height>41</height>
        </rect>
+      </property>
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
        <string notr="true">QPushButton{

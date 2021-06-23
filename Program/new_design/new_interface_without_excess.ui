@@ -118,6 +118,9 @@ QPushButton::pressed{
           </property>
           <item>
            <widget class="QPushButton" name="my_profile_btn">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -166,6 +169,9 @@ QPushButton::pressed{
           </item>
           <item>
            <widget class="QPushButton" name="workouts_btn">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -205,6 +211,9 @@ QPushButton::pressed{
           </item>
           <item>
            <widget class="QPushButton" name="my_records_btn">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -244,6 +253,9 @@ QPushButton::pressed{
           </item>
           <item>
            <widget class="QPushButton" name="connect_developers_btn">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -283,6 +295,9 @@ QPushButton::pressed{
           </item>
           <item>
            <widget class="QPushButton" name="settings_btn">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -322,6 +337,9 @@ QPushButton::pressed{
           </item>
           <item>
            <widget class="QPushButton" name="give_mark_btn">
+            <property name="cursor">
+             <cursorShape>PointingHandCursor</cursorShape>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -509,6 +527,9 @@ QPushButton::pressed{
                  <height>0</height>
                 </size>
                </property>
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="styleSheet">
                 <string notr="true">QToolBox{	
 	background-color: rgb(24, 24, 36);
@@ -536,7 +557,7 @@ QPushButton::pressed{
                 <enum>QFrame::Plain</enum>
                </property>
                <property name="currentIndex">
-                <number>0</number>
+                <number>5</number>
                </property>
                <property name="tabSpacing">
                 <number>12</number>
@@ -617,6 +638,9 @@ QPushButton::pressed{
                         <height>40</height>
                        </size>
                       </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
+                      </property>
                       <property name="acceptDrops">
                        <bool>false</bool>
                       </property>
@@ -650,6 +674,9 @@ QPushButton::pressed{
                         <width>16777215</width>
                         <height>40</height>
                        </size>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
                        <string>Поставить цель</string>
@@ -709,6 +736,9 @@ QPushButton::pressed{
                      <width>16777215</width>
                      <height>40</height>
                     </size>
+                   </property>
+                   <property name="cursor">
+                    <cursorShape>PointingHandCursor</cursorShape>
                    </property>
                    <property name="mouseTracking">
                     <bool>false</bool>
@@ -826,6 +856,9 @@ QPushButton::pressed{
                         <height>40</height>
                        </size>
                       </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
+                      </property>
                       <property name="text">
                        <string>Новый рекорд</string>
                       </property>
@@ -844,6 +877,9 @@ QPushButton::pressed{
                         <width>16777215</width>
                         <height>40</height>
                        </size>
+                      </property>
+                      <property name="cursor">
+                       <cursorShape>PointingHandCursor</cursorShape>
                       </property>
                       <property name="text">
                        <string>Все рекорды</string>
@@ -1122,6 +1158,9 @@ QPushButton::pressed{
                        </property>
                        <item>
                         <widget class="QPushButton" name="star1">
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">QPushButton::hover{
 	border: 2px solid rgb(230, 5, 64);
@@ -1139,6 +1178,9 @@ QPushButton::pressed{
                        </item>
                        <item>
                         <widget class="QPushButton" name="star2">
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">QPushButton::hover{
 	border: 2px solid rgb(230, 5, 64);
@@ -1156,6 +1198,9 @@ QPushButton::pressed{
                        </item>
                        <item>
                         <widget class="QPushButton" name="star3">
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">QPushButton::hover{
 	border: 2px solid rgb(230, 5, 64);
@@ -1173,6 +1218,9 @@ QPushButton::pressed{
                        </item>
                        <item>
                         <widget class="QPushButton" name="star4">
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">QPushButton::hover{
 	border: 2px solid rgb(230, 5, 64);
@@ -1190,6 +1238,9 @@ QPushButton::pressed{
                        </item>
                        <item>
                         <widget class="QPushButton" name="star5">
+                         <property name="cursor">
+                          <cursorShape>PointingHandCursor</cursorShape>
+                         </property>
                          <property name="styleSheet">
                           <string notr="true">QPushButton::hover{
 	border: 2px solid rgb(230, 5, 64);
@@ -1381,12 +1432,21 @@ QPushButton::pressed{
              </property>
              <item>
               <widget class="QPushButton" name="open_left">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="text">
                 <string/>
                </property>
                <property name="icon">
                 <iconset>
                  <normaloff>icons/chevrons-right.svg</normaloff>icons/chevrons-right.svg</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>25</width>
+                 <height>25</height>
+                </size>
                </property>
               </widget>
              </item>
@@ -1421,7 +1481,7 @@ QPushButton::pressed{
               <widget class="QLabel" name="app_name">
                <property name="font">
                 <font>
-                 <pointsize>10</pointsize>
+                 <pointsize>12</pointsize>
                 </font>
                </property>
                <property name="styleSheet">
@@ -1461,6 +1521,9 @@ QPushButton::pressed{
              </property>
              <item>
               <widget class="QPushButton" name="wrap">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="text">
                 <string/>
                </property>
@@ -1468,10 +1531,19 @@ QPushButton::pressed{
                 <iconset>
                  <normaloff>icons/arrow-down-left.svg</normaloff>icons/arrow-down-left.svg</iconset>
                </property>
+               <property name="iconSize">
+                <size>
+                 <width>25</width>
+                 <height>25</height>
+                </size>
+               </property>
               </widget>
              </item>
              <item>
               <widget class="QPushButton" name="maximize">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="text">
                 <string/>
                </property>
@@ -1479,16 +1551,31 @@ QPushButton::pressed{
                 <iconset>
                  <normaloff>icons/maximize-2.svg</normaloff>icons/maximize-2.svg</iconset>
                </property>
+               <property name="iconSize">
+                <size>
+                 <width>25</width>
+                 <height>25</height>
+                </size>
+               </property>
               </widget>
              </item>
              <item>
               <widget class="QPushButton" name="close">
+               <property name="cursor">
+                <cursorShape>PointingHandCursor</cursorShape>
+               </property>
                <property name="text">
                 <string/>
                </property>
                <property name="icon">
                 <iconset>
                  <normaloff>icons/x.svg</normaloff>icons/x.svg</iconset>
+               </property>
+               <property name="iconSize">
+                <size>
+                 <width>25</width>
+                 <height>25</height>
+                </size>
                </property>
               </widget>
              </item>
@@ -1593,21 +1680,6 @@ QPushButton::pressed{
                 <enum>QFrame::Raised</enum>
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_24">
-                <property name="spacing">
-                 <number>0</number>
-                </property>
-                <property name="leftMargin">
-                 <number>0</number>
-                </property>
-                <property name="topMargin">
-                 <number>0</number>
-                </property>
-                <property name="rightMargin">
-                 <number>0</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>0</number>
-                </property>
                 <item>
                  <widget class="QLabel" name="user_name">
                   <property name="font">
@@ -1670,6 +1742,9 @@ QPushButton::pressed{
                        <height>16777215</height>
                       </size>
                      </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
                      <property name="text">
                       <string/>
                      </property>
@@ -1683,15 +1758,68 @@ QPushButton::pressed{
                  </widget>
                 </item>
                 <item>
-                 <widget class="QLabel" name="user_goal">
-                  <property name="font">
-                   <font>
-                    <pointsize>10</pointsize>
-                   </font>
+                 <widget class="QFrame" name="frame_15">
+                  <property name="frameShape">
+                   <enum>QFrame::StyledPanel</enum>
                   </property>
-                  <property name="text">
-                   <string>Цель: 10 дней без пропуска</string>
+                  <property name="frameShadow">
+                   <enum>QFrame::Raised</enum>
                   </property>
+                  <layout class="QHBoxLayout" name="horizontalLayout_14">
+                   <property name="spacing">
+                    <number>0</number>
+                   </property>
+                   <property name="leftMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
+                   <property name="bottomMargin">
+                    <number>0</number>
+                   </property>
+                   <item>
+                    <widget class="QLabel" name="user_goal">
+                     <property name="font">
+                      <font>
+                       <pointsize>10</pointsize>
+                      </font>
+                     </property>
+                     <property name="text">
+                      <string>Цель: 10 дней без пропуска</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="share_goal">
+                     <property name="minimumSize">
+                      <size>
+                       <width>30</width>
+                       <height>0</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>30</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="cursor">
+                      <cursorShape>PointingHandCursor</cursorShape>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="icon">
+                      <iconset>
+                       <normaloff>icons/share-2.svg</normaloff>icons/share-2.svg</iconset>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
                  </widget>
                 </item>
                 <item>
@@ -1766,6 +1894,9 @@ QPushButton::pressed{
                           <height>16777215</height>
                          </size>
                         </property>
+                        <property name="cursor">
+                         <cursorShape>PointingHandCursor</cursorShape>
+                        </property>
                         <property name="text">
                          <string/>
                         </property>
@@ -1816,6 +1947,9 @@ QPushButton::pressed{
                       </property>
                       <item alignment="Qt::AlignBottom">
                        <widget class="QPushButton" name="swipe_right">
+                        <property name="cursor">
+                         <cursorShape>PointingHandCursor</cursorShape>
+                        </property>
                         <property name="text">
                          <string/>
                         </property>
@@ -2126,7 +2260,7 @@ border-radius: 20px;
              <property name="bottomMargin">
               <number>0</number>
              </property>
-             <item>
+             <item alignment="Qt::AlignTop">
               <widget class="QLabel" name="version">
                <property name="text">
                 <string>Версия 2.0</string>

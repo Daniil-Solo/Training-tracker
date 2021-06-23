@@ -70,6 +70,9 @@ QPushButton::pressed{
       <height>25</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
     <property name="styleSheet">
      <string notr="true">QPushButton{
 	background-color: rgb(9, 5, 13);
@@ -192,6 +195,9 @@ QPushButton::pressed{
       <height>25</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
     <property name="text">
      <string/>
     </property>
@@ -266,6 +272,9 @@ QPushButton::pressed{
       <height>25</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
     <property name="text">
      <string/>
     </property>
@@ -300,6 +309,9 @@ QPushButton::pressed{
       <width>25</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="text">
      <string/>
@@ -448,6 +460,9 @@ QPushButton::pressed{
       <height>25</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
     <property name="text">
      <string/>
     </property>
@@ -482,6 +497,9 @@ QPushButton::pressed{
       <width>25</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="text">
      <string/>
@@ -538,6 +556,9 @@ QPushButton::pressed{
       <width>25</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="text">
      <string/>
@@ -670,6 +691,9 @@ QPushButton::pressed{
       <height>25</height>
      </rect>
     </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
+    </property>
     <property name="text">
      <string/>
     </property>
@@ -704,6 +728,9 @@ QPushButton::pressed{
       <width>25</width>
       <height>25</height>
      </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>PointingHandCursor</cursorShape>
     </property>
     <property name="text">
      <string/>

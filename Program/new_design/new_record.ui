@@ -70,6 +70,9 @@ color:rgb(255,255,255);
        <height>31</height>
       </rect>
      </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
      <property name="styleSheet">
       <string notr="true">QPushButton{
 	background-color: rgb(9, 5, 13);

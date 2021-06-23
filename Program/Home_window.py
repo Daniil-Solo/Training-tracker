@@ -124,7 +124,7 @@ class HomeWindow(QMainWindow):
         w_date = self.date1.text().partition(' ')[2]
         w_time = self.time1.text().partition(' ')[2]
         self.training_manager.del_workout(w_date, w_time)
-        self.update_trainings()
+        self.update()
 
     def edit_action1(self):
         if self.date1.text() == "Нет информации":
@@ -142,7 +142,8 @@ class HomeWindow(QMainWindow):
         w_date = self.date2.text().partition(' ')[2]
         w_time = self.time2.text().partition(' ')[2]
         self.training_manager.del_workout(w_date, w_time)
-        self.update_trainings()
+        self.update()
+
     def edit_action2(self):
         if self.date2.text() == "Нет информации":
             return
@@ -159,7 +160,7 @@ class HomeWindow(QMainWindow):
         w_date = self.date3.text().partition(' ')[2]
         w_time = self.time3.text().partition(' ')[2]
         self.training_manager.del_workout(w_date, w_time)
-        self.update_trainings()
+        self.update()
 
     def edit_action3(self):
         if self.date3.text() == "Нет информации":
@@ -172,11 +173,13 @@ class HomeWindow(QMainWindow):
         data = [w_date, w_time, dist, temp, heart, description]
         self.window_new_training = NewWorkoutWindow(self, self.training_manager, self.my_profile, data=data)
         self.window_new_training.show()
+
     def del_action4(self):
         w_date = self.date4.text().partition(' ')[2]
         w_time = self.time4.text().partition(' ')[2]
         self.training_manager.del_workout(w_date, w_time)
-        self.update_trainings()
+        self.update()
+
     def edit_action4(self):
         if self.date4.text() == "Нет информации":
             return
@@ -315,20 +318,9 @@ class HomeWindow(QMainWindow):
         else:
             self.swipe_right.setEnabled(False)
 
-        today = QDate.currentDate().toString('dd.MM.yyyy')
-        today_train_date = datetime.date(int(today.split('.')[2]), int(today.split('.')[1]),
-                                         int(today.split('.')[0]))
-        last_date = self.training_manager.get_last_date()
-        if last_date is None:
-            return
-        last_train_date = datetime.date(int(last_date.split('.')[2]), int(last_date.split('.')[1]),
-                                        int(last_date.split('.')[0]))
-        date_delta = (today_train_date - last_train_date).days
-
-        if date_delta >= 2:
-            self.my_profile.data_change('nice_days', 0)
-        else:
-            print(self.training_manager.day_count(today_train_date))
+        today_train_date = datetime.date.today()
+        nice_days = self.training_manager.day_count(today_train_date)
+        self.my_profile.data_change('nice_days', nice_days)
 
 
     def move_slider(self, number=5):
@@ -408,8 +400,8 @@ class HomeWindow(QMainWindow):
         # Установка цитаты
         with open(r"Quotes/Daily_quotes.json", "r") as read_file:
             quote_dict = json.load(read_file)
-        today = datetime.datetime.today().day
-        random_quote = quote_dict[str(today)]
+        number = random.randint(1, 31)
+        random_quote = quote_dict[str(number)]
         self.quote.setText(random_quote['text'] + "\nАвтор: " + random_quote['author'])
         # Установка оценки
         mark = int(self.my_profile.get_data_dict()['raiting_app'])

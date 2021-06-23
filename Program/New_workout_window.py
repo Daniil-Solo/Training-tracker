@@ -51,7 +51,6 @@ class NewWorkoutWindow(QMainWindow):
         self.header_frame.mouseMoveEvent = self.moveWindow
         # создание новой тренировки
         self.create.clicked.connect(lambda: self.cr_new())
-        #self.dateEdit.setEnabled(False)
 
     def cr_new(self):
 
@@ -72,8 +71,7 @@ class NewWorkoutWindow(QMainWindow):
         else:
             pass
 
-        time_sec = 0
-        time_sec += int(w_time1[0])*60*60 + int(w_time1[2])*10*60 + int(w_time1[3])*60 + int(w_time1[5])*10 + int(w_time1[6])
+        time_sec = self.timeEdit.time().second() + self.timeEdit.time().minute()*60 + self.timeEdit.time().hour()*3600
         c_temp = float(time_sec) / float(km)
         if ((c_temp - (c_temp // 60) * 60) < 10):
             w_temp1 = str(int(c_temp // 60)) + ".0" + str(int((c_temp - (c_temp // 60) * 60)))

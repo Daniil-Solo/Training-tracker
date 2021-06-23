@@ -52,7 +52,7 @@ class SetGoal(QMainWindow):
             self.r_ready = False
             return
         try:
-            check_dist = float(distance)
+            check_dist = float(distance.replace(',', '.'))
             is_m = self.dist_val.currentIndex()
             time = self.time.dateTime().time()
             hour = time.hour()
@@ -72,7 +72,7 @@ class SetGoal(QMainWindow):
                 goal_name += "м "
             else:
                 goal_name += "км "
-                distance = float(distance) * 1000
+                distance = check_dist * 1000
             goal_name += "за "
             if hour:
                 goal_name += str(hour) + " часов "
@@ -84,7 +84,7 @@ class SetGoal(QMainWindow):
             self.goal['type'] = 'record'
             self.goal['values'] = []
             self.goal['values'].append(time.toString())
-            self.goal['values'].append(float(distance))
+            self.goal['values'].append(check_dist)
             self.goal_name_r.setPlaceholderText(goal_name)
             self.r_ready = True
         except:
@@ -101,7 +101,7 @@ class SetGoal(QMainWindow):
             self.w_ready = False
             return
         try:
-            check_weight = float(weight)
+            check_weight = float(weight.replace(',', '.'))
 
             if check_weight <= 0:
                 self.goal_name_w.setPlaceholderText("Вес должен быть больше 0")
@@ -111,7 +111,7 @@ class SetGoal(QMainWindow):
             self.goal['title'] = goal_name
             self.goal['weight'] = 'record'
             self.goal['values'] = []
-            self.goal['values'].append(float(weight))
+            self.goal['values'].append(float(weight.replace(',', '.')))
             self.goal_name_w.setPlaceholderText(goal_name)
             self.w_ready = True
         except:
@@ -127,7 +127,7 @@ class SetGoal(QMainWindow):
             self.v_ready = False
             return
         try:
-            check_days = float(nice_days)
+            check_days = int(nice_days)
 
             if check_days <= 0:
                 self.goal_name_v.setPlaceholderText("Число дней должно быть больше 0")
@@ -142,6 +142,7 @@ class SetGoal(QMainWindow):
             self.v_ready = True
         except:
             self.nice_days.setText("")
+            self.goal_name_v.setPlaceholderText("Число дней должно быть целым")
             self.v_ready = False
             return
 

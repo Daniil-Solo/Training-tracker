@@ -206,7 +206,7 @@ class HomeWindow(QMainWindow):
         self.maximize.clicked.connect(self.restore_or_maximize_window)
         # иконка закрыть
         self.close.clicked.connect(lambda: self.close())
-        self.exit_btn.clicked.connect(lambda: self.close())
+        self.exit_btn.clicked.connect(lambda: self.clean_data())
         # передвижение окна
         self.header_frame.mouseMoveEvent = self.moveWindow
         # to share
@@ -245,6 +245,12 @@ class HomeWindow(QMainWindow):
         self.git_hub.setText('<a style="color:rgb(230, 5, 64);" href="https://github.com/Daniil-Solo/Training-tracker"> Наш GitHub </a>')
         self.mail.setText('<a style="color:rgb(230, 5, 64);" href="daniil.solo1723@gmail.com"> Наша почта </a>')
         self.vk_group.setText('<a style="color:rgb(230, 5, 64);" href="https://vk.com/public205217752"> Наша группа Vk </a>')
+
+    def clean_data(self):
+        self.training_manager.delete_all()
+        self.my_profile.delete_all()
+        self.record_manager.delete_all()
+        self.update()
 
     def to_share_d(self):
         today_train_date = datetime.date.today()
@@ -311,10 +317,16 @@ class HomeWindow(QMainWindow):
         # установка цели
         if data['goal']['title'] is not None:
             self.user_goal.setText("Цель: " + data['goal']['title'])
+            self.share_goal.setEnabled(True)
         else:
             self.user_goal.setText("Нет цели")
+            self.share_goal.setEnabled(False)
         # установка количества дней без пропусков
         self.day_shot.setText("Количество дней без пропуска: " + str(data['nice_days']))
+        if data['nice_days'] == 0:
+            self.share_days.setEnabled(False)
+        else:
+            self.share_days.setEnabled(True)
         # установка рейтинга приложения
         self.set_mark(int(data['raiting_app']))
 

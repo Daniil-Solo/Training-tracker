@@ -42,12 +42,14 @@ class ViewMyRecords(QMainWindow):
         self.share_8.clicked.connect(lambda: self.share(7))
 
     def share(self, number):
-        print(number)
         index = self.old_left + number
         record = self.list_records[index]
         distance_text = self.get_distance_text(record[0])
         time_text = record[1]
-        print(distance_text, time_text)
+        c = QApplication.clipboard()
+        text_r = "Я достиг нового рекорда: {0} за {1} вместе с приложением RunWithMe! Попробуй побить мой рекорд!".format(distance_text,time_text)
+        if c != None:
+            c.setText(text_r)
         # сформировать share
 
     def view_records(self):

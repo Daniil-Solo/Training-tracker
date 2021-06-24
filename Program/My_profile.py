@@ -29,6 +29,27 @@ class Profile:
         self.load_data()
         self.set_photo()
 
+    def delete_all(self):
+        self.data_dict = {
+            'name': None,
+            'gender': 0,
+            'weight': None,
+            'birthday': None,
+
+            'photo_path': 'source/default_photo.jpg',
+
+            'nice_days': 0,
+            'goal':
+                {
+                    'title': None,
+                    'type': None,
+                    'values': None
+                },
+
+            'raiting_app': 0
+
+        }
+
 # примитивные функции
     def get_data_dict(self):
         return self.data_dict

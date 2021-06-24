@@ -8,6 +8,9 @@ class RecordManager:
         self.data_dict = dict()
         self.load_data()
 
+    def delete_all(self):
+        self.data_dict = {}
+
     # функции-загрузчики
     def load_data(self):
         if os.path.exists('source/my_records.json'):

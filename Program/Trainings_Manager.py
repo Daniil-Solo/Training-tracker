@@ -28,6 +28,32 @@ class TrainingsManager:
         )
         # открываем таблицу, если её нет, то создаем
 
+    def delete_all(self):
+
+        conn = QtSql.QSqlDatabase.addDatabase('QSQLITE')
+        conn.setDatabaseName("source/workout.db")
+        conn.open()
+        global cQuery
+        cQuery = QtSql.QSqlQuery()
+        cQuery.exec(
+            """
+            DELETE FROM workout
+            """
+        )
+        cQuery.exec(
+            """
+            CREATE TABLE workout(
+                id INTEGER PRIMARY KEY AUTOINCREMENT UNIQUE NOT NULL,
+                w_date TEXT,
+                w_time TEXT,
+                w_distance REAL,
+                w_temp TEXT,
+                w_heart INT,
+                w_description TEXT
+            )
+            """
+        )
+
     def update_n_pages(self):
         cQuery.exec("SELECT id from workout")
         count_str = 0
@@ -81,18 +107,6 @@ class TrainingsManager:
         return days
 
 
-
-        '''
-        today = QDate.currentDate().toString('dd.MM.yyyy')
-        today_train_date = datetime.date(int(today.split('.')[2]), int(today.split('.')[1]),
-                                         int(today.split('.')[0]))
-        last_date = self.training_manager.get_last_date()
-        if last_date is None:
-            return
-        last_train_date = datetime.date(int(last_date.split('.')[2]), int(last_date.split('.')[1]),
-                                        int(last_date.split('.')[0]))
-        date_delta = (today_train_date - last_train_date).days
-        '''
 
 
     def get_n_page(self):

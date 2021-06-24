@@ -77,7 +77,7 @@ class ViewMyRecords(QMainWindow):
             time = record[1]
             object = self.list_objects[i]
             number_label = object[0]
-            number_label.setText(str(left + i))
+            number_label.setText(str(left + i + 1))
             distance_label = object[1]
             distance_label.setText(self.get_distance_text(distance))
             time_label = object[2]

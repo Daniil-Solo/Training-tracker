@@ -568,7 +568,7 @@ QPushButton::pressed{
                   <x>0</x>
                   <y>0</y>
                   <width>187</width>
-                  <height>335</height>
+                  <height>325</height>
                  </rect>
                 </property>
                 <attribute name="icon">
@@ -694,7 +694,7 @@ QPushButton::pressed{
                   <x>0</x>
                   <y>0</y>
                   <width>187</width>
-                  <height>335</height>
+                  <height>325</height>
                  </rect>
                 </property>
                 <attribute name="icon">
@@ -792,7 +792,7 @@ QPushButton::pressed{
                   <x>0</x>
                   <y>0</y>
                   <width>187</width>
-                  <height>335</height>
+                  <height>325</height>
                  </rect>
                 </property>
                 <attribute name="icon">
@@ -897,7 +897,7 @@ QPushButton::pressed{
                   <x>0</x>
                   <y>0</y>
                   <width>187</width>
-                  <height>335</height>
+                  <height>325</height>
                  </rect>
                 </property>
                 <attribute name="icon">
@@ -934,7 +934,7 @@ QPushButton::pressed{
                   <x>0</x>
                   <y>0</y>
                   <width>187</width>
-                  <height>335</height>
+                  <height>325</height>
                  </rect>
                 </property>
                 <attribute name="icon">
@@ -1067,7 +1067,7 @@ QPushButton::pressed{
                   <x>0</x>
                   <y>0</y>
                   <width>187</width>
-                  <height>335</height>
+                  <height>325</height>
                  </rect>
                 </property>
                 <attribute name="icon">
@@ -1278,6 +1278,12 @@ QPushButton::pressed{
           </item>
           <item alignment="Qt::AlignBottom">
            <widget class="QFrame" name="frame_7">
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>30</height>
+             </size>
+            </property>
             <property name="cursor">
              <cursorShape>ArrowCursor</cursorShape>
             </property>
@@ -1292,7 +1298,7 @@ QPushButton::pressed{
               <number>0</number>
              </property>
              <property name="leftMargin">
-              <number>0</number>
+              <number>5</number>
              </property>
              <property name="topMargin">
               <number>0</number>
@@ -1320,7 +1326,7 @@ QPushButton::pressed{
 }</string>
                </property>
                <property name="text">
-                <string>Выход</string>
+                <string>Очистить все данные</string>
                </property>
                <property name="icon">
                 <iconset>

@@ -9,7 +9,7 @@ class TrainingsManager:
 
     def load_database(self):
         conn = QtSql.QSqlDatabase.addDatabase('QSQLITE')
-        conn.setDatabaseName("source/workout.db")
+        conn.setDatabaseName("./source/workout.db")
         conn.open()
         global cQuery
         cQuery = QtSql.QSqlQuery()
@@ -31,7 +31,7 @@ class TrainingsManager:
     def delete_all(self):
 
         conn = QtSql.QSqlDatabase.addDatabase('QSQLITE')
-        conn.setDatabaseName("source/workout.db")
+        conn.setDatabaseName("./source/workout.db")
         conn.open()
         global cQuery
         cQuery = QtSql.QSqlQuery()
@@ -180,21 +180,3 @@ class TrainingsManager:
         # проверяет, есть ли данная страница в таблице
         # учесть отрицательные значения
         # возвращает True, False
-
-    def add_new_training(self, data):
-        pass
-        # создается новая тренировка и добавляется сразу же в базу данных
-        # пересчитывается self.n_pages
-
-    def delete_training(self, page, number):
-        pass
-        # удаляется запись с номером n=page*4 + number
-        # страницы и номера тренировок на странице нумеруются с нуля
-        # пересчитывается self.n_pages
-
-    def edit_training(self, page, number, data):
-        pass
-        # редактируется запись с номером n=page*4 + number
-        # страницы и номера тренировок на странице нумеруются с нуля
-        # в запись помещаются новые данные из data
-        # пересчитывается self.n_pages

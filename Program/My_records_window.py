@@ -12,7 +12,7 @@ class ViewMyRecords(QMainWindow):
         super(ViewMyRecords, self).__init__()
         self.home_page = home_page
         self.record_manager = record_manager
-        loadUi("new_design/my_records.ui", self)
+        loadUi("./new_design/my_records.ui", self)
         self.list_objects = self.pack_objects()
         self.list_records = self.record_manager.get_list_records()
         self.n_records = len(self.list_records)

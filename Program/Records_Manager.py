@@ -13,11 +13,11 @@ class RecordManager:
 
     # функции-загрузчики
     def load_data(self):
-        if os.path.exists('source/my_records.json'):
-            with open("source/my_records.json", "r") as read_file:
+        if os.path.exists('./source/my_records.json'):
+            with open("./source/my_records.json", "r") as read_file:
                 self.data_dict = json.load(read_file)
         else:
-            with open('source/my_records.json', "w") as write_file:
+            with open('./source/my_records.json', "w") as write_file:
                 json.dump(self.data_dict, write_file)
 
     # функции для изменения значений
@@ -26,7 +26,7 @@ class RecordManager:
 
     # функция сохранения
     def save_changes(self):
-        with open('source/my_records.json', "w") as write_file:
+        with open('./source/my_records.json', "w") as write_file:
             json.dump(self.data_dict, write_file)
 
     def get_list_records(self, order=True):

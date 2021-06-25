@@ -13,7 +13,7 @@ class Profile:
             'weight': None,
             'birthday': None,
 
-            'photo_path': 'source/default_photo.jpg',
+            'photo_path': './source/default_photo.jpg',
 
             'nice_days': 0,
             'goal':
@@ -36,7 +36,7 @@ class Profile:
             'weight': None,
             'birthday': None,
 
-            'photo_path': 'source/default_photo.jpg',
+            'photo_path': './source/default_photo.jpg',
 
             'nice_days': 0,
             'goal':
@@ -76,27 +76,27 @@ class Profile:
                                (old_width+new_width)//2, (old_height+new_height)//2))
 
         out_image = out_image.resize(new_size)
-        self.data_change('photo_path', 'source/my_photo.jpg')
+        self.data_change('photo_path', './source/my_photo.jpg')
         out_image.save(self.get_photo_path(), "JPEG")
 
 # функции-загрузчики
     def load_data(self):
-        if os.path.exists('source/my_profile.json'):
-            with open("source/my_profile.json", "r") as read_file:
+        if os.path.exists('./source/my_profile.json'):
+            with open("./source/my_profile.json", "r") as read_file:
                 self.data_dict = json.load(read_file)
         else:
-            with open('source/my_profile.json', "w") as write_file:
+            with open('./source/my_profile.json', "w") as write_file:
                 json.dump(self.data_dict, write_file)
 
     def set_photo(self):
         if os.path.exists(self.get_photo_path()):
             pass
-        elif os.path.exists('source/default_photo.jpg'):
-            self.data_change('photo_path', 'source/default_photo.jpg')
+        elif os.path.exists('./source/default_photo.jpg'):
+            self.data_change('photo_path', './source/default_photo.jpg')
         else:
             self.data_change('photo_path', None)
 
 # функция сохранения
     def save_changes(self):
-        with open('source/my_profile.json', "w") as write_file:
+        with open('./source/my_profile.json', "w") as write_file:
             json.dump(self.data_dict, write_file)

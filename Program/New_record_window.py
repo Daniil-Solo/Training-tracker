@@ -14,7 +14,7 @@ class NewRecord(QMainWindow):
         self.home_page = home_page
         self.record_manager = record_mangager
 
-        loadUi("new_design/new_record.ui", self)
+        loadUi("./new_design/new_record.ui", self)
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         self.all_connections()

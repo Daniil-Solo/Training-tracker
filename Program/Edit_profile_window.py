@@ -15,7 +15,7 @@ class EditProfile(QMainWindow):
         self.home_page = home_page
         self.profile = profile
 
-        loadUi("new_design/profile.ui", self)
+        loadUi("./new_design/profile.ui", self)
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)
         self.all_connections()
@@ -43,7 +43,7 @@ class EditProfile(QMainWindow):
             self.photo_label.setPixmap(pixmap)
 
     def set_default_photo_function(self):
-        self.profile.data_change('photo_path', 'source/default_photo.jpg')
+        self.profile.data_change('photo_path', './source/default_photo.jpg')
         pixmap = QtGui.QPixmap(self.profile.get_photo_path())
         self.photo_label.setPixmap(pixmap)
 

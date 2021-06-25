@@ -2,6 +2,8 @@ Program/source/my_photo.jpg
 Program/source/temp_my_photo.jpg
 Program/source/my_profile.json
 Program/source/workout.db
+Program/source/my_records.json
+Program/workout.db
 Program/__pycache__
 Program/test.py
 .idea

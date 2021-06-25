@@ -19,7 +19,7 @@ class NewWorkoutWindow(QMainWindow):
         self.training_manager = training_manager
         self.profile = profile
         self.data = data
-        loadUi("new_design/new_training.ui", self)
+        loadUi("./new_design/new_training.ui", self)
 
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         self.setAttribute(QtCore.Qt.WA_TranslucentBackground)

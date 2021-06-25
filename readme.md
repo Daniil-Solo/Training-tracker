@@ -1,4 +1,4 @@
-# RunWithMe / Приложение для 
+# RunWithMe
 
 Оглавление
 ==========
@@ -42,4 +42,5 @@
 **Соловьев Даниил** - Project Manager + Release Manager + Architect
 
 **Trello** - https://trello.com/b/XSIofgmo/trainingtracker
+
 **Notion** - https://www.notion.so/2-ea2781dc1140426396ec50ee6bcc6f4a
